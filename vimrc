@@ -1,0 +1,116 @@
+
+set nocompatible   " Disable legacy vi things
+set ignorecase     " Case-insensitive searching.
+set smartcase      " But case-sensitive if expression contains a capital letter.
+set mouse=a        " ...Enable mouse
+set relativenumber " Use relative line numbers by default
+set ttyfast        " Set that we have a fast terminal
+set hlsearch       " highlight the search results
+set incsearch      " search as you type
+set t_Co=256       " Explicitly tell Vim that the terminal supports 256 colors
+set number         " Enable line numbers
+set shortmess=Ia   " Abbreviate startup message
+set backspace=indent,eol,start
+
+" Hide this junk
+set wildignore+=*/_workspace
+set wildignore+=*/build,*/target,*/vendor
+
+let mapleader=","  " Map <leader> to comma
+
+filetype off
+filetype plugin on
+filetype indent on
+syn on
+
+" Toggle relative vs absolute line numbers
+" http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
+
+" Copy copy register to OS X general pasteboard
+function! PBCopy()
+  call system("pbcopy", getreg(""))
+endfunction
+
+" Paste from OS X general pasteboard to copy register
+function! PBPaste()
+  call setreg("", system("pbpaste"))
+endfunction
+
+" Allow tab for completion while in insert mode
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-p>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+
+" By the power of https://github.com/sjl/vitality.vim, copies and pastes
+" to the OS X pasteboard when switching between vim and other windows
+" (even in tmux)
+autocmd FocusLost * :call PBCopy()
+autocmd FocusGained * :call PBPaste()
+
+" Fix crontab weirdness
+autocmd filetype crontab setlocal nobackup nowritebackup
+" Strip trailing spaces
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Load plugins with https://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/bundle')
+
+" Navigation and search
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'ervandew/ag'
+
+" '<leader>cc' to comment
+" '<leader>c ' to toggle comment
+Plug 'scrooloose/nerdcommenter'
+
+" Languages
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'kylef/apiblueprint.vim', { 'for': 'apib' }
+Plug 'gfontenot/vim-xcodebuild', { 'on': ['XBuild','XClean','XTest','XSelectScheme'] }
+Plug 'keith/swift.vim', { 'for': 'swift' }
+
+" Utilities
+Plug 'sjl/vitality.vim' " Fixes FocusLost/FocusGained in tmux
+
+" Color and layout
+Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+Plug 'jaxbot/semantic-highlight.vim', { 'on': 'SemanticHighlightToggle' }
+
+call plug#end()
+
+" Keybindings
+nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap <Leader>tt :NERDTreeToggle<cr>
+nnoremap <Leader>y :Goyo<cr>
+nnoremap <Leader>gc :!tig status<cr>
+nnoremap <Leader>gs :!tig<cr>
+nnoremap <Leader>gp :!git push<cr>
+nnoremap <Leader>mm :!make<cr>
+nnoremap <Leader>mc :!make clean<cr>
+nnoremap <Leader>mt :!make test<cr>
+nnoremap <Leader>s :SemanticHighlightToggle<cr>
+nnoremap Y y$
+
+" swap colon and semicolon for easier commands
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
+
+" Use Seoul256 color scheme
+colo seoul256
+

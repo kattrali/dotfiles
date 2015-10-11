@@ -1,0 +1,109 @@
+brew 'caskroom/cask/brew-cask'
+brew 'cask'
+
+# Taps
+tap 'caskroom/cask'
+tap 'git-comment/formulae'
+tap 'homebrew/bundle'
+tap 'querykit/formulae'
+
+# Desktop
+cask 'alfred'
+cask 'amethyst'
+cask 'bartender'
+cask 'dropbox'
+cask 'iterm2-beta'
+cask 'karabiner'
+cask 'mou'
+cask 'seil'
+
+# Chat
+cask 'telegram'
+brew 'weechat', args: ['with-python', 'with-perl', 'HEAD']
+
+# Keyboard Config
+brew 'dfu-util'
+
+# Games
+tap 'homebrew/games'
+brew 'cmatrix'
+brew 'homebrew/games/mednafen'
+brew 'homebrew/games/nethack'
+brew 'homebrew/games/vitetris'
+brew 'pipes-sh'
+brew 'wine'
+brew 'winetricks'
+cask 'controllermate'
+cask 'dosbox'
+cask 'xscreensaver'
+
+# Music
+brew 'ncmpcpp', args: ['with-visualizer']
+brew 'pianobar'
+
+# Mail
+brew 'abook'
+brew 'getmail'
+brew 'mutt'
+brew 'notmuch'
+
+# Shells
+brew 'fish'
+brew 'bash'
+
+# Development
+cask 'rowanj-gitx'
+brew 'autoconf'
+brew 'automake'
+brew 'chruby'
+brew 'chruby-fish'
+brew 'class-dump'
+brew 'cloc'
+brew 'cmake'
+brew 'doxygen'
+brew 'git'
+brew 'gnupg'
+brew 'go'
+brew 'jsonpp'
+brew 'libgit2'
+brew 'lua'
+brew 'macvim', args: ['override-system-vim']
+brew 'mercurial'
+brew 'node'
+brew 'openssl', args: ['universal']
+brew 'progress'
+brew 'python'
+brew 'redis'
+brew 'rust'
+brew 'screenfetch'
+brew 'sqlite'
+brew 'the_silver_searcher'
+brew 'tig'
+brew 'vim', args: ['with-lua']
+brew 'vimpager'
+
+# Utilities
+brew 'aspell'
+brew 'curl'
+brew 'dtrx'
+brew 'fzf', args: ['HEAD']
+brew 'gettext'
+brew 'htop-osx'
+brew 'jrnl'
+brew 'khal'
+brew 'lynx'
+brew 'mackup'
+brew 'newsbeuter'
+brew 'pass'
+brew 'pcre'
+brew 'pkg-config'
+brew 'ranger'
+brew 'readline'
+brew 'tmux'
+brew 'todo-txt'
+brew 'trash'
+brew 'tree'
+brew 'urlview'
+brew 'wget'
+cask 'flux'
+cask 'virtualbox'

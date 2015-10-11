@@ -1,0 +1,6 @@
+set sort=threads
+set sort_browser=reverse-date
+set sort_aux=reverse-last-date-received
+source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
+macro index <esc>m "T~N<enter>;WNT~O<enter>;WO\CT~T<enter>" "mark all messages read"
+macro pager \cb <pipe-entry>'cat > /tmp/mutt_mail.html; open /tmp/mutt_mail.html'<enter> 'open email in default browser'
