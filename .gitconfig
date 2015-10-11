@@ -1,9 +1,9 @@
 [user]
-	name = Delisa Mason
-	email = iskanamagus@gmail.com
+    name  = Delisa Mason
+    email = iskanamagus@gmail.com
 
 [diff]
-	renames       = copy
+    renames     = copy
 
 [color]
     diff        = auto
@@ -42,35 +42,31 @@
     up          = rebase @\\{u\\}
 
 [gui]
-  tool          = gitx
-	recentrepo = /Users/delisa/Code/git-comment
+    tool        = gitx
 
 [core]
-	editor        = vim
-	excludesfile  = ~/.gitignore_global
-	attributesfile = ~/.gitattributes
-	pager = less -R
-	quotepath = false
+    editor         = vim
+    excludesfile   = ~/.gitignore_global
+    attributesfile = ~/.gitattributes
+    pager          = less -R
+    quotepath      = false
 
 [credential]
-	helper = osxkeychain
+    helper         = osxkeychain
 
 [mergetool]
-	keepBackup = false
+    keepBackup     = false
 
 [push]
-	default = current
+    default        = current
 
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+    clean          = git-media-clean %f
+    smudge         = git-media-smudge %f
 
 [diff "plist"]
-	textconv = plutil -convert xml1 -o -
+    textconv       = plutil -convert xml1 -o -
 
 [rerere]
-	enabled = true
+    enabled        = true
 
-[comment]
-	linesAfter  = 6
-	linesBefore = 8
