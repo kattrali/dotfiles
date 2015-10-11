@@ -2,17 +2,16 @@ BOOTSTRAP_CONFIG=~/Dropbox/Bootstrap
 SHELL_CONFIG=~/.config/fish
 
 BOOTSTRAP_TARGET=init
-FUNCTION_TARGET=functions
+FUNCTION_TARGET=fish/functions
 
 BOOTSTRAP=Makefile Brewfile Pipfile config/weechat.sh
-DOTFILES=tmux.conf vimrc muttrc gitconfig
+DOTFILES=.tmux.conf .vimrc .muttrc .gitconfig
 FUNCTIONS=aliases.fish http.fish pw.fish workon.fish checkmail.fish \
 	  readmail.fish pass.fish fish_prompt.fish
-FUNCTION_FILES=$(addprefix $(FUNCTION_TARGET)/,$(FUNCTIONS))
 SHELLRC=$(SHELL_CONFIG)/config.fish
 
 # Synchronize changes for release
-all: dotfiles function-files bootstrap-files shell-config
+all: dotfiles bootstrap-files shell-config
 
 .SECONDARY:
 
@@ -22,20 +21,18 @@ $(BOOTSTRAP_TARGET)/%: $(BOOTSTRAP_CONFIG)/%
 $(FUNCTION_TARGET)/%: $(SHELL_CONFIG)/functions/%
 	@install -C $(SHELL_CONFIG)/functions/$* $(FUNCTION_TARGET)/$*
 
-config.fish: $(SHELLRC)
-	@install -C $(SHELLRC) config.fish
+fish/config.fish: $(SHELLRC)
+	@install -C $(SHELLRC) fish/config.fish
 
-$(foreach dot,$(DOTFILES), \
-$(dot): $(HOME)/.$(dot) ;\
-	@install -C $(HOME)/.$(dot) $(dot);\
-)
+.%: $(HOME)/.%
+	@install -c $(HOME)/.$* .$*
 
 .PHONY:
 
 function-files: $(addprefix $(FUNCTION_TARGET)/,$(FUNCTIONS))
 
-dotfiles: $(addprefix $(HOME)/.,$(DOTFILES))
+dotfiles: $(DOTFILES)
 
 bootstrap-files: $(addprefix $(BOOTSTRAP_TARGET)/,$(BOOTSTRAP))
 
-shell-config: config.fish
+shell-config: fish/config.fish function-files

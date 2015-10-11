@@ -6,6 +6,6 @@ Shared dotfiles and system usage scripts for the good of everyone, especially my
 
 New system configuration
 
-## `functions`
+## `fish`
 
-Day-to-day helper commands
+Shell configuration, with day-to-day helper commands in `fish/functions`

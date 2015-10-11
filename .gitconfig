@@ -1,0 +1,76 @@
+[user]
+	name = Delisa Mason
+	email = iskanamagus@gmail.com
+
+[diff]
+	renames       = copy
+
+[color]
+    diff        = auto
+    status      = auto
+    branch      = auto
+    interactive = auto
+    ui          = true
+    pager       = true
+
+[color "branch"]
+    current     = yellow reverse
+    local       = yellow
+    remote      = green
+
+[color "diff"]
+    meta        = yellow bold
+    frag        = magenta bold
+    old         = red bold
+    new         = green bold
+
+[color "status"]
+    added       = yellow
+    changed     = green
+    untracked   = cyan
+
+[alias]
+    mf          = merge --no-ff
+    co          = checkout
+    ci          = commit
+    lg          = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    wh          = log HEAD..@\\{u\\} --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    pr          = !hub remote add $1 && git fetch $1
+    last        = log --name-only HEAD^..HEAD
+    serve       = daemon --verbose --base-path=. --reuseaddr --informative-errors --enable=receive-pack
+    ghclone     = !set repodir (echo $1 | awk -F '/' '{print $2}'); git clone https://github.com/$1.git $repodir
+    up          = rebase @\\{u\\}
+
+[gui]
+  tool          = gitx
+	recentrepo = /Users/delisa/Code/git-comment
+
+[core]
+	editor        = vim
+	excludesfile  = ~/.gitignore_global
+	attributesfile = ~/.gitattributes
+	pager = less -R
+	quotepath = false
+
+[credential]
+	helper = osxkeychain
+
+[mergetool]
+	keepBackup = false
+
+[push]
+	default = current
+
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+
+[diff "plist"]
+	textconv = plutil -convert xml1 -o -
+
+[rerere]
+	enabled = true
+
+[comment]
+	linesAfter  = 6
+	linesBefore = 8
