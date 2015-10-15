@@ -11,6 +11,7 @@ set t_Co=256       " Explicitly tell Vim that the terminal supports 256 colors
 set number         " Enable line numbers
 set shortmess=Ia   " Abbreviate startup message
 set backspace=indent,eol,start
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " Hide this junk
 set wildignore+=*/_workspace
@@ -59,8 +60,12 @@ inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 autocmd FocusLost * :call PBCopy()
 autocmd FocusGained * :call PBPaste()
 
+" Language Settings
+"
 " Fix crontab weirdness
 autocmd filetype crontab setlocal nobackup nowritebackup
+autocmd FileType swift setl tabstop=2 shiftwidth=2 softtabstop=2
+
 " Strip trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
 
