@@ -69,8 +69,8 @@ call plug#begin('~/.vim/bundle')
 
 " Navigation and search
 Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
-Plug 'ervandew/ag'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'rking/ag.vim'
 
 " '<leader>cc' to comment
 " '<leader>c ' to toggle comment
