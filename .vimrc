@@ -98,18 +98,24 @@ Plug 'jaxbot/semantic-highlight.vim', { 'on': 'SemanticHighlightToggle' }
 call plug#end()
 
 " Keybindings
-nnoremap <C-n> :call NumberToggle()<cr>
-nnoremap <Leader>tt :NERDTreeToggle<cr>
-nnoremap <Leader>y :Goyo<cr>
-nnoremap <Leader>gc :!tig status<cr>
-nnoremap <Leader>gs :!tig<cr>
-nnoremap <Leader>gp :!git push<cr>
+"
+" Git
+nnoremap <Leader>gc :!tig status<cr>   " Show staging area
+nnoremap <Leader>gs :!tig<cr>          " Tree view
+nnoremap <Leader>gl :!tig log<cr>      " Log view
+nnoremap <Leader>gb :!tig blame %<cr>  " Show blame for current file
+nnoremap <Leader>gp :!git push<cr>     " Push changes
+" Make
 nnoremap <Leader>mm :!make<cr>
 nnoremap <Leader>mc :!make clean<cr>
 nnoremap <Leader>mt :!make test<cr>
+" Layout
+nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap <Leader>tt :NERDTreeToggle<cr>
+nnoremap <Leader>y :Goyo<cr>
 nnoremap <Leader>s :SemanticHighlightToggle<cr>
+" Copy
 nnoremap Y y$
-
 " swap colon and semicolon for easier commands
 nnoremap ; :
 nnoremap : ;
