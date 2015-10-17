@@ -5,7 +5,7 @@ BOOTSTRAP_TARGET=init
 FUNCTION_TARGET=fish/functions
 
 BOOTSTRAP=Makefile Brewfile Pipfile config/weechat.sh
-DOTFILES=.tmux.conf .vimrc .muttrc .gitconfig
+DOTFILES=.tmux.conf .vimrc .muttrc .gitconfig .tigrc
 FUNCTIONS=aliases.fish http.fish pw.fish workon.fish checkmail.fish \
 	  readmail.fish pass.fish fish_prompt.fish
 SHELLRC=$(SHELL_CONFIG)/config.fish

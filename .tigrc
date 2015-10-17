@@ -1,0 +1,5 @@
+set ignore-space = all
+bind generic   P    ?git stash pop %(stash)
+bind generic   e    !git stash
+bind main      R    ?git rebase -i %(commit)
+bind status    A    !git commit --amend
