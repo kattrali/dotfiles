@@ -64,7 +64,8 @@ autocmd FocusGained * :call PBPaste()
 "
 " Fix crontab weirdness
 autocmd filetype crontab setlocal nobackup nowritebackup
-autocmd FileType swift setl tabstop=2 shiftwidth=2 softtabstop=2
+autocmd filetype swift setl tabstop=2 shiftwidth=2 softtabstop=2
+autocmd filetype markdown,journal set textwidth=80
 
 " Strip trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
@@ -86,6 +87,8 @@ Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'kylef/apiblueprint.vim', { 'for': 'apib' }
 Plug 'gfontenot/vim-xcodebuild', { 'on': ['XBuild','XClean','XTest','XSelectScheme'] }
 Plug 'keith/swift.vim', { 'for': 'swift' }
+Plug 'wting/rust.vim', { 'for': 'rust' }
+Plug 'junegunn/vim-journal'
 
 " Utilities
 Plug 'sjl/vitality.vim' " Fixes FocusLost/FocusGained in tmux
@@ -93,6 +96,7 @@ Plug 'sjl/vitality.vim' " Fixes FocusLost/FocusGained in tmux
 " Color and layout
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'jaxbot/semantic-highlight.vim', { 'on': 'SemanticHighlightToggle' }
 
 call plug#end()
@@ -113,6 +117,7 @@ nnoremap <Leader>mt :!make test<cr>
 nnoremap <C-n> :call NumberToggle()<cr>
 nnoremap <Leader>tt :NERDTreeToggle<cr>
 nnoremap <Leader>y :Goyo<cr>
+nnoremap <Leader>ll :Limelight!!<cr>
 nnoremap <Leader>s :SemanticHighlightToggle<cr>
 " Copy
 nnoremap Y y$
