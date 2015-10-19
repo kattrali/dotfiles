@@ -10,6 +10,8 @@ set incsearch      " search as you type
 set t_Co=256       " Explicitly tell Vim that the terminal supports 256 colors
 set number         " Enable line numbers
 set shortmess=Ia   " Abbreviate startup message
+set smartindent    " GET SMART
+set colorcolumn=80 " Consciously decide to make lines too long
 set backspace=indent,eol,start
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
@@ -64,7 +66,7 @@ autocmd FocusGained * :call PBPaste()
 "
 " Fix crontab weirdness
 autocmd filetype crontab setlocal nobackup nowritebackup
-autocmd filetype swift setl tabstop=2 shiftwidth=2 softtabstop=2
+autocmd filetype swift,ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd filetype markdown,journal set textwidth=80
 
 " Strip trailing spaces
