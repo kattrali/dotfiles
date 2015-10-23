@@ -121,8 +121,9 @@ nnoremap <Leader>tt :NERDTreeToggle<cr>
 nnoremap <Leader>y :Goyo<cr>
 nnoremap <Leader>ll :Limelight!!<cr>
 nnoremap <Leader>s :SemanticHighlightToggle<cr>
-" Copy
+" General
 nnoremap Y y$
+inoremap jj <Esc>
 " swap colon and semicolon for easier commands
 nnoremap ; :
 nnoremap : ;
