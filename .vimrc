@@ -2,7 +2,6 @@
 set nocompatible   " Disable legacy vi things
 set ignorecase     " Case-insensitive searching.
 set smartcase      " But case-sensitive if expression contains a capital letter.
-set mouse=a        " ...Enable mouse
 set relativenumber " Use relative line numbers by default
 set ttyfast        " Set that we have a fast terminal
 set hlsearch       " highlight the search results
@@ -14,6 +13,12 @@ set smartindent    " GET SMART
 set colorcolumn=80 " Consciously decide to make lines too long
 set backspace=indent,eol,start
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+
+" Mouse settings
+set mouse+=a           " Enable mouse
+if &term =~ '^screen' " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+endif
 
 " Hide this junk
 set wildignore+=*/_workspace
