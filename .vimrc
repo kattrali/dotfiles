@@ -96,6 +96,7 @@ Plug 'gfontenot/vim-xcodebuild', { 'on': ['XBuild','XClean','XTest','XSelectSche
 Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'wting/rust.vim', { 'for': 'rust' }
 Plug 'junegunn/vim-journal'
+Plug 'cespare/vim-toml', { 'for': 'toml' }
 
 " Utilities
 Plug 'sjl/vitality.vim' " Fixes FocusLost/FocusGained in tmux
