@@ -121,15 +121,18 @@ nnoremap <Leader>gp :!git push<cr>     " Push changes
 nnoremap <Leader>mm :!make<cr>
 nnoremap <Leader>mc :!make clean<cr>
 nnoremap <Leader>mt :!make test<cr>
+nnoremap <Leader>mr :!make run<cr>
 " Layout
 nnoremap <C-n> :call NumberToggle()<cr>
-nnoremap <Leader>tt :NERDTreeToggle<cr>
+nnoremap <Leader>t :NERDTreeToggle<cr>
 nnoremap <Leader>y :Goyo<cr>
 nnoremap <Leader>ll :Limelight!!<cr>
 nnoremap <Leader>s :SemanticHighlightToggle<cr>
 " General
 nnoremap Y y$
 inoremap jj <Esc>
+nnoremap <Leader>p :CtrlP<cr>
+nnoremap <Leader>w :w<cr>
 " swap colon and semicolon for easier commands
 nnoremap ; :
 nnoremap : ;
