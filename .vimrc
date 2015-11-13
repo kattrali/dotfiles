@@ -73,7 +73,8 @@ autocmd FocusGained * :call PBPaste()
 autocmd filetype crontab setlocal nobackup nowritebackup
 autocmd filetype swift,ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd BufNewFile,BufRead jrnl*.txt set filetype=journal
-autocmd filetype markdown,journal set textwidth=80
+autocmd BufNewFile,BufRead *.podspec set filetype=ruby
+autocmd filetype markdown,journal,apib set textwidth=80
 
 " Strip trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
