@@ -52,6 +52,7 @@ defaults:
 	@defaults write com.apple.Safari IncludeDevelopMenu -bool true
 	@defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 	@defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+	@defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 	@defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 	@defaults write com.apple.TextEdit RichText -int 0
 	@defaults write NSGlobalDomain AppleShowAllExtensions -bool true
