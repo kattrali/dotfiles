@@ -10,7 +10,7 @@ all: defaults brew-packages python-packages app-config $(FONTS) cache-fonts
 	@echo "Synchronization started. Remember to run 'mackup restore'"
 
 /usr/bin/clang:
-	xcode-select --install
+	@xcode-select --install
 
 $(PREFIX)/bin/brew:
 	@echo Installing Homebrew
@@ -18,7 +18,7 @@ $(PREFIX)/bin/brew:
 	@brew doctor
 
 $(BREW_BUNDLE): $(PREFIX)/bin/brew
-	brew tap Homebrew/bundle
+	@brew tap Homebrew/bundle
 
 $(FONT_DIR)/%:
 	@install -C fonts/$* $(FONT_DIR)/$*
@@ -26,7 +26,8 @@ $(FONT_DIR)/%:
 .PHONY:
 
 brew-packages: /usr/bin/clang $(BREW_BUNDLE)
-	brew bundle Brewfile
+	@brew bundle Brewfile
+	@brew pin tmux
 
 python-packages:
 	@pip install --upgrade pip
