@@ -8,6 +8,7 @@ FONTS=$(addprefix $(FONT_DIR),$(shell ls fonts))
 all: defaults brew-packages python-packages app-config $(FONTS) cache-fonts
 	dropboxd
 	@echo "Synchronization started. Remember to run 'mackup restore'"
+	@echo "Run 'make allow-ax' to set accessibility permissions"
 
 /usr/bin/clang:
 	@xcode-select --install
@@ -71,3 +72,8 @@ defaults:
 	@chflags nohidden ~/Library
 	@killall Finder
 	@killall SystemUIServer
+
+allow-ax:
+	sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "INSERT INTO access VALUES('kTCCServiceAccessibility','com.amethyst.Amethyst',0,1,1,NULL);"
+	sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "INSERT INTO access VALUES('kTCCServiceAccessibility','com.runningwithcrayons.Alfred-2',0,1,1,NULL);"
+	sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "INSERT INTO access VALUES('kTCCServiceAccessibility','org.pqrs.Karabiner',0,1,1,NULL);"
