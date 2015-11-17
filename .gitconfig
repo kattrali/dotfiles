@@ -40,6 +40,8 @@
     serve       = daemon --verbose --base-path=. --reuseaddr --informative-errors --enable=receive-pack
     ghclone     = !set repodir (echo $1 | awk -F '/' '{print $2}'); git clone https://github.com/$1.git $repodir
     up          = rebase @\\{u\\}
+    configpr    = config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
+
 
 [gui]
     tool        = gitx
