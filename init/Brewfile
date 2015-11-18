@@ -103,6 +103,7 @@ brew 'pcre'
 brew 'pkg-config'
 brew 'ranger'
 brew 'readline'
+cask 'qlmarkdown'
 ## tmux 2.0
 brew 'https://raw.githubusercontent.com/Homebrew/homebrew/38d1b97f531147235cd2528de4e87286fd45cc16/Library/Formula/tmux.rb'
 brew 'todo-txt'
