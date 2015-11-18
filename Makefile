@@ -5,7 +5,8 @@ BOOTSTRAP_TARGET=init
 FUNCTION_TARGET=fish/functions
 
 BOOTSTRAP=Makefile Brewfile Pipfile config/weechat.sh
-DOTFILES=.tmux.conf .vimrc .muttrc .gitconfig .tigrc
+DOTFILES=.tmux.conf .vimrc .muttrc .gitconfig .tigrc \
+		 .newsbeuter/config .newsbeuter/urls
 FUNCTIONS=aliases.fish http.fish pw.fish workon.fish checkmail.fish \
 	  readmail.fish pass.fish fish_prompt.fish
 SHELLRC=$(SHELL_CONFIG)/config.fish
@@ -23,6 +24,9 @@ $(FUNCTION_TARGET)/%: $(SHELL_CONFIG)/functions/%
 
 fish/config.fish: $(SHELLRC)
 	@install -C $(SHELLRC) fish/config.fish
+
+.newsbeuter/%: $(HOME)/.newsbeuter/%
+	@install -c $(HOME)/.newsbeuter/$* .newsbeuter/$*
 
 .%: $(HOME)/.%
 	@install -c $(HOME)/.$* .$*
