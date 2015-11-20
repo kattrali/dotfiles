@@ -1,0 +1,6 @@
+set noloadplugins
+set mouse +=a
+if &term =~ '^screen'
+    set ttymouse=xterm2
+endif
+
