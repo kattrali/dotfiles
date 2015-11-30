@@ -17,12 +17,11 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 " Mouse settings
 set mouse+=a           " Enable mouse
 if &term =~ '^screen' " tmux knows the extended mouse mode
-    set ttymouse=xterm2
+  set ttymouse=xterm2
 endif
 
 " Hide this junk
-set wildignore+=*/_workspace
-set wildignore+=*/build,*/target,*/vendor
+set wildignore+=*/_workspace,*/build,*/target,*/vendor
 
 let mapleader=","  " Map <leader> to comma
 
@@ -71,7 +70,7 @@ autocmd FocusGained * :call PBPaste()
 "
 " Fix crontab weirdness
 autocmd filetype crontab setlocal nobackup nowritebackup
-autocmd filetype swift,ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd filetype swift,ruby,markdown,journal,apib setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd BufNewFile,BufRead jrnl*.txt set filetype=journal
 autocmd BufNewFile,BufRead *.podspec set filetype=ruby
 autocmd filetype markdown,journal,apib set textwidth=80
@@ -93,11 +92,11 @@ Plug 'scrooloose/nerdcommenter'
 
 " Languages
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'kylef/apiblueprint.vim', { 'for': 'apib' }
+Plug 'kylef/apiblueprint.vim', { 'for': 'apiblueprint' }
 Plug 'gfontenot/vim-xcodebuild', { 'on': ['XBuild','XClean','XTest','XSelectScheme'] }
 Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'wting/rust.vim', { 'for': 'rust' }
-Plug 'junegunn/vim-journal'
+Plug 'junegunn/vim-journal', { 'for': 'journal' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 
 " Utilities
