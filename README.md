@@ -1,11 +1,15 @@
 # kattrali's system configuration
 
-Shared dotfiles and system usage scripts for the good of everyone, especially my calendar.
+Shared dotfiles and system usage scripts.
 
 ## `init`
 
 New system configuration
 
-## `fish`
+## `.config/fish`
 
 Shell configuration, with day-to-day helper commands in `fish/functions`
+
+## `.newsbeuter`
+
+Feeds. Its what's for ~~dinner~~ reading.
