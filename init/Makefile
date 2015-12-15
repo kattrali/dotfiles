@@ -1,11 +1,12 @@
 PREFIX := /usr/local
 BREW_BUNDLE=$(PREFIX)/Library/Taps/homebrew/homebrew-bundle
-FONT_DIR=$(HOME)/Library/Fonts
-FONTS=$(addprefix $(FONT_DIR),$(shell ls fonts))
+WEECHAT_CFG=$(HOME)/.weechat
+WEECHAT_PYCFG=$(WEECHAT_CFG)/python/autoload
+WEECHAT_PERLCFG=$(WEECHAT_CFG)/perl/autoload
 
 .SECONDARY:
 
-all: defaults brew-packages python-packages app-config $(FONTS) cache-fonts
+all: defaults brew-packages python-packages app-config
 	dropboxd
 	@echo "Synchronization started. Remember to run 'mackup restore'"
 	@echo "Run 'make allow-ax' to set accessibility permissions"
@@ -21,8 +22,24 @@ $(PREFIX)/bin/brew:
 $(BREW_BUNDLE): $(PREFIX)/bin/brew
 	@brew tap Homebrew/bundle
 
-$(FONT_DIR)/%:
-	@install -C fonts/$* $(FONT_DIR)/$*
+$(HOME)/.vim/autoload/plug.vim:
+	@install -d $(HOME)/.vim/autoload
+	curl -fLo $(HOME)/.vim/autoload/plug.vim  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+$(WEECHAT_PYCFG)/wee_slack.py:
+	@install -d $(WEECHAT_PYCFG)
+	@cd $(WEECHAT_PYCFG); \
+		wget https://raw.githubusercontent.com/rawdigits/wee-slack/master/wee_slack.py
+
+$(WEECHAT_PYCFG)/weemoji.py:
+	@install -d $(WEECHAT_PYCFG)
+	@cd $(WEECHAT_PYCFG); \
+		wget https://raw.githubusercontent.com/kattrali/weemoji/master/wee_slack.py
+
+$(WEECHAT_PERLCFG)/buffers.pl:
+	@install -d $(WEECHAT_PERLCFG)
+	@cd $(WEECHAT_PERLCFG); \
+		wget https://weechat.org/files/scripts/buffers.pl
 
 .PHONY:
 
@@ -34,14 +51,11 @@ python-packages:
 	@pip install --upgrade pip
 	@pip install -r Pipfile
 
-app-config: weechat
+app-config: weechat vim
 
-vim:
-	@install -d $(HOME)/.vim/autoload
-	curl -fLo $(HOME)/.vim/autoload/plug.vim  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim: $(HOME)/.vim/autoload/plug.vim
 
-weechat:
-	@./config/weechat.sh
+weechat: $(WEECHAT_PYCFG)/wee_slack.py $(WEECHAT_PYCFG)/weemoji.py $(WEECHAT_PERLCFG)/buffers.pl
 
 cache-fonts:
 	fc-cache
