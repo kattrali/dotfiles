@@ -82,9 +82,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 call plug#begin('~/.vim/bundle')
 
 " Navigation and search
-Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
+Plug 'ctrlpvim/ctrlp.vim', { 'on': ['CtrlP'] }
+Plug 'rking/ag.vim', { 'on': ['Ag'] }
 
 " '<leader>cc' to comment
 " '<leader>c ' to toggle comment
