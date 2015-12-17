@@ -13,3 +13,16 @@ Configures a new OS X installation:
 ```
 make
 ```
+
+## Additional Configuration
+
+### OS X Apps without cask counterparts
+
+* [Barkley Gaiden](http://www.talesofgames.com/related_game/barkley-shut-up-jam-gaiden)
+* [Deckset](http://www.decksetapp.com)
+* [MagicaVoxel](http://ephtracy.github.io)
+* [Mari0](http://stabyourself.net/mari0)
+* [Pixen](http://www.pixenapp.com)
+* [Simple Comic](http://dancingtortoise.com/simplecomic/)
+* [Sip](http://theolabrothers.com)
+* [Spectrum](http://www.eigenlogik.com/spectrum/mac)

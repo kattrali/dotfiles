@@ -8,15 +8,27 @@ tap 'homebrew/bundle'
 tap 'querykit/formulae'
 
 # Desktop
+cask 'airserver'
 cask 'alfred'
 cask 'amethyst'
 cask 'bartender'
+cask 'calibre'
+cask 'cleanmymac2'
+cask 'disk-inventory-x'
 cask 'dropbox'
+cask 'firefox'
 cask 'iterm2-beta'
 cask 'karabiner'
+cask 'keycastr'
 cask 'mou'
 cask 'seil'
+cask 'silverlight'
+cask 'sketch'
+cask 'the-unarchiver'
 cask 'time-out'
+cask 'transmission'
+cask 'vlc'
+cask 'wineskin-winery'
 
 # Chat
 cask 'telegram'
@@ -38,11 +50,14 @@ brew 'winetricks'
 brew 'kattrali/formulae/thyme'
 cask 'controllermate'
 cask 'dosbox'
-cask 'xscreensaver'
+cask 'openemu'
+cask 'steam'
+cask 'stepmania'
 
 # Music
 brew 'ncmpcpp', args: ['with-visualizer']
 brew 'pianobar'
+brew 'cmus'
 
 # Mail
 brew 'abook'
@@ -57,6 +72,7 @@ brew 'bash'
 # Development
 cask 'rowanj-gitx'
 cask 'alcatraz'
+cask 'xscope'
 brew 'autoconf'
 brew 'automake'
 brew 'chruby'
@@ -85,6 +101,11 @@ brew 'the_silver_searcher'
 brew 'tig'
 brew 'vim', args: ['with-lua']
 brew 'vimpager'
+
+# Game Dev
+cask 'tiled'
+cask 'love'
+brew 'luajit'
 
 # Utilities
 brew 'aspell'
