@@ -98,6 +98,8 @@ Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'wting/rust.vim', { 'for': 'rust' }
 Plug 'junegunn/vim-journal', { 'for': 'journal' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'vim-scripts/lua.vim', { 'for': 'lua' }
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
 
 " Utilities
 Plug 'sjl/vitality.vim' " Fixes FocusLost/FocusGained in tmux
