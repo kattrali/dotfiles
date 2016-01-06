@@ -1,4 +1,6 @@
-BOOTSTRAP_CONFIG=~/Dropbox/Bootstrap
+SYNC_DIR=~/Dropbox
+TODO_ACTIONS=$(SYNC_DIR)/todo/actions
+BOOTSTRAP_CONFIG=$(SYNC_DIR)/Bootstrap
 FISH_CONFIG=.config/fish
 CONFIG_FILES=$(FISH_CONFIG)/config.fish .config/redshift.conf
 
@@ -11,9 +13,10 @@ DOTFILES=.tmux.conf .vimrc .muttrc .gitconfig .tigrc .vimpagerrc \
 FUNCTIONS=aliases.fish http.fish pw.fish workon.fish checkmail.fish \
 		  readmail.fish pass.fish fish_prompt.fish tomato.fish \
 		  brew-checkout.fish
+TODO_CFG=.todo/config $(addprefix .todo/actions/,$(shell ls $(TODO_ACTIONS)))
 
 # Synchronize changes for release
-all: bootstrap-files function-files $(CONFIG_FILES) $(DOTFILES)
+all: bootstrap-files function-files $(CONFIG_FILES) $(DOTFILES) $(TODO_CFG)
 
 .SECONDARY:
 
@@ -25,6 +28,9 @@ $(BOOTSTRAP_TARGET)/%: $(BOOTSTRAP_CONFIG)/%
 
 .newsbeuter/%: $(HOME)/.newsbeuter/%
 	@install -c $(HOME)/.newsbeuter/$* .newsbeuter/$*
+
+.todo/%: $(SYNC_DIR)/todo/%
+	@install $(SYNC_DIR)/todo/$* .todo/$*
 
 .%: $(HOME)/.%
 	@install -c $(HOME)/.$* .$*
