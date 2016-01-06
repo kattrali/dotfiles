@@ -14,12 +14,15 @@ function brew-checkout
     set FORMULA (echo $argv[1])
     set VERSION (echo $argv[2])
     set HASH (git -C (brew --prefix) log --all --grep="$FORMULA $VERSION" --pretty="%H")
-    if test (count $HASH) -eq 1
+    set HASH_COUNT (count $HASH)
+    if test $HASH_COUNT -eq 1
       echo Installing $argv[1] $argv[2]
       brew install "$REMOTE_REPO/$HASH/$REMOTE_FORMULA_PATH/$FORMULA.rb"
       brew pin $FORMULA
-    else
+    else if test $HASH_COUNT -eq 0
       echo "No match found for '$FORMULA $VERSION'"
+    else
+      echo "Too many matches found for '$FORMULA $VERSION'"
     end
   else
     echo 'Usage: brew-checkout [formula] [version]'
