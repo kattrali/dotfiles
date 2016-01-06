@@ -16,7 +16,7 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " Mouse settings
 set mouse+=a           " Enable mouse
-if &term =~ '^screen' " tmux knows the extended mouse mode
+if &term =~ '^screen'  " Use extended mouse mode when using tmux, screen
   set ttymouse=xterm2
 endif
 
@@ -35,6 +35,7 @@ syn on
 function! NumberToggle()
   if(&relativenumber == 1)
     set norelativenumber
+    set number
   else
     set relativenumber
   endif
@@ -60,20 +61,14 @@ function! Tab_Or_Complete()
 endfunction
 inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
-" By the power of https://github.com/sjl/vitality.vim, copies and pastes
-" to the OS X pasteboard when switching between vim and other windows
-" (even in tmux)
-autocmd FocusLost * :call PBCopy()
-autocmd FocusGained * :call PBPaste()
-
 " Language Settings
 "
 " Fix crontab weirdness
 autocmd filetype crontab setlocal nobackup nowritebackup
-autocmd filetype swift,ruby,markdown,journal,apib setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd filetype swift,ruby,markdown,journal,apiblueprint setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd BufNewFile,BufRead jrnl*.txt set filetype=journal
 autocmd BufNewFile,BufRead *.podspec set filetype=ruby
-autocmd filetype markdown,journal,apib set textwidth=80
+autocmd filetype markdown,journal,apiblueprint set textwidth=80
 
 " Strip trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
@@ -101,14 +96,10 @@ Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'vim-scripts/lua.vim', { 'for': 'lua' }
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 
-" Utilities
-Plug 'sjl/vitality.vim' " Fixes FocusLost/FocusGained in tmux
-
 " Color and layout
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-Plug 'jaxbot/semantic-highlight.vim', { 'on': 'SemanticHighlightToggle' }
 
 call plug#end()
 
@@ -130,7 +121,6 @@ nnoremap <C-n> :call NumberToggle()<cr>
 nnoremap <Leader>t :NERDTreeToggle<cr>
 nnoremap <Leader>y :Goyo<cr>
 nnoremap <Leader>ll :Limelight!!<cr>
-nnoremap <Leader>s :SemanticHighlightToggle<cr>
 " General
 nnoremap Y y$
 inoremap jj <Esc>
