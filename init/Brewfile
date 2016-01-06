@@ -22,6 +22,7 @@ cask 'karabiner'
 cask 'keycastr'
 cask 'mou'
 cask 'seil'
+cask 'send-to-kindle'
 cask 'silverlight'
 cask 'sketch'
 cask 'the-unarchiver'
@@ -32,7 +33,7 @@ cask 'wineskin-winery'
 
 # Chat
 cask 'telegram'
-brew 'weechat', args: ['with-python', 'with-perl', 'HEAD']
+brew 'weechat', args: ['with-python', 'with-perl']
 
 # Keyboard Config
 brew 'dfu-util'
@@ -42,6 +43,7 @@ tap 'homebrew/games'
 brew 'cmatrix'
 brew 'homebrew/games/mednafen'
 brew 'homebrew/games/nethack'
+brew 'homebrew/games/nudoku'
 brew 'homebrew/games/vitetris'
 brew 'homebrew/games/tty-solitaire'
 brew 'pipes-sh'
@@ -118,6 +120,7 @@ brew 'htop-osx'
 brew 'https://raw.githubusercontent.com/Homebrew/homebrew/38d1b97f531147235cd2528de4e87286fd45cc16/Library/Formula/tmux.rb'
 brew 'jrnl'
 brew 'khal'
+brew 'ledger'
 brew 'lynx'
 brew 'mackup'
 brew 'newsbeuter'
