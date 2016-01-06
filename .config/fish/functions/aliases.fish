@@ -20,7 +20,3 @@ function web
   open "https://duckduckgo.com?q=$argv"
 end
 
-function gh
-  open "https://github.com/search/?q=$argv"
-end
-
