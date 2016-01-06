@@ -9,16 +9,18 @@
 
 function brew-checkout
   if test (count $argv) -eq 2
-    set REMOTE_REPO 'https://raw.githubusercontent.com/Homebrew/homebrew'
-    set REMOTE_FORMULA_PATH 'Library/Formula'
     set FORMULA (echo $argv[1])
     set VERSION (echo $argv[2])
-    set HASH (git -C (brew --prefix) log --all --grep="$FORMULA $VERSION" --pretty="%H")
+    set PREFIX (brew --prefix)
+    set HASH (git -C $PREFIX log --all --grep="$FORMULA $VERSION" --pretty="%H")
     set HASH_COUNT (count $HASH)
     if test $HASH_COUNT -eq 1
       echo Installing $argv[1] $argv[2]
-      brew install "$REMOTE_REPO/$HASH/$REMOTE_FORMULA_PATH/$FORMULA.rb"
+      set TMP_FORMULA_PATH (mktemp -dt brew-checkout)/$FORMULA.rb
+      git -C $PREFIX show $HASH:Library/Formula/$FORMULA.rb > $TMP_FORMULA_PATH
+      brew install $TMP_FORMULA_PATH
       brew pin $FORMULA
+      rm -r (dirname $TMP_FORMULA_PATH)
     else if test $HASH_COUNT -eq 0
       echo "No match found for '$FORMULA $VERSION'"
     else
