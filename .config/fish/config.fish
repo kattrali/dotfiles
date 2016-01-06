@@ -10,6 +10,7 @@ set -x COCOAPODS_DISABLE_STATS 1
 set -x PATH /usr/bin $GEM_HOME/bin $HOME/bin \
             /usr/local/bin /usr/local/sbin $GOPATH/bin \
             /bin /usr/sbin /sbin /usr/local/go/bin
+set -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/local/lib
 
 source /usr/local/share/chruby/chruby.fish
 source $HOME/.config/fish/functions/aliases.fish
