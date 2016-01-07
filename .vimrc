@@ -95,6 +95,7 @@ Plug 'junegunn/vim-journal', { 'for': 'journal' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'vim-scripts/lua.vim', { 'for': 'lua' }
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
+Plug 'dag/vim-fish', { 'for': 'fish' }
 
 " Color and layout
 Plug 'junegunn/seoul256.vim'

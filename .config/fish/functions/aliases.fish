@@ -2,6 +2,7 @@
 
 alias rm="trash"
 alias t="todo.sh -d ~/.config/todo/config"
+alias bk=bookkeeping
 
 # Navigation
 alias ...="cd ../.."

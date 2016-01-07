@@ -14,7 +14,7 @@ DOTFILES=.tmux.conf .vimrc .muttrc .gitconfig .tigrc .vimpagerrc \
 		 .newsbeuter/config .newsbeuter/urls .amethyst
 FUNCTIONS=aliases.fish http.fish pw.fish workon.fish checkmail.fish \
 		  readmail.fish pass.fish fish_prompt.fish tomato.fish \
-		  brew-checkout.fish
+		  brew-checkout.fish bookkeeping.fish
 
 # Synchronize changes for release
 all: bootstrap-files function-files $(CONFIG_FILES) $(DOTFILES)
