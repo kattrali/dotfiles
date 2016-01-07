@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 alias rm="trash"
-alias t="todo.sh -d ~/Dropbox/todo/config"
+alias t="todo.sh -d ~/.config/todo/config"
 
 # Navigation
 alias ...="cd ../.."
