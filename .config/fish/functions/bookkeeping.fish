@@ -7,7 +7,7 @@
 #     bookkeeping edit
 #
 # Other ledger files and related data can be edited by specifying the name. For
-# example, to edit the 'accounts.dat' file in the ledgers directory, use:
+# example, to edit the 'accounts.ledger' file in the ledgers directory, use:
 #
 #     bookkeeping edit accounts
 #
@@ -21,7 +21,7 @@
 
 function bookkeeping
     set LEDGERS ~/.local/share/ledger
-    set NUMBERS $LEDGERS/numbers.dat
+    set NUMBERS $LEDGERS/numbers.ledger
     set CMD ledger -f $NUMBERS --strict
     set USAGE "Usage: bookkeeping [edit/ledger commands]"
     if test (count $argv) -eq 0
@@ -32,7 +32,7 @@ function bookkeeping
             if test (count $argv) -eq 1
                 eval $EDITOR $NUMBERS
             else
-                eval $EDITOR $LEDGERS/$argv[2].dat
+                eval $EDITOR $LEDGERS/$argv[2].ledger
             end
         case '*'
             eval ledger -f $NUMBERS --strict $argv[1..-1]
