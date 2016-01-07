@@ -7,10 +7,9 @@ set -x EDITOR vim
 set -x GEM_HOME $HOME/.local/gems/(ruby -v | awk '{print $2}')
 set -x GEM_PATH $GEM_HOME
 set -x COCOAPODS_DISABLE_STATS 1
-set -x PATH /usr/bin $GEM_HOME/bin $HOME/bin \
-            /usr/local/bin /usr/local/sbin $GOPATH/bin \
-            /bin /usr/sbin /sbin /usr/local/go/bin
 set -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/local/lib
+set -x PATH $GEM_HOME/bin $HOME/bin /usr/local/bin /usr/local/sbin \
+            /bin /usr/bin /usr/sbin /sbin $GOPATH/bin /usr/local/go/bin
 
 source /usr/local/share/chruby/chruby.fish
 source $HOME/.config/fish/functions/aliases.fish

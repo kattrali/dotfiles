@@ -15,8 +15,3 @@ alias gx="gitx"
 alias gp="git push"
 alias gs="git status"
 
-# Search
-function web
-  open "https://duckduckgo.com?q=$argv"
-end
-
