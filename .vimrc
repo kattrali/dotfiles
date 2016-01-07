@@ -97,6 +97,7 @@ Plug 'vim-scripts/lua.vim', { 'for': 'lua' }
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'ledger/vim-ledger', { 'for': 'ledger' }
+Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 
 " Color and layout
 Plug 'junegunn/seoul256.vim'

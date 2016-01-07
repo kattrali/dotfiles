@@ -4,6 +4,7 @@ wikicurses
 gcalcli
 ohmu
 beets
+tabview    # CSV viewer
 
 # weechat
 websocket-client
