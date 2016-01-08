@@ -1,9 +1,9 @@
-rtv
-rfc
-wikicurses
-gcalcli
-ohmu
-beets
+rtv        # Reddit client
+rfc        # RFC viewer
+wikicurses # Wikipedia viewer
+gcalcli    # Calendar viewer
+ohmu       # Disk space visualizer
+beets      # Music library organizer
 tabview    # CSV viewer
 
 # weechat
