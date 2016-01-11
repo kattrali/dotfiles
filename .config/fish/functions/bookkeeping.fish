@@ -30,9 +30,9 @@ function bookkeeping
         switch (echo $argv[1])
         case edit
             if test (count $argv) -eq 1
-                eval $EDITOR $NUMBERS
+                eval $EDITOR + $NUMBERS
             else
-                eval $EDITOR $LEDGERS/$argv[2].ledger
+                eval $EDITOR + $LEDGERS/$argv[2].ledger
             end
         case '*'
             eval ledger -f $NUMBERS --strict $argv[1..-1]
