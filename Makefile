@@ -11,7 +11,7 @@ FUNCTION_TARGET=.config/fish/functions
 
 BOOTSTRAP=Makefile Brewfile Pipfile
 DOTFILES=.tmux.conf .vimrc .muttrc .gitconfig .tigrc .vimpagerrc \
-		 .newsbeuter/config .newsbeuter/urls .amethyst
+		 .newsbeuter/config .newsbeuter/urls .gitignore_global
 FUNCTIONS=aliases.fish http.fish pw.fish workon.fish checkmail.fish \
 		  readmail.fish pass.fish fish_prompt.fish tomato.fish \
 		  brew-checkout.fish bookkeeping.fish

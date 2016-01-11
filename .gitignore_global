@@ -1,0 +1,7 @@
+*.class
+*.o
+*.swp
+target
+.DS_Store
+build
+xcuserdata
