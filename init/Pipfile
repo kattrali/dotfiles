@@ -5,6 +5,7 @@ gcalcli    # Calendar viewer
 ohmu       # Disk space visualizer
 beets      # Music library organizer
 tabview    # CSV viewer
+flake8     # PEP8 linter, for vim+syntastic
 
 # weechat
 websocket-client

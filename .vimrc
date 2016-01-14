@@ -21,7 +21,7 @@ if &term =~ '^screen'  " Use extended mouse mode when using tmux, screen
 endif
 
 " Hide this junk
-set wildignore+=*/_workspace,*/build,*/target,*/vendor
+set wildignore+=*/_workspace,*/build,*/target,*/vendor,*/venv
 
 let mapleader=","  " Map <leader> to comma
 
@@ -86,6 +86,7 @@ Plug 'rking/ag.vim', { 'on': ['Ag'] }
 Plug 'scrooloose/nerdcommenter'
 
 " Languages
+Plug 'scrooloose/syntastic'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'kylef/apiblueprint.vim', { 'for': 'apiblueprint' }
 Plug 'gfontenot/vim-xcodebuild', { 'on': ['XBuild','XClean','XTest','XSelectScheme'] }

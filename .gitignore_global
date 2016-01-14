@@ -1,6 +1,7 @@
 *.class
 *.o
 *.swp
+venv
 target
 .DS_Store
 build
