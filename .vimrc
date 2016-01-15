@@ -21,7 +21,7 @@ if &term =~ '^screen'  " Use extended mouse mode when using tmux, screen
 endif
 
 " Hide this junk
-set wildignore+=*/_workspace,*/build,*/target,*/vendor,*/venv
+set wildignore+=*/_workspace,*/build,*/target,*/vendor,*/venv,*/dist
 
 let mapleader=","  " Map <leader> to comma
 
