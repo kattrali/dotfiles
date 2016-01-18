@@ -105,6 +105,9 @@ Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 
+" VCS
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
 " Keybindings
