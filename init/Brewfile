@@ -101,7 +101,6 @@ brew 'screenfetch'
 brew 'sqlite'
 brew 'the_silver_searcher'
 brew 'tig'
-brew 'vim', args: ['with-lua']
 brew 'vimpager'
 
 # Game Dev
