@@ -72,3 +72,5 @@
 
 [rebase]
 	autostash = true
+[transfer]
+	fsckObjects = true
