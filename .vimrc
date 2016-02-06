@@ -87,6 +87,8 @@ Plug 'scrooloose/nerdcommenter'
 
 " Languages
 Plug 'scrooloose/syntastic'
+let g:syntastic_shell = '/usr/local/bin/bash'
+
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'kylef/apiblueprint.vim', { 'for': 'apiblueprint' }
 Plug 'gfontenot/vim-xcodebuild', { 'on': ['XBuild','XClean','XTest','XSelectScheme'] }
