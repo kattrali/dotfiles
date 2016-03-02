@@ -139,5 +139,6 @@ vnoremap ; :
 vnoremap : ;
 
 " Use Seoul256 color scheme
+let g:seoul256_background = 235
 colo seoul256
 
