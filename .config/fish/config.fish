@@ -2,7 +2,6 @@
 
 set fish_greeting
 set -x GOPATH $HOME/Code/gopkg
-set -x SWIFTENV_ROOT "$HOME/.swiftenv"
 set -x MAILDIR $HOME/mail
 set -x EDITOR vim
 set -x GEM_HOME $HOME/.local/gems/(ruby -v | awk '{print $2}')
@@ -11,7 +10,7 @@ set -x COCOAPODS_DISABLE_STATS 1
 set -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/local/lib
 set -x PATH $GEM_HOME/bin $HOME/bin /usr/local/bin /usr/local/sbin \
             /bin /usr/bin /usr/sbin /sbin $GOPATH/bin /usr/local/go/bin \
-            $SWIFTENV_ROOT/bin $HOME/.cargo/bin
+            $HOME/.cargo/bin
 
 source /usr/local/share/chruby/chruby.fish
 source $HOME/.config/fish/functions/aliases.fish
