@@ -3,6 +3,7 @@
 alias rm="trash"
 alias t="todo.sh -d ~/.config/todo/config"
 alias bk=bookkeeping
+alias activate="source ~/.local/venv/bin/activate.fish"
 
 # Navigation
 alias ...="cd ../.."
