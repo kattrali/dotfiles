@@ -17,3 +17,5 @@ alias gx="gitx"
 alias gp="git push"
 alias gs="git status"
 
+# Reference
+alias rsbook="open /usr/local/share/doc/rust/html/book/index.html"
