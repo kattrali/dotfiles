@@ -22,9 +22,6 @@ $(PREFIX)/bin/brew:
 $(BREW_BUNDLE): $(PREFIX)/bin/brew
 	@brew tap Homebrew/bundle
 
-$(HOME)/.swiftenv:
-	@git clone https://github.com/kylef/swiftenv $(HOME)/.swiftenv
-
 $(HOME)/.vim/autoload/plug.vim:
 	@install -d $(HOME)/.vim/autoload
 	curl -fLo $(HOME)/.vim/autoload/plug.vim  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -59,8 +56,6 @@ app-config: weechat vim swiftenv
 vim: $(HOME)/.vim/autoload/plug.vim
 
 weechat: $(WEECHAT_PYCFG)/wee_slack.py $(WEECHAT_PYCFG)/weemoji.py $(WEECHAT_PERLCFG)/buffers.pl
-
-swiftenv: $(HOME)/.swiftenv
 
 cache-fonts:
 	fc-cache
