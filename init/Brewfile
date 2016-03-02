@@ -116,7 +116,7 @@ brew 'curl'
 brew 'dtrx'
 brew 'fzf', args: ['HEAD']
 brew 'gettext'
-brew 'htop-osx'
+brew 'htop'
 ## tmux 2.0
 brew 'https://raw.githubusercontent.com/Homebrew/homebrew/38d1b97f531147235cd2528de4e87286fd45cc16/Library/Formula/tmux.rb'
 brew 'jrnl'
