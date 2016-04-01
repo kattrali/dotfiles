@@ -135,6 +135,9 @@ nnoremap Y y$
 inoremap jj <Esc>
 nnoremap <Leader>p :CtrlP<cr>
 nnoremap <Leader>w :w<cr>
+" Insert a single return and esc
+nnoremap <Leader>o o<esc>
+nnoremap <Leader>O O<esc>
 " swap colon and semicolon for easier commands
 nnoremap ; :
 nnoremap : ;
