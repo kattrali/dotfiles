@@ -1,4 +1,6 @@
 set noloadplugins
+set number
+set nowrap
 set mouse +=a
 if &term =~ '^screen'
     set ttymouse=xterm2
