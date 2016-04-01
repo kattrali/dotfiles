@@ -31,6 +31,21 @@ filetype plugin on
 filetype indent on
 syn on
 
+" Set directory settings
+
+" Create a directory if it doesn't exist yet
+function! s:EnsureDirectory(directory)
+  if !isdirectory(expand(a:directory))
+    call mkdir(expand(a:directory), 'p')
+  endif
+endfunction
+
+" Put all swap files and here
+set backup
+set backupdir=$HOME/.vim/tmp
+set directory=$HOME/.vim/tmp
+call s:EnsureDirectory(&directory)
+
 " Toggle relative vs absolute line numbers
 " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
 function! NumberToggle()
