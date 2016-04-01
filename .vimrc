@@ -106,6 +106,7 @@ Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+Plug 'jaxbot/semantic-highlight.vim'
 
 call plug#end()
 
@@ -127,6 +128,7 @@ nnoremap <C-n> :call NumberToggle()<cr>
 nnoremap <Leader>t :NERDTreeToggle<cr>
 nnoremap <Leader>y :Goyo<cr>
 nnoremap <Leader>ll :Limelight!!<cr>
+nnoremap <Leader>s :SemanticHighlightToggle<cr>
 " General
 nnoremap Y y$
 inoremap jj <Esc>
