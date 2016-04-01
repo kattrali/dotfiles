@@ -11,6 +11,7 @@ set number         " Enable line numbers
 set shortmess=Ia   " Abbreviate startup message
 set smartindent    " GET SMART
 set colorcolumn=80 " Consciously decide to make lines too long
+set nowrap         " disable line wrapping
 set backspace=indent,eol,start
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
