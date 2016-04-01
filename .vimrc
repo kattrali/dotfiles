@@ -93,7 +93,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 call plug#begin('~/.vim/bundle')
 
 " Navigation and search
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle','NERDTreeFind'] }
 Plug 'ctrlpvim/ctrlp.vim', { 'on': ['CtrlP'] }
 Plug 'rking/ag.vim', { 'on': ['Ag'] }
 
