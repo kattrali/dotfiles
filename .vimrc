@@ -117,6 +117,9 @@ Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'ledger/vim-ledger', { 'for': 'ledger' }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+" VCS
+Plug 'rhysd/committia.vim'
+Plug 'airblade/vim-gitgutter'
 
 " Color and layout
 Plug 'junegunn/seoul256.vim'
@@ -134,6 +137,7 @@ nnoremap <Leader>gs :!tig<cr>          " Tree view
 nnoremap <Leader>gl :!tig log<cr>      " Log view
 nnoremap <Leader>gb :!tig blame %<cr>  " Show blame for current file
 nnoremap <Leader>gp :!git push<cr>     " Push changes
+nnoremap <Leader>ggt :GitGutterToggle<cr>
 " Make
 nnoremap <Leader>mm :!make<cr>
 nnoremap <Leader>mc :!make clean<cr>
