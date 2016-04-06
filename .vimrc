@@ -146,6 +146,8 @@ nnoremap <Leader>j :NERDTreeFind<cr>
 nnoremap <Leader>y :Goyo<cr>
 nnoremap <Leader>ll :Limelight!!<cr>
 nnoremap <Leader>s :SemanticHighlightToggle<cr>
+nnoremap vv :vsplit<cr>
+nnoremap vh :split<cr>
 " General
 nnoremap Y y$
 inoremap jj <Esc>
