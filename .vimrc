@@ -157,6 +157,7 @@ nnoremap Y y$
 inoremap jj <Esc>
 nnoremap <Leader>p :CtrlP<cr>
 nnoremap <Leader>w :w<cr>
+nnoremap <Leader>b :buffers<cr>
 " Insert a single return and esc
 nnoremap <Leader>o o<esc>
 nnoremap <Leader>O O<esc>
