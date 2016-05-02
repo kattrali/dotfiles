@@ -1,0 +1,14 @@
+/* Hide forking and starring from activity feed */
+div.alert.fork, div.alert.watch_started {
+    display: none;
+}
+
+/* Hide emoji reactions */
+.reaction-popover-container, .comment-reactions {
+    display: none;
+}
+
+/* Hide contributions calendar */
+#contributions-calendar {
+    display: none;
+}

@@ -3,7 +3,7 @@ TODO_ACTIONS=$(HOME)/.config/todo/actions
 BOOTSTRAP_CONFIG=$(SYNC_DIR)/Bootstrap
 FISH_CONFIG=.config/fish
 CONFIG_FILES=$(FISH_CONFIG)/config.fish .config/redshift.conf \
-             .config/todo/config \
+             .config/todo/config .config/browser/user.css \
 			 $(addprefix .config/todo/actions/,$(shell ls $(TODO_ACTIONS)))
 
 BOOTSTRAP_TARGET=init
