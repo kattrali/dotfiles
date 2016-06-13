@@ -12,3 +12,12 @@ div.alert.fork, div.alert.watch_started {
 #contributions-calendar {
     display: none;
 }
+
+/* Twitter simplification */
+.user-style-kattrali .dashboard {
+    display: none;
+}
+.user-style-kattrali .content-main {
+    float: none !important;
+    width: auto !important;
+}
