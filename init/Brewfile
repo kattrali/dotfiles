@@ -115,6 +115,7 @@ brew 'luajit'
 
 # Utilities
 brew 'aspell'
+brew 'buku'
 brew 'curl'
 brew 'dtrx'
 brew 'fzf'
