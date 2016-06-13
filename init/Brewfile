@@ -117,7 +117,7 @@ brew 'luajit'
 brew 'aspell'
 brew 'curl'
 brew 'dtrx'
-brew 'fzf', args: ['HEAD']
+brew 'fzf'
 brew 'gettext'
 brew 'htop'
 ## tmux 2.0

@@ -94,8 +94,9 @@ call plug#begin('~/.vim/bundle')
 
 " Navigation and search
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle','NERDTreeFind'] }
-Plug 'ctrlpvim/ctrlp.vim', { 'on': ['CtrlP'] }
-Plug 'rking/ag.vim', { 'on': ['Ag'] }
+set rtp+=/usr/local/opt/fzf
+Plug 'junegunn/fzf.vim'
+Plug 'rking/ag.vim'
 
 " '<leader>cc' to comment
 " '<leader>c ' to toggle comment
@@ -155,9 +156,10 @@ nnoremap vh :split<cr>
 " General
 nnoremap Y y$
 inoremap jj <Esc>
-nnoremap <Leader>p :CtrlP<cr>
+nnoremap <Leader>a :Ag<cr>
+nnoremap <Leader>p :Files<cr>
 nnoremap <Leader>w :w<cr>
-nnoremap <Leader>b :buffers<cr>
+nnoremap <Leader>b :Buffers<cr>
 " Insert a single return and esc
 nnoremap <Leader>o o<esc>
 nnoremap <Leader>O O<esc>
