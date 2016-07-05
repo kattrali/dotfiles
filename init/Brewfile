@@ -124,6 +124,7 @@ brew 'htop'
 ## tmux 2.0
 brew 'https://raw.githubusercontent.com/Homebrew/homebrew/38d1b97f531147235cd2528de4e87286fd45cc16/Library/Formula/tmux.rb'
 brew 'jrnl'
+brew 'jq'
 brew 'khal'
 brew 'ledger'
 brew 'lynx'
