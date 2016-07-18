@@ -1,10 +1,12 @@
 SYNC_DIR=~/Dropbox
-TODO_ACTIONS=$(HOME)/.config/todo/actions
+TODO_ACTIONS=.config/todo/actions
 BOOTSTRAP_CONFIG=$(SYNC_DIR)/Bootstrap
 FISH_CONFIG=.config/fish
+BROWSER_CONFIG=.config/webkitten
 CONFIG_FILES=$(FISH_CONFIG)/config.fish .config/redshift.conf \
-             .config/todo/config .config/browser/user.css \
-			 $(addprefix .config/todo/actions/,$(shell ls $(TODO_ACTIONS)))
+             .config/todo/config \
+			 $(addprefix $(TODO_ACTIONS)/,$(shell ls $(HOME)/$(TODO_ACTIONS))) \
+			 $(subst $(HOME)/,,$(shell ls $(HOME)/$(BROWSER_CONFIG)/{**/,}*.{lua,toml,js,css}))
 
 BOOTSTRAP_TARGET=init
 FUNCTION_TARGET=.config/fish/functions

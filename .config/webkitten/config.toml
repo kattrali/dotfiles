@@ -1,0 +1,90 @@
+[general]
+# Configuration directory, replaces variable CONFIG_DIR
+config-dir = "/Users/delisa/.config/webkitten"
+# Content filter used in web views
+content-filter = "CONFIG_DIR/filter.json"
+# Open in private mode by default
+private-browsing = false
+# Allow browser plugins to load, such as Flash and Silverlight
+allow-plugins = false
+# Font for the command bar
+bar-font = { size = 13, family = "Monaco" }
+
+[window]
+# First page opened with a new window
+start-page = "file://CONFIG_DIR/start_page.html"
+
+[commands]
+# Paths used to search for command files
+search-paths = ["CONFIG_DIR/commands"]
+# Command invoked when no commands match the first word
+default = "ddg"
+# Disabled commands, skipped when searching for command matches
+disabled = []
+# Commands invoked when a URI is requested but before it is loaded
+on-request-uri = ["enforce-https"]
+# Commands invoked after a document is created but before subresources are
+# loaded
+on-load-uri = ["user-content"]
+# Commands invoked when a URI fails to load
+on-fail-uri = []
+
+# Commands invoked when command bar text changes
+[commands.on-text-change]
+# Run `find` when the prefix matches `/`
+"/" = "find"
+
+# Shortcuts for invoking commands
+[commands.aliases]
+r = "reload"
+g = "go"
+b = "buffer"
+ef = "endfind"
+bufn = "buffernext"
+bufp = "bufferprev"
+new  = "buffernew"
+hl = "highlight-links"
+hi = "highlight-inputs"
+
+[commands.keybindings]
+close = "cmd w"
+back = "cmd ,"
+forward = "cmd ."
+reload = "cmd r"
+buffernew = "cmd t"
+focus-bar = "cmd shift space"
+highlight-links = "cmd l"
+highlight-inputs = "cmd k"
+buffernext = "cmd d"
+bufferprev = "cmd u"
+"buffer 0" = "cmd 1"
+"buffer 1" = "cmd 2"
+"buffer 2" = "cmd 3"
+"buffer 3" = "cmd 4"
+
+# Site-specific configuration, used as default when creating new buffers
+[sites."github.com"]
+private-browsing = false
+
+[sites."netflix.com"]
+private-browsing = false
+allow-plugins = true
+
+[sites."techraptor.net"]
+skip-content-filter = true
+
+[user-content]
+# Search paths for user scripts and stylesheets evaluated after the document is
+# loaded but before subresources finish loading. Content is loaded on a
+# per-site basis using page hostname as a key. Example: `example.com.js` and
+# `example.com.css` will be loaded on `http://example.com/stuff`.
+site-paths = ["CONFIG_DIR/user-content/sites"]
+# Search paths for user scripts and stylesheets evaluated after the document is
+# loaded but before subresources finish loading. Content is loaded for every
+# site before the site-specific content enumerated in
+# `user-content.site-paths`.
+default-paths = ["CONFIG_DIR/user-content/default"]
+
+[enforce-https]
+# Skip these hosts when redirecting to HTTPS
+ignored-hosts = ["fuckingblocksyntax.com"]
