@@ -4,7 +4,7 @@ config-dir = "/Users/delisa/.config/webkitten"
 # Content filter used in web views
 content-filter = "CONFIG_DIR/filter.json"
 # Open in private mode by default
-private-browsing = false
+private-browsing = true
 # Allow browser plugins to load, such as Flash and Silverlight
 allow-plugins = false
 # Font for the command bar
@@ -52,6 +52,7 @@ back = "cmd ,"
 forward = "cmd ."
 reload = "cmd r"
 buffernew = "cmd t"
+windownew = "cmd n"
 focus-bar = "cmd shift space"
 highlight-links = "cmd l"
 highlight-inputs = "cmd k"
@@ -61,17 +62,27 @@ bufferprev = "cmd u"
 "buffer 1" = "cmd 2"
 "buffer 2" = "cmd 3"
 "buffer 3" = "cmd 4"
+"buffer 4" = "cmd 5"
+"buffer 5" = "cmd 6"
+"buffer 6" = "cmd 7"
+"buffer 7" = "cmd 8"
 
 # Site-specific configuration, used as default when creating new buffers
-[sites."github.com"]
+[sites."github.com".general]
 private-browsing = false
 
-[sites."netflix.com"]
+[sites."reddit.com".general]
+private-browsing = false
+
+[sites."soundcloud.com".general]
+private-browsing = false
+
+[sites."trello.com".general]
+private-browsing = false
+
+[sites."netflix.com".general]
 private-browsing = false
 allow-plugins = true
-
-[sites."techraptor.net"]
-skip-content-filter = true
 
 [user-content]
 # Search paths for user scripts and stylesheets evaluated after the document is

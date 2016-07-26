@@ -6,7 +6,7 @@ BROWSER_CONFIG=.config/webkitten
 CONFIG_FILES=$(FISH_CONFIG)/config.fish .config/redshift.conf \
              .config/todo/config \
 			 $(addprefix $(TODO_ACTIONS)/,$(shell ls $(HOME)/$(TODO_ACTIONS))) \
-			 $(subst $(HOME)/,,$(shell ls $(HOME)/$(BROWSER_CONFIG)/{**/,}*.{lua,toml,js,css}))
+			 $(subst $(HOME)/,,$(shell ls $(HOME)/$(BROWSER_CONFIG)/{**/,}*.{lua,toml,js,css,html}))
 
 BOOTSTRAP_TARGET=init
 FUNCTION_TARGET=.config/fish/functions
