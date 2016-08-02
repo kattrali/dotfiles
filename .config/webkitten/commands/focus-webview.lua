@@ -4,6 +4,6 @@ end
 
 function run()
   focus_webview_in_window(focused_window_index())
-  return true
+  return false -- keep bar contents
 end
 

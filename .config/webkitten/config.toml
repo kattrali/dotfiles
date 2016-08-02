@@ -7,8 +7,12 @@ content-filter = "CONFIG_DIR/filter.json"
 private-browsing = true
 # Allow browser plugins to load, such as Flash and Silverlight
 allow-plugins = false
+# Allow JavaScript to run
+allow-javascript = true
 # Font for the command bar
 bar-font = { size = 13, family = "Monaco" }
+# Search engine URL used by smart-bar
+search-engine-url = "https://duckduckgo.com"
 
 [window]
 # First page opened with a new window
@@ -18,16 +22,16 @@ start-page = "file://CONFIG_DIR/start_page.html"
 # Paths used to search for command files
 search-paths = ["CONFIG_DIR/commands"]
 # Command invoked when no commands match the first word
-default = "ddg"
+default = "smart-search"
 # Disabled commands, skipped when searching for command matches
 disabled = []
 # Commands invoked when a URI is requested but before it is loaded
-on-request-uri = ["enforce-https"]
+on-request-uri = ["enforce-https", "focus-mode"]
 # Commands invoked after a document is created but before subresources are
 # loaded
 on-load-uri = ["user-content"]
 # Commands invoked when a URI fails to load
-on-fail-uri = []
+on-fail-uri = ["fail-banner"]
 
 # Commands invoked when command bar text changes
 [commands.on-text-change]
@@ -39,7 +43,7 @@ on-fail-uri = []
 r = "reload"
 g = "go"
 b = "buffer"
-ef = "endfind"
+gh = "github"
 bufn = "buffernext"
 bufp = "bufferprev"
 new  = "buffernew"
@@ -52,8 +56,12 @@ back = "cmd ,"
 forward = "cmd ."
 reload = "cmd r"
 buffernew = "cmd t"
+"buffernew dev" = "cmd g"
 windownew = "cmd n"
+endfind = "cmd h"
 focus-bar = "cmd shift space"
+focus-webview = "cmd alt space"
+toggle-bar = "cmd alt b"
 highlight-links = "cmd l"
 highlight-inputs = "cmd k"
 buffernext = "cmd d"
@@ -98,4 +106,11 @@ default-paths = ["CONFIG_DIR/user-content/default"]
 
 [enforce-https]
 # Skip these hosts when redirecting to HTTPS
-ignored-hosts = ["fuckingblocksyntax.com"]
+ignored-hosts = ["fuckingblocksyntax.com","lua-users.org"]
+
+[focus-mode]
+# Hosts to allow to load while in focus mode
+allowed-hosts = ["github.com","developer.apple.com",
+"bugsnag.com","circleci.com", "travis-ci.org","stackoverflow.com",
+"duckduckgo.com","google.com","trello.com","pivotaltracker.com",
+"soundcloud.com","intercom.io"]

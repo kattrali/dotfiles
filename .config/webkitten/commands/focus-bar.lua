@@ -4,5 +4,5 @@ end
 
 function run()
   focus_commandbar_in_window(focused_window_index())
-  return true
+  return false -- keep bar contents
 end
