@@ -67,6 +67,7 @@ brew 'cmus'
 
 # Mail
 brew 'abook'
+brew 'alot'
 brew 'getmail'
 brew 'mutt'
 brew 'notmuch'
