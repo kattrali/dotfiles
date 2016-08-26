@@ -26,12 +26,14 @@ default = "smart-search"
 # Disabled commands, skipped when searching for command matches
 disabled = []
 # Commands invoked when a URI is requested but before it is loaded
-on-request-uri = ["enforce-https", "focus-mode"]
+on-request-uri = ["focus-mode", "update-title"]
 # Commands invoked after a document is created but before subresources are
 # loaded
-on-load-uri = ["user-content"]
+on-load-uri = ["user-content", "update-title"]
 # Commands invoked when a URI fails to load
-on-fail-uri = ["fail-banner"]
+on-fail-uri = ["fail-banner", "update-title"]
+# Commands invoked when a buffer is focused
+on-focus-uri = ["update-title"]
 
 # Commands invoked when command bar text changes
 [commands.on-text-change]
@@ -56,8 +58,9 @@ back = "cmd ,"
 forward = "cmd ."
 reload = "cmd r"
 buffernew = "cmd t"
-"buffernew dev" = "cmd g"
+"buffernew work" = "cmd T"
 windownew = "cmd n"
+"windownew work" = "cmd N"
 endfind = "cmd h"
 focus-bar = "cmd shift space"
 focus-webview = "cmd alt space"
@@ -76,8 +79,24 @@ bufferprev = "cmd u"
 "buffer 7" = "cmd 8"
 
 # Site-specific configuration, used as default when creating new buffers
+[sites."bugsnag.com".general]
+private-browsing = false
+
+[sites."fastmail.com".general]
+private-browsing = false
+
+[sites."gist.github.com".general]
+private-browsing = false
+
 [sites."github.com".general]
 private-browsing = false
+
+[sites."app.intercom.io".general]
+private-browsing = false
+
+[sites."netflix.com".general]
+private-browsing = false
+allow-plugins = true
 
 [sites."reddit.com".general]
 private-browsing = false
@@ -87,10 +106,6 @@ private-browsing = false
 
 [sites."trello.com".general]
 private-browsing = false
-
-[sites."netflix.com".general]
-private-browsing = false
-allow-plugins = true
 
 [user-content]
 # Search paths for user scripts and stylesheets evaluated after the document is

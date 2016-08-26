@@ -3,6 +3,9 @@ function description()
 end
 
 function on_fail_uri()
+  if string.find(error_message, "-999") then
+    return
+  end
   run_javascript(window_index, webview_index, string.format([[
     var element = document.createElement("div");
     element.style.position = "fixed";

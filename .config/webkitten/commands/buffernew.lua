@@ -13,6 +13,13 @@ function run()
       allow-plugins = false
       allow-javascript = true
       ]])
+    elseif target == "work" then
+      return open_with_config(windex, "file://" .. lookup_string(config_file_path, "general.config-dir") .. "/work.html", [[
+      [general]
+      private-browsing = false
+      allow-plugins = false
+      allow-javascript = true
+      ]])
     elseif target == "tv" then
       return open_with_config(windex, arguments[2], [[
       [general]
@@ -20,6 +27,8 @@ function run()
       allow-plugins = true
       allow-javascript = true
       ]])
+    else
+      return open_with_defaults(windex, target)
     end
   end
   return open_with_defaults(windex, lookup_string(config_file_path, "window.start-page"))

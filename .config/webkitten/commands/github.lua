@@ -17,7 +17,7 @@ function run()
     elseif arguments[1] == "dev" then
       load_uri(windex, webview_index, "https://developer.github.com")
     else
-      local owner, repo = string.match(arguments[1], "([%w-]+)/([%w-]+)")
+      local owner, repo = string.match(arguments[1], "([%w\\.-]+)/([%w\\.-]+)")
       if owner ~= nil then
         target = string.format("https://github.com/%s/%s", owner, repo)
         load_uri(windex, webview_index, target)
