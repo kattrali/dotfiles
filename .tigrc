@@ -1,7 +1,9 @@
 set ignore-space = all
 bind generic   r    refresh
-bind generic   P    ?git stash pop
-bind generic   S    ?git stash
+bind generic   P    ?@git stash pop
+bind generic   S    ?@git stash
 bind main      R    ?git rebase -i %(commit)
 bind generic   A    !git commit --amend
 bind main      C    !git commit
+bind main      T    ?@git tag "%(prompt Enter tag name: )"
+bind generic   I    @sh -c "echo %(commit) | pbcopy"
