@@ -11,8 +11,7 @@ set -x COCOAPODS_DISABLE_STATS 1
 set -x PIP_REQUIRE_VIRTUALENV 1
 set -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/local/lib
 set -x PATH $GEM_HOME/bin $HOME/bin /usr/local/bin /usr/local/sbin \
-            /bin /usr/bin /usr/sbin /sbin $GOPATH/bin /usr/local/go/bin \
-            $HOME/.cargo/bin
+            /bin /usr/bin /usr/sbin /sbin $GOPATH/bin /usr/local/go/bin
 
 source /usr/local/share/chruby/chruby.fish
 source $HOME/.config/fish/functions/aliases.fish
