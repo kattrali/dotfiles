@@ -16,3 +16,4 @@ set -x PATH $GEM_HOME/bin $HOME/bin /usr/local/bin /usr/local/sbin \
 source /usr/local/share/chruby/chruby.fish
 source $HOME/.config/fish/functions/aliases.fish
 status --is-interactive; and . (swiftenv init -|psub)
+status --is-interactive; and . (pyenv init -|psub)
