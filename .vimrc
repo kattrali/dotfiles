@@ -67,6 +67,19 @@ function! PBPaste()
   call setreg("", system("pbpaste"))
 endfunction
 
+" Find a HTML file in a directory matching the current word, and open it in
+" a tmux pane in lynx. If no matches are found, try the current directory.
+function! DocLookup(sourceDirs, patternPrefix)
+    let word = expand("<cword>")
+    for base in a:sourceDirs
+        let filePaths = split(globpath(base, a:patternPrefix . word . ".html"), '\n')
+        if (len(filePaths) > 0)
+            call system("tmux split-window -v -p 40 'lynx " . filePaths[0] . "'")
+            return
+        endif
+    endfor
+endfunction
+
 " Allow tab for completion while in insert mode
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
@@ -165,6 +178,9 @@ nnoremap <Leader>b :Buffers<cr>
 " Insert a single return and esc
 nnoremap <Leader>o o<esc>
 nnoremap <Leader>O O<esc>
+" Docs
+autocmd filetype haxe nnoremap <buffer> <Leader>sd :call DocLookup(["~/Code/Forks/flixel-docs/api"], "**/")<cr>
+autocmd filetype rust nnoremap <buffer> <Leader>sd :call DocLookup(["~/.multirust/toolchains/stable/share/doc/rust/html/std", "./target/doc"], "**/*")<cr>
 " swap colon and semicolon for easier commands
 nnoremap ; :
 nnoremap : ;
