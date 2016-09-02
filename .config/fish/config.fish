@@ -11,6 +11,8 @@ set -x HAXELIB_PATH /usr/local/lib/haxelib
 set -x HAXE_STD_PATH /usr/local/lib/haxe/std
 set -x COCOAPODS_DISABLE_STATS 1
 set -x PIP_REQUIRE_VIRTUALENV 1
+set -x HOMEBREW_NO_AUTO_UPDATE 1
+set -x HOMEBREW_NO_ANALYTICS 1
 set -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/local/lib
 set -x PATH $GEM_HOME/bin $HOME/bin /usr/local/bin /usr/local/sbin \
             /bin /usr/bin /usr/sbin /sbin $GOPATH/bin /usr/local/go/bin
