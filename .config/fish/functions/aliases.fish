@@ -19,3 +19,7 @@ alias gs="git status"
 
 # Reference
 alias rsbook="open /usr/local/share/doc/rust/html/book/index.html"
+
+# Haxe
+alias flixel="haxelib run flixel"
+alias lime="haxelib run lime"

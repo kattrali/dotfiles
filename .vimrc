@@ -118,6 +118,8 @@ Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'ledger/vim-ledger', { 'for': 'ledger' }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
+Plug 'jdonaldson/vaxe'
+
 " VCS
 Plug 'rhysd/committia.vim'
 Plug 'airblade/vim-gitgutter'

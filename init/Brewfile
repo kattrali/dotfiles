@@ -20,7 +20,6 @@ cask 'firefox'
 cask 'iterm2-beta'
 cask 'karabiner'
 cask 'keycastr'
-cask 'magicavoxel'
 cask 'mou'
 cask 'musescore'
 cask 'owncloud'
@@ -113,9 +112,12 @@ brew 'vim'
 brew 'vimpager'
 
 # Game Dev
+brew 'haxe'
+cask 'aseprite'
+cask 'bfxr'
+cask 'magicavoxel'
+cask 'sunvox'
 cask 'tiled'
-cask 'love'
-brew 'luajit'
 
 # Utilities
 brew 'aspell'
