@@ -125,6 +125,7 @@ Plug 'airblade/vim-gitgutter'
 
 " Color and layout
 Plug 'junegunn/seoul256.vim'
+Plug 'keith/parsec.vim'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'jaxbot/semantic-highlight.vim'
@@ -171,6 +172,7 @@ vnoremap ; :
 vnoremap : ;
 
 " Use Seoul256 color scheme
-let g:seoul256_background = 235
-colo seoul256
+" let g:seoul256_background = 235
+
+colo parsec
 
