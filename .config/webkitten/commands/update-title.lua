@@ -25,5 +25,6 @@ end
 
 function default_title(window_index)
   index = focused_webview_index(window_index)
-  return "[" .. index .. "] "
+  count = webview_count(window_index) - 1
+  return "[" .. index .. "/" .. count .. "] "
 end
