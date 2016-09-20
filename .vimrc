@@ -185,6 +185,10 @@ nnoremap : ;
 vnoremap ; :
 vnoremap : ;
 
+" Vaxe config
+let g:vaxe_openfl_target = "neko"
+let g:vaxe_lime_target = "neko"
+
 " Use Seoul256 color scheme
 " let g:seoul256_background = 235
 

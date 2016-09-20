@@ -23,3 +23,4 @@ alias rsbook="open /usr/local/share/doc/rust/html/book/index.html"
 # Haxe
 alias flixel="haxelib run flixel-tools"
 alias lime="haxelib run lime"
+alias lime="haxelib run ihx"
