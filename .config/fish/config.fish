@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 set fish_greeting
-set -x GOPATH $HOME/Code/gopkg
+set -x GOPATH $HOME/tmp/go
 set -x MAILDIR $HOME/mail
 set -x EDITOR vim
 set -x MANPAGER vimpager
@@ -13,6 +13,7 @@ set -x COCOAPODS_DISABLE_STATS 1
 set -x PIP_REQUIRE_VIRTUALENV 1
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 set -x HOMEBREW_NO_ANALYTICS 1
+set -x HOMEBREW_CASK_OPTS "--appdir=~/bin/apps"
 set -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/local/lib
 set -x PATH $GEM_HOME/bin $HOME/bin /usr/local/bin /usr/local/sbin \
             /bin /usr/bin /usr/sbin /sbin $GOPATH/bin /usr/local/go/bin

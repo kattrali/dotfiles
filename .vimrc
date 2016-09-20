@@ -179,7 +179,7 @@ nnoremap <Leader>b :Buffers<cr>
 nnoremap <Leader>o o<esc>
 nnoremap <Leader>O O<esc>
 " Docs
-autocmd filetype haxe nnoremap <buffer> <Leader>sd :call DocLookup(["~/Code/Forks/flixel-docs/api"], "**/")<cr>
+autocmd filetype haxe nnoremap <buffer> <Leader>sd :call DocLookup(["~/doc/src/flixel/api"], "**/")<cr>
 autocmd filetype rust nnoremap <buffer> <Leader>sd :call DocLookup(["~/.multirust/toolchains/stable/share/doc/rust/html/std", "./target/doc"], "**/*")<cr>
 " swap colon and semicolon for easier commands
 nnoremap ; :

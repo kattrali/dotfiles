@@ -7,8 +7,7 @@ WEECHAT_PERLCFG=$(WEECHAT_CFG)/perl/autoload
 .SECONDARY:
 
 all: defaults brew-packages python-packages app-config
-	dropboxd
-	@echo "Synchronization started. Remember to run 'mackup restore'"
+	@echo "Next steps: Start sync and run 'mackup restore'"
 	@echo "Run 'make allow-ax' to set accessibility permissions"
 
 /usr/bin/clang:
@@ -60,13 +59,30 @@ weechat: $(WEECHAT_PYCFG)/wee_slack.py $(WEECHAT_PYCFG)/weemoji.py $(WEECHAT_PER
 cache-fonts:
 	fc-cache
 
+home-layout:
+	@mkdir -p ~/tmp/{code,downloads,go,screenshots}
+	@mkdir -p ~/mail/{cur,new,tmp}
+	@mkdir -p ~/bin/{apps/games}
+	@mkdir -p ~/doc/{appdata,code,financials}
+	@chflags -h hidden ~/Desktop
+	@ln -s /Users/delisa/tmp/downloads/ /Users/delisa/Downloads
+	@chflags -h hidden ~/Downloads
+	@ln -s /Users/delisa/doc/appdata /Users/delisa/Documents
+	@chflags -h hidden ~/Documents
+	@ln -s /Users/delisa/media/video /Users/delisa/Movies
+	@chflags -h hidden ~/Movies
+	@ln -s /Users/delisa/media/music /Users/delisa/Pictures
+	@chflags -h hidden ~/Music
+	@ln -s /Users/delisa/media/img /Users/delisa/Pictures
+	@chflags -h hidden ~/Pictures
+
 defaults:
-	@chflags nohidden ~/Library
 	@defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 	@defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 	@defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 	@defaults write NSGlobalDomain NSScrollAnimationEnabled -bool false
 	@defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+	@defaults write com.apple.Safari DownloadsPath -string "~/tmp/downloads"
 	@defaults write com.apple.Safari IncludeDevelopMenu -bool true
 	@defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 	@defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
@@ -79,10 +95,11 @@ defaults:
 	@defaults write com.apple.finder CreateDesktop -bool false
 	@defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 	@defaults write com.apple.finder NewWindowTarget -string "PfLo"
-	@defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Code"
+	@defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/projects"
 	@defaults write com.apple.finder QuitMenuItem -bool true
 	@defaults write com.apple.screencapture disable-shadow -bool true
 	@defaults write com.apple.screencapture type -string "png"
+	@defaults write com.apple.screencapture location ${HOME}/tmp/screenshots
 	@defaults write com.apple.universalaccess reduceTransparency -bool true
 	@killall Finder
 	@killall SystemUIServer
