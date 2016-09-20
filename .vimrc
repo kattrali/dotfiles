@@ -170,8 +170,6 @@ nnoremap vv :vsplit<cr>
 nnoremap vh :split<cr>
 " General
 nnoremap Y y$
-inoremap jj <Esc>
-nnoremap <Leader>a :Ag<cr>
 nnoremap <Leader>p :Files<cr>
 nnoremap <Leader>w :w<cr>
 nnoremap <Leader>b :Buffers<cr>
