@@ -20,5 +20,6 @@ set -x PATH $GEM_HOME/bin $HOME/bin /usr/local/bin /usr/local/sbin \
 
 source /usr/local/share/chruby/chruby.fish
 source $HOME/.config/fish/functions/aliases.fish
+eval (gpg-agent --daemon | sed -e "s/\(.*\)=\(.*\); export/set -x \1 \2/")
 status --is-interactive; and . (swiftenv init -|psub)
 status --is-interactive; and . (pyenv init -|psub)
