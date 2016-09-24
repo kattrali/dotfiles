@@ -198,4 +198,4 @@ colo parsec
 let g:NERDTreeIgnore = ['_workspace', 'build', 'target', 'vendor', 'dist', 'tmp', 'pyc', 'venv.*']
 
 " Allow fenced code block highlighting in Markdown
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php', 'json', 'ruby', 'apib=apiblueprint']
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php', 'json', 'ruby']

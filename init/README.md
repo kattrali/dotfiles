@@ -1,9 +1,10 @@
-# systemk
+# the machine
 
-Configures a new OS X installation:
+Configures a new installation:
 
-* Sets useful defaults for existing applications
-* Installs homebrew and the bundle package list (Brewfile)
+* Installs applications
+* Sets useful defaults
+* Initializes the home directory layout
 * Updates `pip` and installs python utilities in requirements (Pipfile)
 * Configures apps like Vim and weechat
 
@@ -14,12 +15,85 @@ Configures a new OS X installation:
 make
 ```
 
-## Additional Configuration
+## Requirements
 
-### OS X Apps without cask counterparts
+Build a working system
 
-* [Barkley Gaiden](http://www.talesofgames.com/related_game/barkley-shut-up-jam-gaiden)
-* [Deckset](http://www.decksetapp.com)
-* [Pixen](http://www.pixenapp.com)
-* [Sip](http://theolabrothers.com)
-* [Spectrum](http://www.eigenlogik.com/spectrum/mac)
+### Tasks
+
+#### Communication
+
+- Chat (IRC, Telegram)
+- Reading/writing mail (IMAP/POP)
+- Viewing documents (PDF)
+- Writing documents (code, markup, Markdown)
+
+#### Productivity
+
+- Budgeting spending
+- Editing spreadsheets
+- Graphical web browsing
+- Password management
+
+#### Hobbies
+
+- Listening to music
+- Playing games
+- Reading books
+- Watching video
+- Developing game prototypes
+
+### Configurable
+
+- Customizing keybindings
+- Executing shell commands
+
+### Efficiency
+
+- Application usage should be obvious and consistent
+  - Navigation keybindings
+  - Icons
+  - Closing/minimizing/moving windows
+  - Tabbing windows
+  - Switching window focus
+- No individual application should throttle the processor
+
+## Configurations
+
+### macOS
+
+- Books: calibre, Preview
+- Browser: webkitten
+- Budgeting/Spreadsheet editor: vim+ledger, Numbers
+- Chat: weechat, Telegram
+- Document editor: vim, Deckset
+- Games: OpenEmu, Steam
+- Game development: Haxe, Lime, Pixen, Bfxr, Tiled
+- Keybinding Manager: Karabiner+Seil
+- Mail: mutt
+- Music player: pianobar, mopidy+ncmpcpp, cmus
+- PDF viewer: Preview
+- Password manager: pass
+- Shell: fish
+- Terminal emulator: iTerm2
+- Video player: VLC
+- Window manager: Aqua+Amethyst
+
+### Linux
+
+- Books: calibre
+- Browser: webkitten
+- Budgeting/Spreadsheet editor: vim+ledger, csv.vim+tabview
+- Chat: weechat, Telegram
+- Document editor: vim
+- Games: mednafen, Steam
+- Game development: Haxe, Lime, Aseprite, Bfxr, Tiled
+- Keybinding Manager: sxhkd
+- Mail: mutt, FastMail web
+- Music player: pianobar, mopidy+ncmpcpp, cmus
+- PDF viewer: zathura
+- Password manager: pass
+- Shell: fish
+- Terminal emulator: urxvt
+- Video player: VLC
+- Window manager: cwm
