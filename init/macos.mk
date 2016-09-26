@@ -24,20 +24,20 @@ python-packages:
 home-layout:
 	@mkdir -p ~/tmp/{code,downloads,go,screenshots}
 	@mkdir -p ~/mail/{cur,new,tmp}
-	@mkdir -p ~/bin/{apps/games}
+	@mkdir -p ~/bin/{apps,games}
 	@mkdir -p ~/doc/{appdata,code,financials}
-    @mkdir -p ~/.vim/{bundle,autoload,tmp}
+	@mkdir -p ~/.vim/{bundle,autoload,tmp}
 	@chflags -h hidden ~/Desktop
-	@ln -sf /Users/delisa/tmp/downloads/ /Users/delisa/Downloads
+	@ln -sf /Users/delisa/tmp/downloads /Users/delisa/Downloads
 	@chflags -h hidden ~/Downloads
 	@ln -sf /Users/delisa/doc/appdata /Users/delisa/Documents
 	@chflags -h hidden ~/Documents
 	@ln -sf /Users/delisa/media/video /Users/delisa/Movies
 	@chflags -h hidden ~/Movies
-	@ln -sf /Users/delisa/media/music /Users/delisa/Pictures
-	@chflags -h hidden ~/Music
 	@ln -sf /Users/delisa/media/img /Users/delisa/Pictures
 	@chflags -h hidden ~/Pictures
+	@ln -sf /Users/delisa/media/music /Users/delisa/Music
+	@chflags -h hidden ~/Music
 
 defaults:
 	@defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false

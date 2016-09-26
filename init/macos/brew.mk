@@ -18,4 +18,5 @@ $(BREW_BUNDLE): $(BREW)
 	@brew tap Homebrew/bundle
 
 packages: $(BREW_BUNDLE)
-	@brew bundle Brewfile
+	@HOMEBREW_CASK_OPTS="--appdir=~/bin/apps" \
+		brew bundle --file=macos/Brewfile

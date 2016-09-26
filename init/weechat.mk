@@ -14,7 +14,7 @@ $(WEECHAT_PYCFG)/wee_slack.py:
 $(WEECHAT_PYCFG)/weemoji.py:
 	@install -d $(WEECHAT_PYCFG)
 	@cd $(WEECHAT_PYCFG); \
-		wget https://raw.githubusercontent.com/kattrali/weemoji/master/wee_slack.py
+		wget https://raw.githubusercontent.com/kattrali/weemoji/master/weemoji.py
 
 $(WEECHAT_PERLCFG)/buffers.pl:
 	@install -d $(WEECHAT_PERLCFG)
