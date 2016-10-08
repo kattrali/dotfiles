@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+#
+# Backs up the home directory excluding package manager artifacts, trash, and
+# temporary files
+#
+# Depends on http://duplicity.nongnu.org
+
+
+run_backup_cmd() {
+    command=$1
+    src_dir=$2
+    dup_dir=$3
+    ex_dir=$4
+    shift 4
+    echo "Run 'duplicity $command $@ $src_dir $dup_dir'? [yN]"
+    read answer
+    case $answer in
+        y | Y)
+            duplicity $command $@ \
+                --exclude "$ex_dir/.Trash" \
+                --exclude "$ex_dir/.bundle" \
+                --exclude "$ex_dir/.cache" \
+                --exclude "$ex_dir/.cargo" \
+                --exclude "$ex_dir/.cocoapods" \
+                --exclude "$ex_dir/.composer" \
+                --exclude "$ex_dir/.gem" \
+                --exclude "$ex_dir/.gradle" \
+                --exclude "$ex_dir/.local/gems" \
+                --exclude "$ex_dir/.m2/repository" \
+                --exclude "$ex_dir/.multirust" \
+                --exclude "$ex_dir/.node-gyp" \
+                --exclude "$ex_dir/.npm" \
+                --exclude "$ex_dir/.pip" \
+                --exclude "$ex_dir/.python-eggs" \
+                --exclude "$ex_dir/.rubies" \
+                --exclude "$ex_dir/.rustup" \
+                --exclude "$ex_dir/.swiftenv" \
+                --exclude "$ex_dir/.tox" \
+                --exclude "$ex_dir/Library/Caches" \
+                --exclude "$ex_dir/Library/Developer" \
+                --exclude "$ex_dir/bin/apps" \
+                --exclude "$ex_dir/tmp/go" \
+                --exclude "**/.DS_Store" \
+                --exclude "**/build" \
+                --exclude "**/export" \
+                --exclude "**/target" \
+                --exclude "**/venv" \
+                $src_dir $dup_dir
+            ;;
+    esac
+}
+
+show_help=false
+command=backup
+for arg in "$@"; do
+    case "$arg" in
+    -h | --help)
+        show_help=true
+        shift 1
+        ;;
+    backup | restore | verify)
+        command=$arg
+        shift 1
+        ;;
+    * )
+        ;;
+    esac
+done
+
+source_dir=~
+dup_dir=file:///Volumes/Data/M
+case $command in
+    backup)
+        if $show_help; then
+            echo "Backs up the home directory"
+            echo "Usage: $0 backup"
+        else
+            run_backup_cmd "" $source_dir $dup_dir $source_dir --full-if-older-than 1M $@
+        fi
+        ;;
+    restore)
+        if $show_help; then
+            echo "Restores the home directory"
+            echo "Usage: $0 restore"
+        else
+            run_backup_cmd $command $dup_dir $source_dir $source_dir $@
+        fi
+        ;;
+    verify)
+        if $show_help; then
+            echo "Verifies the backup contents against the home directory"
+            echo "Usage: $0 verify"
+        else
+            run_backup_cmd $command $dup_dir $source_dir $source_dir $@
+        fi
+        ;;
+esac
+
