@@ -20,3 +20,6 @@ $(BREW_BUNDLE): $(BREW)
 packages: $(BREW_BUNDLE)
 	@HOMEBREW_CASK_OPTS="--appdir=~/bin/apps" \
 		brew bundle --file=macos/Brewfile
+
+services:
+	@brew services start redshift
