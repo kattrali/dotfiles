@@ -5,5 +5,5 @@ bind generic   S    ?@git stash
 bind main      R    ?git rebase -i %(commit)
 bind generic   A    !git commit --amend
 bind main      C    !git commit
-bind main      T    ?@git tag "%(prompt Enter tag name: )"
+bind main      T    !@git tag "%(prompt Enter tag name: )" %(commit)
 bind generic   I    @sh -c "echo %(commit) | pbcopy"
