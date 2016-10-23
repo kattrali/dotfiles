@@ -94,7 +94,7 @@ inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 "
 " Fix crontab weirdness
 autocmd filetype crontab setlocal nobackup nowritebackup
-autocmd filetype swift,ruby,markdown,journal,apiblueprint,lua,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd filetype swift,ruby,markdown,journal,apiblueprint,lua,javascript,c,cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd BufNewFile,BufRead jrnl*.txt set filetype=journal
 autocmd BufNewFile,BufRead *.podspec set filetype=ruby
 autocmd filetype markdown,journal,apiblueprint set textwidth=80
@@ -173,6 +173,7 @@ nnoremap Y y$
 nnoremap <Leader>p :Files<cr>
 nnoremap <Leader>w :w<cr>
 nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>a :Tags<cr>
 " Insert a single return and esc
 nnoremap <Leader>o o<esc>
 nnoremap <Leader>O O<esc>

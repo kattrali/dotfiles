@@ -76,7 +76,8 @@ brew 'bash'
 # Development
 tap 'kylef/formulae'
 brew 'swiftenv'
-
+brew 'clang-format'
+brew 'ctags'
 cask 'rowanj-gitx'
 brew 'autoconf'
 brew 'automake'
@@ -105,6 +106,8 @@ brew 'vimpager'
 
 # Game Dev
 brew 'haxe'
+brew 'sdl2'
+brew 'sdl2_image'
 cask 'aseprite'
 cask 'bfxr'
 cask 'magicavoxel'
