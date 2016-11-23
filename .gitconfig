@@ -37,9 +37,9 @@
     wh          = log HEAD..@\\{u\\} --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     last        = log -1 --stat
     serve       = daemon --verbose --base-path=. --reuseaddr --informative-errors --enable=receive-pack
-    ghclone     = !set repodir (echo $1 | awk -F '/' '{print $2}'); git clone https://github.com/$1.git $repodir
     up          = rebase @\\{u\\}
     configpr    = config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
+	cleanup     = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
 
 [gui]
     tool        = gitx
