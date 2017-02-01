@@ -16,7 +16,7 @@ set -x HOMEBREW_NO_ANALYTICS 1
 set -x HOMEBREW_CASK_OPTS "--appdir=~/bin/apps"
 set -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/local/lib
 set -x PATH $GEM_HOME/bin $HOME/bin /usr/local/bin /usr/local/sbin \
-            /bin /usr/bin /usr/sbin /sbin $GOPATH/bin /usr/local/go/bin
+            /bin /usr/bin /usr/sbin /sbin $GOPATH/bin
 
 source /usr/local/share/chruby/chruby.fish
 source $HOME/.config/fish/functions/aliases.fish
