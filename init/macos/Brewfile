@@ -106,6 +106,7 @@ brew 'vimpager'
 
 # Game Dev
 brew 'haxe'
+brew 'love'
 brew 'sdl2'
 brew 'sdl2_image'
 cask 'aseprite'
@@ -148,5 +149,4 @@ brew 'wifi-password'
 brew 'zzz'
 cask 'qlmarkdown'
 cask 'virtualbox'
-mas 'Spectrum', id: 518156125
 mas 'Sip', id: 507257563
