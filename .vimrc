@@ -174,6 +174,9 @@ nnoremap <Leader>p :Files<cr>
 nnoremap <Leader>w :w<cr>
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <Leader>a :Tags<cr>
+nnoremap <Leader>c :tag <cword><cr>
+" Search
+nnoremap <Leader>ag :Ag <cword><cr>
 " Insert a single return and esc
 nnoremap <Leader>o o<esc>
 nnoremap <Leader>O O<esc>
