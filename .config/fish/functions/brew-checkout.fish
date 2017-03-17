@@ -11,7 +11,7 @@ function brew-checkout
   if test (count $argv) -eq 2
     set FORMULA (echo $argv[1])
     set VERSION (echo $argv[2])
-    set PREFIX (brew --prefix)/Homebrew
+    set PREFIX (brew --prefix)/Homebrew/Library/Taps/homebrew/homebrew-core
     set HASH (git -C $PREFIX log --all --grep="$FORMULA $VERSION" --pretty="%H")
     set HASH_COUNT (count $HASH)
     if test $HASH_COUNT -eq 1
