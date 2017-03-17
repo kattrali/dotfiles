@@ -3,7 +3,9 @@ rfc        # RFC viewer
 ohmu       # Disk space visualizer
 beets      # Music library organizer
 tabview    # CSV viewer
+tmuxp      # Tmux session manager
 flake8     # PEP8 linter, for vim+syntastic
+rainbowstream # twitter client
 virtualenv
 
 # weechat
