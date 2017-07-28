@@ -9,12 +9,14 @@ tap 'querykit/formulae'
 
 # Desktop
 cask 'caskroom/versions/alfred2'
+cask '1password'
 cask 'amethyst'
+cask 'bear'
 cask 'calibre'
 cask 'disk-inventory-x'
 cask 'dnscrypt'
 cask 'iterm2'
-cask 'karabiner'
+cask 'monodraw'
 cask 'mou'
 cask 'musescore'
 cask 'seafile-client'
@@ -56,6 +58,7 @@ cask 'adventure'
 cask 'dosbox'
 cask 'mari0'
 cask 'openemu'
+cask 'itch'
 
 # Music
 brew 'ncmpcpp', args: ['with-visualizer']
