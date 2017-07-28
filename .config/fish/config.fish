@@ -2,11 +2,9 @@
 
 set fish_greeting
 set -x GOPATH $HOME/tmp/go
-set -x MAILDIR $HOME/mail
+set -x MAILDIR $HOME/mail/INBOX
 set -x EDITOR vim
 set -x MANPAGER vimpager
-set -x GEM_HOME $HOME/.local/gems/(ruby -v | awk '{print $2}')
-set -x GEM_PATH $GEM_HOME
 set -x HAXELIB_PATH /usr/local/lib/haxelib
 set -x HAXE_STD_PATH /usr/local/lib/haxe/std
 set -x COCOAPODS_DISABLE_STATS 1
@@ -15,7 +13,7 @@ set -x HOMEBREW_NO_AUTO_UPDATE 1
 set -x HOMEBREW_NO_ANALYTICS 1
 set -x HOMEBREW_CASK_OPTS "--appdir=~/bin/apps"
 set -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/local/lib
-set -x PATH $GEM_HOME/bin $HOME/bin /usr/local/bin /usr/local/sbin \
+set -x PATH $HOME/bin /usr/local/bin /usr/local/sbin \
             /bin /usr/bin /usr/sbin /sbin $GOPATH/bin
 
 source /usr/local/share/chruby/chruby.fish
