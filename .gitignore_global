@@ -1,8 +1,11 @@
 *.class
 *.o
 *.swp
+*.pyc
 venv*
 target
 .DS_Store
 build
 xcuserdata
+completer.hist
+node_modules
