@@ -1,6 +1,6 @@
 .SECONDARY:
 
-all: home-layout defaults brew-packages python-packages app-config
+all: home-layout defaults brew-packages python-packages app-config services
 	@echo "Next steps: "
 	@echo "* Run 'make allow-ax' to set accessibility permissions"
 	@echo "* Start sync and run 'mackup restore'"
@@ -71,3 +71,6 @@ allow-ax:
 	sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "INSERT INTO access VALUES('kTCCServiceAccessibility','com.amethyst.Amethyst',0,1,1,NULL);"
 	sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "INSERT INTO access VALUES('kTCCServiceAccessibility','com.runningwithcrayons.Alfred-2',0,1,1,NULL);"
 	sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "INSERT INTO access VALUES('kTCCServiceAccessibility','org.pqrs.Karabiner',0,1,1,NULL);"
+
+services:
+	launchctl load init/macos/services/me.delisa.offlineimap.plist
