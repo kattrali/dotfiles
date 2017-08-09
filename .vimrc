@@ -97,6 +97,7 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 autocmd filetype swift,ruby,markdown,journal,apiblueprint,lua,javascript,c,cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd BufNewFile,BufRead jrnl*.txt set filetype=journal
 autocmd BufNewFile,BufRead *.podspec set filetype=ruby
+autocmd BufEnter,BufNew *.lalrpop set filetype=rust
 autocmd filetype markdown,journal,apiblueprint set textwidth=80
 
 " Strip trailing spaces
