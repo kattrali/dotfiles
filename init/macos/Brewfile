@@ -8,9 +8,10 @@ tap 'homebrew/dupes'
 tap 'querykit/formulae'
 
 # Desktop
+brew 'koekeishiya/formulae/khd' # hotkey daemon
+brew 'crisidev/homebrew-chunkwm/chunkwm' # window manager
 cask 'caskroom/versions/alfred2'
 cask '1password'
-cask 'amethyst'
 cask 'bear'
 cask 'calibre'
 cask 'disk-inventory-x'
