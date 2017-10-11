@@ -11,6 +11,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias wo=workon
+# open a command in a new pane
+alias tsplit="tmux split-window -h"
 
 # VCS
 alias g="git"
