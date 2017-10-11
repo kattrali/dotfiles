@@ -14,6 +14,7 @@ set colorcolumn=80 " Consciously decide to make lines too long
 set nowrap         " disable line wrapping
 set backspace=indent,eol,start
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set fillchars+=vert:│ " Use long bar as vertical separator
 
 " Mouse settings
 set mouse+=a           " Enable mouse
@@ -22,7 +23,7 @@ if &term =~ '^screen'  " Use extended mouse mode when using tmux, screen
 endif
 
 " Hide this junk
-set wildignore+=*/_workspace,*/build,*/target,*/vendor,*/venv*,*/dist,*/tmp,*.pyc
+set wildignore+=*/_workspace,*/build,*/target,*/vendor,*/venv*,*/dist,*/tmp,*.pyc,*.egg-info
 
 let mapleader=","  " Map <leader> to comma
 
@@ -40,22 +41,11 @@ function! s:EnsureDirectory(directory)
   endif
 endfunction
 
-" Put all swap files and here
+" Put all swap files in here
 set backup
 set backupdir=$HOME/.vim/tmp
 set directory=$HOME/.vim/tmp
 call s:EnsureDirectory(&directory)
-
-" Toggle relative vs absolute line numbers
-" http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
 
 " Copy copy register to OS X general pasteboard
 function! PBCopy()
@@ -111,6 +101,7 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle','NERDTreeFind'] }
 set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
+Plug 'drmingdrmer/xptemplate'
 
 " '<leader>cc' to comment
 " '<leader>c ' to toggle comment
@@ -129,11 +120,12 @@ Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'wting/rust.vim', { 'for': 'rust' }
 Plug 'junegunn/vim-journal', { 'for': 'journal' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
-Plug 'vim-scripts/lua.vim', { 'for': 'lua' }
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'ledger/vim-ledger', { 'for': 'ledger' }
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'jdonaldson/vaxe'
+Plug 'kchmck/vim-coffee-script'
+Plug 'leafgarland/typescript-vim'
 
 " VCS
 Plug 'rhysd/committia.vim'
@@ -142,10 +134,12 @@ Plug 'airblade/vim-gitgutter'
 " Color and layout
 Plug 'junegunn/seoul256.vim'
 Plug 'keith/parsec.vim'
+Plug 'morhetz/gruvbox'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 Plug 'jaxbot/semantic-highlight.vim'
 
+Plug 'twitvim/twitvim'
 call plug#end()
 
 " Keybindings
@@ -163,7 +157,6 @@ nnoremap <Leader>mc :!make clean<cr>
 nnoremap <Leader>mt :!make test<cr>
 nnoremap <Leader>mr :!make run<cr>
 " Layout
-nnoremap <C-n> :call NumberToggle()<cr>
 nnoremap <Leader>t :NERDTreeToggle<cr>
 nnoremap <Leader>j :NERDTreeFind<cr>
 nnoremap <Leader>y :Goyo<cr>
@@ -178,13 +171,20 @@ nnoremap <Leader>w :w<cr>
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <Leader>a :Tags<cr>
 nnoremap <Leader>c :tag <cword><cr>
+" List operations
+nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
+nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 " Search
 nnoremap <Leader>ag :Ag <cword><cr>
 " Insert a single return and esc
 nnoremap <Leader>o o<esc>
 nnoremap <Leader>O O<esc>
+" Save money on computers
+inoremap ++9 0
+inoremap ++( )
 " Docs
 autocmd filetype haxe nnoremap <buffer> <Leader>sd :call DocLookup(["~/doc/src/flixel/api"], "**/")<cr>
+autocmd filetype java nnoremap <buffer> <Leader>sd :call DocLookup(["/usr/local/Cellar/android-sdk/24.4.1_1/docs/reference"], "**/")<cr>
 autocmd filetype rust nnoremap <buffer> <Leader>sd :call DocLookup(["~/.multirust/toolchains/stable/share/doc/rust/html/std", "./target/doc"], "**/*")<cr>
 " swap colon and semicolon for easier commands
 nnoremap ; :
@@ -197,12 +197,14 @@ let g:vaxe_openfl_target = "neko"
 let g:vaxe_lime_target = "neko"
 
 " Use Seoul256 color scheme
-" let g:seoul256_background = 235
+let g:seoul256_background = 235
 
-colo parsec
+colo gruvbox
 
 " Set NERDTree hidden files
-let g:NERDTreeIgnore = ['_workspace', 'build', 'target', 'vendor', 'dist', 'tmp', 'pyc', 'venv.*']
+let g:NERDTreeIgnore = ['_workspace', 'build', 'target', 'vendor', 'dist', 'tmp', 'pyc', 'venv.*', 'egg-info']
 
 " Allow fenced code block highlighting in Markdown
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php', 'json', 'ruby']
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php', 'json', 'ruby', 'c', 'diff']
+
+let g:syntastic_c_include_dirs = ['src','/usr/local/include']
