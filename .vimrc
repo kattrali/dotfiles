@@ -119,6 +119,8 @@ Plug 'scrooloose/nerdcommenter'
 " Languages
 Plug 'scrooloose/syntastic'
 let g:syntastic_shell = '/usr/local/bin/bash'
+let g:syntastic_java_checkers=['javac']
+let g:syntastic_java_javac_config_file_enabled = 1
 
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'kylef/apiblueprint.vim', { 'for': 'apiblueprint' }

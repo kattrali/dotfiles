@@ -9,3 +9,5 @@ build
 xcuserdata
 completer.hist
 node_modules
+local.properties
+.syntastic_javac_config
