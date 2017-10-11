@@ -1,5 +1,6 @@
 # reload config
 cmd + alt + ctrl - r : khd -e "reload"
+shift + cmd + alt + ctrl - r : brew services restart chunkwm
 
 # open terminal
 cmd - return : open -Fn /Applications/iTerm.app
@@ -34,10 +35,10 @@ shift + alt - k : chunkc tiling::window --swap north
 shift + alt - l : chunkc tiling::window --swap east
 
 # move window
-shift + cmd - h : chunkc tiling::window --warp west
-shift + cmd - j : chunkc tiling::window --warp south
-shift + cmd - k : chunkc tiling::window --warp north
-shift + cmd - l : chunkc tiling::window --warp east
+shift + ctrl - h : chunkc tiling::window --warp west
+shift + ctrl - j : chunkc tiling::window --warp south
+shift + ctrl - k : chunkc tiling::window --warp north
+shift + ctrl - l : chunkc tiling::window --warp east
 
 # move floating windows / windows on a floating space
 shift + alt - up     : chunkc tiling::window --warp-floating fullscreen
@@ -52,12 +53,12 @@ shift + ctrl - right : chunkc tiling::window --warp-floating bottom-right
 # shift + alt - x : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
 # shift + alt - z : chunkc tiling::window --send-to-desktop prev
 # shift + alt - c : chunkc tiling::window --send-to-desktop next
-shift + alt - 1 : chunkc tiling::window --send-to-desktop 1
-shift + alt - 2 : chunkc tiling::window --send-to-desktop 2
-shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
-shift + alt - 4 : chunkc tiling::window --send-to-desktop 4
-shift + alt - 5 : chunkc tiling::window --send-to-desktop 5
-shift + alt - 6 : chunkc tiling::window --send-to-desktop 6
+shift + ctrl - 1 : chunkc tiling::window --send-to-desktop 1
+shift + ctrl - 2 : chunkc tiling::window --send-to-desktop 2
+shift + ctrl - 3 : chunkc tiling::window --send-to-desktop 3
+shift + ctrl - 4 : chunkc tiling::window --send-to-desktop 4
+shift + ctrl - 5 : chunkc tiling::window --send-to-desktop 5
+shift + ctrl - 6 : chunkc tiling::window --send-to-desktop 6
 
 # send window to desktop and switch desktop
 # shift + cmd - x : `id=$(chunkc get _last_active_desktop); chunkc tiling::window -d $id; khd -p "cmd + alt - $id" &> /dev/null`
