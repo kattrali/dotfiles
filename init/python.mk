@@ -1,5 +1,7 @@
-PIP=PIP_REQUIRE_VIRTUALENV=false pip
+VENV=~/.local/venv
 
 all:
-	@$(PIP) install --upgrade pip
-	@$(PIP) install -r Pipfile
+	@python3 -m venv $(VENV)
+	@source $(VENV)/bin/activate.fish
+	@pip install --upgrade pip
+	@pip install -r Pipfile
