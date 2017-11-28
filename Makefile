@@ -13,7 +13,8 @@ DOTFILES=.tmux.conf .vimrc .muttrc .gitconfig .tigrc .vimpagerrc \
 		 .chunkwmrc .khdrc .gradle/init.gradle
 FUNCTIONS=aliases.fish http.fish pw.fish workon.fish checkmail.fish \
 		  readmail.fish pass.fish fish_prompt.fish tomato.fish \
-		  brew-checkout.fish bookkeeping.fish gen-changelog.fish
+		  brew-checkout.fish bookkeeping.fish gen-changelog.fish \
+		  vl.fish
 
 # Synchronize changes for release
 all: function-files $(CONFIG_FILES) $(DOTFILES)
