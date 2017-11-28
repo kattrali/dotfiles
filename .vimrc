@@ -208,3 +208,7 @@ let g:NERDTreeIgnore = ['_workspace', 'build', 'target', 'vendor', 'dist', 'tmp'
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php', 'json', 'ruby', 'c', 'diff']
 
 let g:syntastic_c_include_dirs = ['src','/usr/local/include']
+
+" Add preview window to files command
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
