@@ -40,6 +40,7 @@
     up          = rebase @\\{u\\}
     configpr    = config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
 	cleanup     = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
+    stale       = for-each-ref --sort='-committerdate' --format='%(committerdate:relative)%09%(authorname)%09%(refname:short)%09%(upstream:track)' refs/heads
 
 [gui]
     tool        = gitx
