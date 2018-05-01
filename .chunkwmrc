@@ -34,7 +34,7 @@ chunkc set 4_desktop_offset_top     180
 chunkc set 4_desktop_offset_bottom  180
 chunkc set 4_desktop_offset_left    800
 chunkc set 4_desktop_offset_right   800
-chunkc set 4_desktop_offset_gap     50
+chunkc set 4_desktop_offset_gap     16
 
 chunkc set desktop_padding_step_size     10.0
 chunkc set desktop_gap_step_size         5.0
@@ -72,21 +72,11 @@ chunkc set window_fade_alpha             0.85
 chunkc set window_fade_duration          0.5
 
 #
-# NOTE: the following are config variables for the chunkwm-border plugin.
-#
-
-chunkc set focused_border_color          0xd09ecc8b
-chunkc set focused_border_width          0
-chunkc set focused_border_radius         4
-chunkc set focused_border_skip_floating  0
-
-#
 # NOTE: specify plugins to load when chunkwm starts.
 #       if chunkc plugin_dir is not set, the absolutepath is necessary.
 #
 
 chunkc core::load tiling.so
-chunkc core::load ffm.so
 
 #
 # NOTE: shell commands require escaped quotes

@@ -1,6 +1,6 @@
 # reload config
 cmd + alt + ctrl - r : khd -e "reload"
-shift + cmd + alt + ctrl - r : brew services restart chunkwm
+cmd + shift + ctrl + alt - r : brew services restart chunkwm
 
 # open terminal
 cmd - return : open -Fn /Applications/iTerm.app
@@ -9,24 +9,29 @@ cmd - return : open -Fn /Applications/iTerm.app
 alt - a : chunkc tiling::desktop --toggle offset
 
 # toggle window fullscreen
-alt - f : chunkc tiling::window --toggle fullscreen
+cmd + shift + ctrl + alt - f : chunkc tiling::window --toggle fullscreen
 
 # toggle window native fullscreen
 shift + alt - f : chunkc tiling::window --toggle native-fullscreen
 
 # float / unfloat window
-alt - t : chunkc tiling::window --toggle float
+cmd + shift + ctrl + alt - t : chunkc tiling::window --toggle float
 
+# mirror tree y-axis
+cmd + shift + ctrl + alt - y : chunkc tiling::desktop --mirror vertical
+
+# mirror tree x-axis
+cmd + shift + ctrl + alt - x : chunkc tiling::desktop --mirror horizontal
 # change layout of desktop
-cmd + ctrl + alt - b : chunkc tiling::desktop --layout bsp
-cmd + ctrl + alt - m : chunkc tiling::desktop --layout monocle
-cmd + ctrl + alt - f : chunkc tiling::desktop --layout float
+cmd + shift + ctrl + alt - b : chunkc tiling::desktop --layout bsp
+cmd + shift + ctrl + alt - m : chunkc tiling::desktop --layout monocle
+cmd + shift + ctrl + alt - f : chunkc tiling::desktop --layout float
 
 # focus window
-cmd + alt - h : chunkc tiling::window --focus west
-cmd + alt - j : chunkc tiling::window --focus south
-cmd + alt - k : chunkc tiling::window --focus north
-cmd + alt - l : chunkc tiling::window --focus east
+cmd + shift + ctrl + alt - h : chunkc tiling::window --focus west
+cmd + shift + ctrl + alt - j : chunkc tiling::window --focus south
+cmd + shift + ctrl + alt - k : chunkc tiling::window --focus north
+cmd + shift + ctrl + alt - l : chunkc tiling::window --focus east
 
 # swap window
 shift + alt - h : chunkc tiling::window --swap west
@@ -111,13 +116,8 @@ shift + ctrl - 6 : chunkc tiling::window --send-to-desktop 6
 # shift + alt - 0 : chunkc tiling::desktop --equalize
 
 # rotate tree
-# alt - r : chunkc tiling::desktop --rotate 90
+alt - r : chunkc tiling::desktop --rotate 90
 
-# mirror tree y-axis
-# alt - y : chunkc tiling::desktop --mirror vertical
-
-# mirror tree x-axis
-# alt - x : chunkc tiling::desktop --mirror horizontal
 
 # toggle window parent zoom
 # alt - d : chunkc tiling::window --toggle parent
