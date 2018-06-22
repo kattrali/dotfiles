@@ -30,7 +30,6 @@
     untracked   = cyan
 
 [alias]
-    mf          = merge --no-ff
     co          = checkout
     ci          = commit
     lg          = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
@@ -39,8 +38,7 @@
     serve       = daemon --verbose --base-path=. --reuseaddr --informative-errors --enable=receive-pack
     up          = rebase @\\{u\\}
     configpr    = config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
-	cleanup     = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
-    stale       = for-each-ref --sort='-committerdate' --format='%(committerdate:relative)%09%(authorname)%09%(refname:short)%09%(upstream:track)' refs/heads
+    cleanup     = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
 
 [gui]
     tool        = gitx
@@ -72,8 +70,6 @@
     enabled        = true
 
 [rebase]
-	autostash = true
+    autostash = true
 [transfer]
-	fsckObjects = true
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+    fsckObjects = true
