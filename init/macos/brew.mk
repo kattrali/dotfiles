@@ -9,7 +9,7 @@ all: packages
 $(XCODE):
 	@xcode-select --install
 
-$(BREW): $(XCODE)
+$(BREW):
 	@echo Installing Homebrew
 	@ruby -e "`curl -fsSL $(HOMEBREW_INSTALLER)`"
 	@brew doctor
