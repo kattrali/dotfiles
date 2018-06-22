@@ -90,6 +90,10 @@ autocmd BufNewFile,BufRead jrnl*.txt set filetype=journal
 autocmd BufNewFile,BufRead *.podspec set filetype=ruby
 autocmd BufEnter,BufNew *.lalrpop set filetype=rust
 autocmd filetype markdown,journal,apiblueprint set textwidth=80
+" Use templates for new files
+" from https://twitter.com/petdance/status/1009826710752317440
+call s:EnsureDirectory("$HOME/.vim/templates")
+autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e.tpl
 
 " Strip trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
