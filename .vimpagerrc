@@ -20,3 +20,9 @@ let mapleader=","  " Map <leader> to comma
 
 nnoremap <Leader>f :call ManLookup()<cr>
 nnoremap <Leader>a :call Apropos()<cr>
+
+" swap colon and semicolon for easier commands
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
