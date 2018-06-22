@@ -11,7 +11,7 @@ FUNCTION_TARGET=.config/fish/functions
 DOTFILES=.tmux.conf .vimrc .muttrc .gitconfig .tigrc .vimpagerrc \
 		 .newsbeuter/config .newsbeuter/urls .gitignore_global \
 		 .chunkwmrc .khdrc .gradle/init.gradle
-FUNCTIONS=aliases.fish http.fish pw.fish workon.fish checkmail.fish \
+FUNCTIONS=aliases.fish http.fish pw.fish checkmail.fish \
 		  readmail.fish pass.fish fish_prompt.fish tomato.fish \
 		  brew-checkout.fish bookkeeping.fish gen-changelog.fish \
 		  vl.fish
