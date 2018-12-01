@@ -109,7 +109,14 @@ Plug 'rking/ag.vim'
 Plug 'drmingdrmer/xptemplate'
 Plug 'tpope/vim-projectionist'
 Plug 'joereynolds/SQHell.vim'
-Plug 'vim-syntastic/syntastic'
+Plug 'w0rp/ale'
+"Plug 'autozimu/LanguageClient-neovim', {
+    "\ 'branch': 'next',
+    "\ 'do': 'bash install.sh',
+    "\ }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'roxma/nvim-yarp'
+"Plug 'roxma/vim-hug-neovim-rpc'
 
 " '<leader>cc' to comment
 " '<leader>c ' to toggle comment
@@ -181,6 +188,16 @@ nnoremap ' :
 nnoremap : '
 vnoremap ' :
 vnoremap : '
+
+" Language server settings
+let b:ale_linters = {'lua': ['lualsp']}
+let g:ale_completion_enabled = 1
+let g:ale_sign_error = '✖'
+let g:ale_sign_warning = '⚠'
+let g:LanguageClient_serverCommands = {
+	\ 'lua': ['lua-lsp'],
+	\ }
+let g:LanguageClient_autoStart = 1
 
 " Use Seoul256 color scheme
 let g:seoul256_background = 235
