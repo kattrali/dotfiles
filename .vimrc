@@ -176,11 +176,11 @@ nnoremap <Leader>ag :Ag <cword><cr>
 " Docs
 autocmd filetype haxe nnoremap <buffer> <Leader>sd :call DocLookup(["~/doc/src/flixel/api"], "**/")<cr>
 autocmd filetype rust nnoremap <buffer> <Leader>sd :call DocLookup(["~/.multirust/toolchains/stable/share/doc/rust/html/std", "./target/doc"], "**/*")<cr>
-" swap colon and semicolon for easier commands
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
+" swap colon and single quote for easier commands
+nnoremap ' :
+nnoremap : '
+vnoremap ' :
+vnoremap : '
 
 " Use Seoul256 color scheme
 let g:seoul256_background = 235
