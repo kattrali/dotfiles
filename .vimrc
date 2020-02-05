@@ -85,15 +85,23 @@ inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 "
 " Fix crontab weirdness
 autocmd filetype crontab setlocal nobackup nowritebackup
-autocmd filetype swift,ruby,markdown,journal,apiblueprint,lua,javascript,c,cpp setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd filetype swift,ruby,markdown,journal,apiblueprint,lua,javascript,c,cpp,cs setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd BufNewFile,BufRead *.html.erb let b:eruby_subtype = 'html'
+autocmd BufNewFile,BufRead *.md.erb let b:eruby_subtype = 'markdown'
 autocmd BufNewFile,BufRead jrnl*.txt set filetype=journal
 autocmd BufNewFile,BufRead *.podspec set filetype=ruby
+autocmd BufEnter,BufNew *.make set filetype=make
 autocmd BufEnter,BufNew *.lalrpop set filetype=rust
+autocmd BufEnter,BufNew *.m set filetype=objc
+autocmd BufEnter,BufNew *.mm set filetype=objcpp
+autocmd BufEnter,BufNew *.metal set filetype=cpp
 autocmd filetype markdown,journal,apiblueprint set textwidth=80
 " Use templates for new files
 " from https://twitter.com/petdance/status/1009826710752317440
 call s:EnsureDirectory("$HOME/.vim/templates")
 autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e.tpl
+autocmd filetype java set colorcolumn=100
+autocmd filetype cs set colorcolumn=100
 
 " Strip trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
