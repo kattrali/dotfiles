@@ -16,13 +16,13 @@ function! Apropos()
     exec "!apropos " . word . " | fzf | awk '{split($0,a,\"(\"); print a[1]}' | xargs man"
 endfunction
 
-let mapleader=","  " Map <leader> to comma
+let mapleader=" "  " Map <leader> to space
 
 nnoremap <Leader>f :call ManLookup()<cr>
 nnoremap <Leader>a :call Apropos()<cr>
 
-" swap colon and semicolon for easier commands
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
+" swap colon and single quote for easier commands
+nnoremap ' :
+nnoremap : '
+vnoremap ' :
+vnoremap : '
