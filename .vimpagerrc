@@ -1,6 +1,7 @@
 set noloadplugins
 set nowrap
 set readonly
+set incsearch      " search as you type
 set mouse +=a
 if &term =~ '^screen'
     set ttymouse=xterm2
