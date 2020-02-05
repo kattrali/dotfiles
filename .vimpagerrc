@@ -6,11 +6,6 @@ if &term =~ '^screen'
     set ttymouse=xterm2
 endif
 
-function! ManLookup()
-    let word = expand("<cword>")
-    exec "!man " . word
-endfunction
-
 function! Apropos()
     let word = expand("<cword>")
     exec "!apropos " . word . " | fzf | awk '{split($0,a,\"(\"); print a[1]}' | xargs man"
@@ -18,7 +13,7 @@ endfunction
 
 let mapleader=" "  " Map <leader> to space
 
-nnoremap <Leader>f :call ManLookup()<cr>
+nnoremap <Leader>mn :execute '!man ' . expand("<cword>")<cr> " Show man page for current word
 nnoremap <Leader>a :call Apropos()<cr>
 
 " swap colon and single quote for easier commands

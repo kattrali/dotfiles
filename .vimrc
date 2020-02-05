@@ -181,6 +181,7 @@ nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\
 " Search
 nnoremap <Leader>ag :Ag <cword><cr>
 " Docs
+nnoremap <Leader>mn :execute '!man ' . expand("<cword>")<cr> " Show man page for current word
 autocmd filetype haxe nnoremap <buffer> <Leader>sd :call DocLookup(["~/doc/src/flixel/api"], "**/")<cr>
 autocmd filetype rust nnoremap <buffer> <Leader>sd :call DocLookup(["~/.multirust/toolchains/stable/share/doc/rust/html/std", "./target/doc"], "**/*")<cr>
 " swap colon and single quote for easier commands
