@@ -11,6 +11,7 @@ set -x COCOAPODS_DISABLE_STATS 1
 set -x PIP_REQUIRE_VIRTUALENV 1
 set -x HOMEBREW_NO_AUTO_UPDATE 1
 set -x HOMEBREW_NO_ANALYTICS 1
+set -x HOMEBREW_NO_INSTALL_CLEANUP 1
 set -x HOMEBREW_CASK_OPTS "--appdir=~/bin/apps"
 set -x PKG_CONFIG_PATH /usr/local/lib/pkgconfig /usr/local/lib
 set -x PATH $HOME/bin /usr/local/bin /usr/local/sbin \
