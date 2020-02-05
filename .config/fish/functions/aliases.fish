@@ -6,11 +6,12 @@ alias activate="source ~/.local/venv/bin/activate.fish"
 alias v="vim -c Files"
 
 # Navigation
+alias wo='cd (ls -d ~/doc/code/bugsnag/{,maintained/}* | fzf --preview "git -C {} status && echo &&  head -n $LINES {}/README.md")'
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-# open a command in a new pane
-alias tsplit="tmux split-window -h"
+alias ......="cd ../../../../.."
+alias .......="cd ../../../../../.."
 
 # VCS
 alias g="git"
