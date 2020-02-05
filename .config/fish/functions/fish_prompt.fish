@@ -1,23 +1,14 @@
-#!/usr/bin/env fish
+function fish_prompt
+    set -l last_status $status
+	test $SSH_TTY
+    and printf (set_color red)$USER(set_color brwhite)'@'(set_color yellow)(prompt_hostname)' '
+    test "$USER" = 'root'
+    and echo (set_color red)"#"
 
-function fish_prompt --description 'Write out the prompt'
-  set -l last_status $status
-
-  if not set -q __fish_prompt_normal
-    set -g __fish_prompt_normal (set_color normal)
-  end
-
-  # PWD
-  set_color $fish_color_cwd
-    echo -n (prompt_pwd)
-    set_color normal
-
-    printf '%s ' (__fish_git_prompt)
-
-    if not test $last_status -eq 0
-    set_color $fish_color_error
-  end
-
-  echo -n '→ '
+    # Main
+    if test $last_status -eq 0
+        echo -n (set_color red)'❯'(set_color yellow)'❯'(set_color green)'❯ '
+    else
+        echo -n (set_color red)'❯❯❯ '
+    end
 end
-
