@@ -146,6 +146,7 @@ Plug 'leafo/moonscript-vim'
 " VCS
 Plug 'rhysd/committia.vim'
 "Plug 'airblade/vim-gitgutter'
+Plug 'tveskag/nvim-blame-line'
 
 " Color and layout
 Plug 'junegunn/seoul256.vim'
@@ -160,7 +161,7 @@ call plug#end()
 " Git
 nnoremap <Leader>gc :!tig status<cr>   " Show staging area
 nnoremap <Leader>gs :!tig<cr>          " Tree view
-nnoremap <Leader>gb :!tig blame %<cr>  " Show blame for current file
+nnoremap <Leader>gb :ToggleBlameLine<cr>  " Show blame for current file
 " Make
 nnoremap <Leader>mm :make<cr>
 nnoremap <Leader>mc :make clean<cr>
@@ -231,6 +232,8 @@ let g:NERDTreeIgnore = ['_workspace', 'build/', 'target', 'vendor', 'dist/', 'tm
 " Allow fenced code block highlighting in Markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php', 'json', 'ruby', 'c', 'diff']
 
+" Configure blame inline format
+let g:blameLineGitFormat = '%an | %ar | %s | %h'
 if has("gui_running")
     set guifont=Range\ Mono:h14
 else
