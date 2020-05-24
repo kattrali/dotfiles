@@ -3,7 +3,8 @@ $(subst $(HOME)/,,$(wildcard $(HOME)/$1))
 endef
 CONFIG_FILES=.config/fish/config.fish \
 			 .config/firefox/userChrome.css \
-			 $(call mirror,.config/.vim/templates/*) \
+			 $(call mirror,.vim/autoload/*) \
+			 $(call mirror,.vim/templates/*) \
 			 $(call mirror,.config/nvim/*) \
 			 $(call mirror,.config/nvim/UltiSnips/*) \
 			 $(subst $(HOME)/,,$(shell ls $(HOME)/.config/webkitten/{**/,}*.{lua,toml,js,css,html} 2>/dev/null))
@@ -21,6 +22,10 @@ all: $(addprefix .config/fish/functions/,$(FUNCTIONS)) $(CONFIG_FILES) $(DOTFILE
 
 .SECONDARY:
 
+.vim/%: $(HOME)/.vim/%
+	@$(shell mkdir -p $(@D))
+	@install -c $(HOME)/$@ $@
+
 .%: $(HOME)/.%
-	@$(mkdir -p $(@D))
+	@$(shell mkdir -p $(@D))
 	@install -c $(HOME)/.$* .$*
