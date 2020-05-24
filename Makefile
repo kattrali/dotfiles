@@ -22,4 +22,5 @@ all: $(addprefix .config/fish/functions/,$(FUNCTIONS)) $(CONFIG_FILES) $(DOTFILE
 .SECONDARY:
 
 .%: $(HOME)/.%
-	@install -c -d $(HOME)/.$* .$*
+	@$(mkdir -p $(@D))
+	@install -c $(HOME)/.$* .$*
