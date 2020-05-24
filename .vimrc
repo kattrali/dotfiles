@@ -61,17 +61,26 @@ if has("unix")
   endfunction
 endif
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Allow tab for completion while in insert mode
-function! Tab_Or_Complete()
-  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-    return "\<C-p>"
-  else
-    return "\<Tab>"
-  endif
-endfunction
-inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
 
 " Language Settings
 "
@@ -95,6 +104,10 @@ autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e.tpl
 autocmd filetype java set colorcolumn=100
 autocmd filetype cs set colorcolumn=100
 
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " Strip trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
 
@@ -109,18 +122,13 @@ Plug 'rking/ag.vim'
 Plug 'drmingdrmer/xptemplate'
 Plug 'tpope/vim-projectionist'
 Plug 'joereynolds/SQHell.vim'
-Plug 'w0rp/ale'
-"Plug 'autozimu/LanguageClient-neovim', {
-    "\ 'branch': 'next',
-    "\ 'do': 'bash install.sh',
-    "\ }
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'roxma/nvim-yarp'
-"Plug 'roxma/vim-hug-neovim-rpc'
 
 " '<leader>cc' to comment
 " '<leader>c ' to toggle comment
 Plug 'scrooloose/nerdcommenter'
+Plug 'honza/vim-snippets'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Languages
 Plug 'fatih/vim-go', { 'for': 'go' }
@@ -137,7 +145,7 @@ Plug 'leafo/moonscript-vim'
 
 " VCS
 Plug 'rhysd/committia.vim'
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 
 " Color and layout
 Plug 'junegunn/seoul256.vim'
@@ -153,7 +161,6 @@ call plug#end()
 nnoremap <Leader>gc :!tig status<cr>   " Show staging area
 nnoremap <Leader>gs :!tig<cr>          " Tree view
 nnoremap <Leader>gb :!tig blame %<cr>  " Show blame for current file
-nnoremap <Leader>sh :GitGutterStageHunk<cr>
 " Make
 nnoremap <Leader>mm :make<cr>
 nnoremap <Leader>mc :make clean<cr>
@@ -169,8 +176,28 @@ nnoremap Y y$
 nnoremap <Leader>f :Files<cr>
 nnoremap <Leader>w :w<cr>
 nnoremap <Leader>b :Buffers<cr>
-nnoremap <Leader>a :Tags<cr>
+nnoremap <Leader>a :CocList -I symbols<cr>
+nnoremap <Leader>e :CocList diagnostics<cr>
+nnoremap <Leader>, :CocCommand clangd.switchSourceHeader<cr>
 nnoremap <Leader>c :NERDCommenterToggle<cr>
+
+nnoremap <Leader>k :call <SID>show_documentation()<cr>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+nnoremap <Leader>K :CocCommand clangd.symbolInfo<cr>
+
+nnoremap <Leader>gd <Plug>(coc-definition)
+nnoremap <Leader>gr <Plug>(coc-references)
+nnoremap <Leader>gh <Plug>(coc-type-definition)
+nnoremap <Leader>gi <Plug>(coc-implementation)
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
 " Copy yanked text to system pasteboard
 nnoremap <Leader>y :call PBCopy()<cr>
 " Paste system pasteboard contents into copy register
@@ -188,19 +215,15 @@ nnoremap : '
 vnoremap ' :
 vnoremap : '
 
-" Language server settings
-let b:ale_linters = {'lua': ['lualsp']}
-let g:ale_completion_enabled = 1
-let g:ale_sign_error = '✖'
-let g:ale_sign_warning = '⚠'
-let g:LanguageClient_serverCommands = {
-	\ 'lua': ['lua-lsp'],
-	\ }
-let g:LanguageClient_autoStart = 1
+let g:coc_snippet_next = '<tab>'
+let g:coc_status_error_sign = 'E:'
+let g:coc_status_warning_sign = '⚠'
 
 " Use Seoul256 color scheme
 let g:seoul256_background = 235
 colo seoul256
+" Set snippet options
+let g:UltiSnipsExpandTrigger="<c-e>"
 
 " Set NERDTree hidden files
 let g:NERDTreeIgnore = ['_workspace', 'build/', 'target', 'vendor', 'dist/', 'tmp', '.pyc', 'venv.*', 'egg-info']
@@ -220,7 +243,11 @@ endif
 
 cnoremap <C-a> <Home>
 
-if has("nvim") 
+if has("nvim")
   set inccommand=nosplit
 endif
 
+" Status line
+" Format: {color}Filename/List flags =spacer= {color}syntax {color}filetype {color}buffer%
+" Note:   Print available colors with :so $VIMRUNTIME/syntax/hitest.vim
+set statusline=%#LineNr#%f%k%w\ %m%r%=%#SpellBad#%{coc#status()}%{get(b:,'coc_current_function','')}%#CursorLineNr#\ \♛%4P%#LineNr#\ %#Question#%y

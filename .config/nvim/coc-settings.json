@@ -1,0 +1,19 @@
+{
+  "languageserver": {
+    "lua": {
+      "command": "lua-lsp",
+      "filetypes": ["lua"]
+    },
+    "cmake": {
+      "command": "cmake-language-server",
+      "filetypes": ["cmake"],
+      "rootPatterns": ["build/", "target/"],
+      "initializationOptions": {
+        "buildDirectory": "build"
+      }
+    }
+  },
+  "clangd.arguments": ["--clang-tidy", "--suggest-missing-includes"],
+  "snippets.snipmate.enable": false,
+  "coc.preferences.extensionUpdateCheck": "never"
+}
