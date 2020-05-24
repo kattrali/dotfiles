@@ -3,7 +3,8 @@
 alias rm="trash"
 alias bk=bookkeeping
 alias activate="source ~/.local/venv/bin/activate.fish"
-alias v="vim -c Files"
+alias vim="nvim"
+alias v="nvim -c Files"
 
 # Navigation
 alias wo='cd (ls -d ~/doc/code/bugsnag/{,maintained/}* | fzf --preview "git -C {} status && echo &&  head -n $LINES {}/README.md")'

@@ -218,3 +218,7 @@ let g:NERDTreeIgnore = ['_workspace', 'build/', 'target', 'vendor', 'dist', 'tmp
 " Allow fenced code block highlighting in Markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php', 'json', 'ruby', 'c', 'diff']
 
+if has("nvim") 
+  set inccommand=nosplit
+endif
+

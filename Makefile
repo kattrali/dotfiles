@@ -4,12 +4,17 @@ BROWSER_CONFIG=.config/webkitten
 VIM_TEMPLATES=.vim/templates
 CONFIG_FILES=$(FISH_CONFIG)/config.fish .config/redshift.conf \
              .config/todo/config .config/nvim/init.vim \
+define mirror
+$(subst $(HOME)/,,$(wildcard $(HOME)/$1))
+endef
 			 .config/firefox/userChrome.css \
 			 $(addprefix $(TODO_ACTIONS)/,$(shell ls $(HOME)/$(TODO_ACTIONS))) \
-			 $(addprefix $(VIM_TEMPLATES)/,$(shell ls $(HOME)/$(VIM_TEMPLATES))) \
 			 $(subst $(HOME)/,,$(shell ls $(HOME)/$(BROWSER_CONFIG)/{**/,}*.{lua,toml,js,css,html} 2>/dev/null))
 
 FUNCTION_TARGET=.config/fish/functions
+			 $(call mirror,.config/.vim/templates/*) \
+			 $(call mirror,.config/nvim/*) \
+			 $(call mirror,.config/nvim/UltiSnips/*) \
 
 DOTFILES=.tmux.conf .vimrc .muttrc .gitconfig .tigrc .vimpagerrc \
 		 .newsbeuter/config .newsbeuter/urls .gitignore_global \
