@@ -152,6 +152,7 @@ Plug 'tveskag/nvim-blame-line'
 Plug 'junegunn/seoul256.vim'
 Plug 'keith/parsec.vim'
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/edge'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 call plug#end()
@@ -221,8 +222,14 @@ let g:coc_status_error_sign = 'E:'
 let g:coc_status_warning_sign = '⚠'
 
 " Use Seoul256 color scheme
-let g:seoul256_background = 235
-colo seoul256
+"let g:seoul256_background = 233
+"colo seoul256
+set background=dark
+let g:edge_style = 'neon'
+let g:edge_transparent_background = 1
+let g:edge_disable_italic_comment = 1
+colo edge
+
 " Set snippet options
 let g:UltiSnipsExpandTrigger="<c-e>"
 
