@@ -3,7 +3,9 @@
     email = iskanamagus@gmail.com
 
 [diff]
-    renames     = copy
+    renames = copy
+	tool    = vimdiff
+	indentHeuristic = true
 
 [color]
     diff        = auto
@@ -38,7 +40,9 @@
     serve       = daemon --verbose --base-path=. --reuseaddr --informative-errors --enable=receive-pack
     up          = rebase @\\{u\\}
     configpr    = config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
-    cleanup     = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
+	cleanup     = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
+    stale       = for-each-ref --sort='-committerdate' --format='%(committerdate:relative)%09%(authorname)%09%(refname:short)%09%(upstream:track)' refs/heads
+    unreleased  = !git log $(git describe --tags --abbrev=0)..origin/master --pretty='format:    %s %C(yellow)%an%Creset %Cgreen(%cr)%Creset' --abbrev-commit
 
 [gui]
     tool        = gitx
@@ -70,6 +74,10 @@
     enabled        = true
 
 [rebase]
-    autostash = true
+	autostash = true
 [transfer]
-    fsckObjects = true
+	fsckObjects = true
+[merge]
+	tool = ksdiff
+[status]
+	submoduleSummary = true

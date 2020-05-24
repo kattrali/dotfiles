@@ -1,9 +1,0 @@
-browser "open %u"
-download-path "~/Downloads/%h/%n"
-player "mp3blaster"
-bind-key k up
-bind-key j down
-bind-key h left
-bind-key l right
-bind-key ^D pagedown
-bind-key ^U pageup

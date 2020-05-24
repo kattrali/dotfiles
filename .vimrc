@@ -11,9 +11,12 @@ set shortmess=Ia   " Abbreviate startup message
 set smartindent    " GET SMART
 set colorcolumn=80 " Consciously decide to make lines too long
 set nowrap         " disable line wrapping
+set signcolumn=yes " Always show the sign column
 set backspace=indent,eol,start
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set fillchars+=vert:│ " Use long bar as vertical separator
+set laststatus=2   " Always show status line
+set termguicolors  " Nice colors
 
 " Mouse settings
 set mouse+=a           " Enable mouse
@@ -22,7 +25,7 @@ if &term =~ '^screen'  " Use extended mouse mode when using tmux, screen
 endif
 
 " Hide this junk
-set wildignore+=*/_workspace,*/build/\,*/target,*/vendor,*/venv*,*/dist,*/tmp,*.pyc,*.egg-info
+set wildignore+=*/_workspace,*/build/\,*/target,*/vendor,*/venv*,*/tmp,*/dist/,*.pyc,*.egg-info
 
 let mapleader=" "  " Map <leader> to space
 
@@ -58,17 +61,6 @@ if has("unix")
   endfunction
 endif
 
-" Find a HTML file in a directory matching the current word, and open it in
-" a tmux pane in lynx. If no matches are found, try the current directory.
-function! DocLookup(sourceDirs, patternPrefix)
-    let word = expand("<cword>")
-    for base in a:sourceDirs
-        let filePaths = split(globpath(base, a:patternPrefix . word . ".html"), '\n')
-        if (len(filePaths) > 0)
-            call system("tmux split-window -v -p 40 'lynx " . filePaths[0] . "'")
-            return
-        endif
-    endfor
 endfunction
 
 " Allow tab for completion while in insert mode
@@ -163,10 +155,10 @@ nnoremap <Leader>gs :!tig<cr>          " Tree view
 nnoremap <Leader>gb :!tig blame %<cr>  " Show blame for current file
 nnoremap <Leader>sh :GitGutterStageHunk<cr>
 " Make
-nnoremap <Leader>mm :!make<cr>
-nnoremap <Leader>mc :!make clean<cr>
-nnoremap <Leader>mt :!make test<cr>
-nnoremap <Leader>mr :!make run<cr>
+nnoremap <Leader>mm :make<cr>
+nnoremap <Leader>mc :make clean<cr>
+nnoremap <Leader>mt :make test<cr>
+nnoremap <Leader>mr :make run<cr>
 " Layout
 nnoremap <Leader>t :NERDTreeToggle<cr>
 nnoremap <Leader>j :NERDTreeFind<cr>
@@ -190,8 +182,6 @@ nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\
 nnoremap <Leader>ag :Ag <cword><cr>
 " Docs
 nnoremap <Leader>mn :execute '!man ' . expand("<cword>")<cr> " Show man page for current word
-autocmd filetype haxe nnoremap <buffer> <Leader>sd :call DocLookup(["~/doc/src/flixel/api"], "**/")<cr>
-autocmd filetype rust nnoremap <buffer> <Leader>sd :call DocLookup(["~/.multirust/toolchains/stable/share/doc/rust/html/std", "./target/doc"], "**/*")<cr>
 " swap colon and single quote for easier commands
 nnoremap ' :
 nnoremap : '
@@ -213,10 +203,22 @@ let g:seoul256_background = 235
 colo seoul256
 
 " Set NERDTree hidden files
-let g:NERDTreeIgnore = ['_workspace', 'build/', 'target', 'vendor', 'dist', 'tmp', 'pyc', 'venv.*', 'egg-info']
+let g:NERDTreeIgnore = ['_workspace', 'build/', 'target', 'vendor', 'dist/', 'tmp', '.pyc', 'venv.*', 'egg-info']
 
 " Allow fenced code block highlighting in Markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php', 'json', 'ruby', 'c', 'diff']
+
+if has("gui_running")
+    set guifont=Range\ Mono:h14
+else
+    :source $VIMRUNTIME/menu.vim
+    :set wildmenu
+    :set cpoptions-=<
+    :set wildcharm=<C-Z>
+    :map <F4> :emenu <C-Z>
+endif
+
+cnoremap <C-a> <Home>
 
 if has("nvim") 
   set inccommand=nosplit
