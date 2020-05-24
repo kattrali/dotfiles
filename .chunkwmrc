@@ -20,7 +20,6 @@ chunkc core::hotload 1
 
 chunkc set global_desktop_mode           bsp
 chunkc set 4_desktop_mode                monocle
-chunkc set 5_desktop_mode                float
 
 chunkc set 1_desktop_tree                ~/.chunkwm_layouts/dev_1
 
@@ -29,12 +28,6 @@ chunkc set global_desktop_offset_bottom  80
 chunkc set global_desktop_offset_left    80
 chunkc set global_desktop_offset_right   80
 chunkc set global_desktop_offset_gap     50
-
-chunkc set 4_desktop_offset_top     180
-chunkc set 4_desktop_offset_bottom  180
-chunkc set 4_desktop_offset_left    800
-chunkc set 4_desktop_offset_right   800
-chunkc set 4_desktop_offset_gap     16
 
 chunkc set desktop_padding_step_size     10.0
 chunkc set desktop_gap_step_size         5.0
