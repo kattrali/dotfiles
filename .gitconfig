@@ -51,7 +51,7 @@
     editor         = vim
     excludesfile   = ~/.gitignore_global
     attributesfile = ~/.gitattributes
-    pager          = less -R
+    pager          = delta
     quotepath      = false
 
 [credential]
@@ -81,3 +81,5 @@
 	tool = ksdiff
 [status]
 	submoduleSummary = true
+[interactive]
+    diffFilter = delta --color-only
