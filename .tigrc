@@ -1,4 +1,5 @@
 set ignore-space = all
+set status-show-untracked-files = yes
 bind generic   r    refresh
 bind main      R    ?git rebase -i %(commit)~1
 bind generic   A    !git commit --amend
