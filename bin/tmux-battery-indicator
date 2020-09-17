@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+status=$(pmset -g batt)
+battery_level=$(echo $status | grep -Eo "\d+%")
+is_charging=$(echo $status | grep "AC")
+color=white
+icon="   "
+
+if [ "$battery_level" -le 40 ]; then
+    color=yellow
+elif [ "$battery_level" -le 25 ]; then
+	color=red
+fi
+
+if [ -n "$is_charging" ]; then
+	color=green
+	icon=" ⚡︎"
+fi
+
+echo "#[fg=${color}]${icon}${battery_level}#[fg=default]"
