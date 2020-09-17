@@ -1,6 +1,6 @@
 set ignore-space = all
 bind generic   r    refresh
-bind main      R    ?git rebase -i %(commit)
+bind main      R    ?git rebase -i %(commit)~1
 bind generic   A    !git commit --amend
 bind main      C    !git commit
 bind main      T    !@git tag "%(prompt Enter tag name: )" %(commit)
