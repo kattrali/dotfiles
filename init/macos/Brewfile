@@ -14,6 +14,7 @@ cask 'alfred'
 cask '1password'
 cask 'calibre'
 cask 'iterm2'
+cask 'iina'
 cask 'monodraw'
 cask 'mou'
 cask 'musescore'
@@ -51,6 +52,7 @@ cask 'dosbox'
 cask 'mari0'
 cask 'openemu'
 cask 'itch'
+cask 'enjoyable'
 
 # Music
 brew 'ncmpcpp', args: ['with-visualizer']
