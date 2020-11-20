@@ -3,6 +3,7 @@
 *.swp
 *.pyc
 *.egg
+*.egg-info
 .bundle
 venv*
 tags
@@ -14,3 +15,4 @@ completer.hist
 node_modules
 local.properties
 .syntastic_javac_config
+a.out
