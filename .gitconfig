@@ -39,10 +39,13 @@
     last        = log -1 --stat
     serve       = daemon --verbose --base-path=. --reuseaddr --informative-errors --enable=receive-pack
     up          = rebase @\\{u\\}
+    hup         = reset --hard @\\{u\\}
     configpr    = config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
 	cleanup     = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
     stale       = for-each-ref --sort='-committerdate' --format='%(committerdate:relative)%09%(authorname)%09%(refname:short)%09%(upstream:track)' refs/heads
+    taglist     = for-each-ref --sort='-committerdate' --format='%(committerdate:relative)%09%(authorname)%09%(refname:short)%09%(upstream:track)' refs/tags
     unreleased  = !git log $(git describe --tags --abbrev=0)..origin/master --pretty='format:    %s %C(yellow)%an%Creset %Cgreen(%cr)%Creset' --abbrev-commit
+	diffup = diff HEAD..@{u}
 
 [gui]
     tool        = gitx
