@@ -51,7 +51,6 @@
     tool        = gitx
 
 [core]
-    editor         = vim
     excludesfile   = ~/.gitignore_global
     attributesfile = ~/.gitattributes
     pager          = delta
