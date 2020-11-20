@@ -15,10 +15,12 @@ DOTFILES=.tmux.conf .vimrc .muttrc .gitconfig .tigrc .vimpagerrc \
 FUNCTIONS=aliases.fish http.fish pw.fish checkmail.fish \
 		  readmail.fish pass.fish fish_prompt.fish tomato.fish \
 		  brew-checkout.fish bookkeeping.fish gen-changelog.fish \
-		  vl.fish
+		  vl.fish xcodenv.fish
+
+COMPLETIONS=$(subst $(HOME)/,,$(shell ls $(HOME)/.config/fish/completions))
 
 # Synchronize changes for release
-all: $(addprefix .config/fish/functions/,$(FUNCTIONS)) $(CONFIG_FILES) $(DOTFILES)
+all: $(addprefix .config/fish/functions/,$(FUNCTIONS)) $(COMPLETIONS) $(CONFIG_FILES) $(DOTFILES)
 
 .SECONDARY:
 
