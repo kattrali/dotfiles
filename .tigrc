@@ -1,10 +1,11 @@
 set ignore-space = all
 set status-show-untracked-files = yes
 bind generic   r    refresh
-bind main      R    ?git rebase -i %(commit)~1
+bind main      R    ?git rebase -i --autosquash %(commit)~1
 bind generic   A    !git commit --amend
 bind main      C    !git commit
 bind main      T    !@git tag "%(prompt Enter tag name: )" %(commit)
 bind main      B    !@git branch "%(prompt Enter branch name: )" %(commit)
 bind main      c    !@git checkout "%(prompt Enter branch name: )"
+bind main      F    !git commit --fixup=%(commit)
 bind generic   I    @sh -c "echo %(commit) | pbcopy"
