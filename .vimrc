@@ -28,7 +28,7 @@ if &term =~ '^screen'  " Use extended mouse mode when using tmux, screen
 endif
 
 " Hide this junk
-set wildignore+=*/_workspace,*/build/\,*/target,*/vendor,*/venv*,*/tmp,*/dist/,*.pyc,*.egg-info
+set wildignore+=*/_workspace,*/build/\,*/node_modules,*/target,*/vendor,*/venv*,*/tmp,*/dist/,*.pyc,*.egg-info,*.so
 
 let mapleader=" "  " Map <leader> to space
 
@@ -237,7 +237,7 @@ colo edge
 let g:UltiSnipsExpandTrigger="<c-e>"
 
 " Set NERDTree hidden files
-let g:NERDTreeIgnore = ['_workspace', 'build/', 'target', 'vendor', 'dist/', 'tmp', '.pyc', 'venv.*', 'egg-info']
+let g:NERDTreeIgnore = ['_workspace', 'build', 'node_modules', 'target', 'vendor', 'dist/', 'tmp', '.pyc', 'venv.*', 'egg-info', '.so', '.bundle']
 
 " Allow fenced code block highlighting in Markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php', 'json', 'ruby', 'c', 'diff']
