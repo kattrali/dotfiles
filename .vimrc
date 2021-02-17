@@ -213,9 +213,14 @@ call plug#end()
 " Keybindings
 "
 " Git
-nnoremap <Leader>gc :!tig status<cr>   " Show staging area
-nnoremap <Leader>gs :!tig<cr>          " Tree view
-nnoremap <Leader>gb :ToggleBlameLine<cr>  " Show blame for current file
+" Show staging area
+nnoremap <Leader>gc :terminal tig status<cr>
+" Tree view
+nnoremap <Leader>gs :terminal tig<cr>
+" Log view
+nnoremap <Leader>gl :terminal tig log<cr>
+" Show blame for current file
+nnoremap <Leader>gb :exe "terminal tig blame " . @% . " +" . line(".")<cr>
 nnoremap <Leader>sh :CocCommand git.chunkStage<cr>
 nmap [g <Plug>(coc-git-prevchunk)
 nmap ]g <Plug>(coc-git-nextchunk)
