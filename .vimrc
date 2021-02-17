@@ -247,6 +247,7 @@ nnoremap <Leader>w :w<cr>
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <Leader>a :CocList -I symbols<cr>
 nnoremap <Leader>e :CocList diagnostics<cr>
+nnoremap <Leader>l :CocList outline<cr>
 nnoremap <Leader>, :CocCommand clangd.switchSourceHeader<cr>
 
 nnoremap <Leader>k :call <SID>show_documentation()<cr>
@@ -257,12 +258,12 @@ function! s:show_documentation()
     call CocActionAsync('doHover')
   endif
 endfunction
-nnoremap <Leader>K :CocCommand clangd.symbolInfo<cr>
 
-nnoremap <Leader>gd <Plug>(coc-definition)
-nnoremap <Leader>gr <Plug>(coc-references)
-nnoremap <Leader>gh <Plug>(coc-type-definition)
-nnoremap <Leader>gi <Plug>(coc-implementation)
+nmap <Leader>gd <Plug>(coc-definition)
+nmap <Leader>gr <Plug>(coc-references)
+nmap <Leader>gh :call CocActionAsync('highlight')<cr>
+nmap <Leader>gy <Plug>(coc-type-definition)
+nmap <Leader>gi <Plug>(coc-implementation)
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
