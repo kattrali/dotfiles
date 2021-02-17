@@ -17,6 +17,9 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set fillchars+=vert:│ " Use long bar as vertical separator
 set laststatus=2   " Always show status line
 set termguicolors  " Nice colors
+set hidden         " support hiding modified buffers
+set list           " show hidden characters
+
 if has("nvim")
   set inccommand=nosplit
 endif
