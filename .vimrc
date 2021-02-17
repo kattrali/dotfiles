@@ -180,6 +180,7 @@ Plug 'joereynolds/SQHell.vim'
 " '<leader>cc' to comment
 " '<leader>c ' to toggle comment
 Plug 'scrooloose/nerdcommenter'
+Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'honza/vim-snippets'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -283,6 +284,9 @@ let g:edge_style = 'neon'
 let g:edge_transparent_background = 1
 let g:edge_disable_italic_comment = 1
 colo edge
+
+" Disable '@brief' prefix in :Dox code comments
+let g:DoxygenToolkit_briefTag_pre=""
 
 " Set snippet options
 let g:UltiSnipsExpandTrigger="<c-e>"
