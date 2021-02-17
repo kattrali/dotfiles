@@ -200,8 +200,6 @@ Plug 'kattrali/suspect.vim' " vim-test extension for projects using suspect test
 
 " VCS
 Plug 'rhysd/committia.vim'
-"Plug 'airblade/vim-gitgutter'
-Plug 'tveskag/nvim-blame-line'
 
 " Color and layout
 Plug 'junegunn/seoul256.vim'
@@ -218,6 +216,9 @@ call plug#end()
 nnoremap <Leader>gc :!tig status<cr>   " Show staging area
 nnoremap <Leader>gs :!tig<cr>          " Tree view
 nnoremap <Leader>gb :ToggleBlameLine<cr>  " Show blame for current file
+nnoremap <Leader>sh :CocCommand git.chunkStage<cr>
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
 " Make
 nnoremap <Leader>mm :make<cr>
 nnoremap <Leader>mc :make clean<cr>
@@ -280,6 +281,7 @@ vnoremap : '
 let g:coc_snippet_next = '<tab>'
 let g:coc_status_error_sign = 'E:'
 let g:coc_status_warning_sign = '⚠'
+let g:coc_global_extensions = ['coc-snippets', 'coc-git', 'coc-tsserver', 'coc-rls', 'coc-go', 'coc-clangd']
 
 " Use Seoul256 color scheme
 "let g:seoul256_background = 233
@@ -305,8 +307,6 @@ let g:NERDTreeIgnore = ['_workspace', 'build', 'node_modules', 'target', 'vendor
 " Allow fenced code block highlighting in Markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php', 'json', 'ruby', 'c', 'diff']
 
-" Configure blame inline format
-let g:blameLineGitFormat = '%an | %ar | %s | %h'
 if has("gui_running")
     set guifont=Range\ Mono:h14
 else
