@@ -202,10 +202,11 @@ Plug 'kattrali/suspect.vim' " vim-test extension for projects using suspect test
 Plug 'rhysd/committia.vim'
 
 " Color and layout
-Plug 'junegunn/seoul256.vim'
-Plug 'keith/parsec.vim'
-Plug 'morhetz/gruvbox'
-Plug 'sainnhe/edge'
+" Plug 'junegunn/seoul256.vim'
+" Plug 'keith/parsec.vim'
+" Plug 'morhetz/gruvbox'
+" Plug 'sainnhe/edge'
+Plug 'flrnd/candid.vim'
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
 call plug#end()
@@ -295,6 +296,7 @@ let g:edge_style = 'neon'
 let g:edge_transparent_background = 1
 let g:edge_disable_italic_comment = 1
 colo edge
+colo candid
 
 " support suspect in vim-test
 let test#custom_runners = {'c': ['Suspect']}
