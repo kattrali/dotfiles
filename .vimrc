@@ -247,7 +247,6 @@ nnoremap <Leader>b :Buffers<cr>
 nnoremap <Leader>a :CocList -I symbols<cr>
 nnoremap <Leader>e :CocList diagnostics<cr>
 nnoremap <Leader>, :CocCommand clangd.switchSourceHeader<cr>
-nnoremap <Leader>c :NERDCommenterToggle<cr>
 
 nnoremap <Leader>k :call <SID>show_documentation()<cr>
 function! s:show_documentation()
@@ -308,6 +307,15 @@ let g:UltiSnipsExpandTrigger="<c-e>"
 
 " Set NERDTree hidden files
 let g:NERDTreeIgnore = ['_workspace', 'build', 'node_modules', 'target', 'vendor', 'dist/', 'tmp', '.pyc', 'venv.*', 'egg-info', '.so', '.bundle']
+
+" Configure comment layout
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDAltDelims_c = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
 
 " Allow fenced code block highlighting in Markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php', 'json', 'ruby', 'c', 'diff']
