@@ -127,6 +127,7 @@ autocmd BufNewFile,BufRead *.md.erb let b:eruby_subtype = 'markdown'
 autocmd BufNewFile,BufRead jrnl*.txt set filetype=journal
 autocmd BufNewFile,BufRead *.podspec set filetype=ruby
 autocmd BufEnter,BufNew *.make set filetype=make
+autocmd BufEnter,BufNew *.toml set filetype=dosini
 autocmd BufEnter,BufNew *.lalrpop set filetype=rust
 autocmd BufEnter,BufNew *.m set filetype=objc
 autocmd BufEnter,BufNew *.mm set filetype=objcpp
