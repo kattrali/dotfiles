@@ -47,11 +47,16 @@ function! s:EnsureDirectory(directory)
 endfunction
 
 " Put all swap files in here
-set backupdir=$HOME/.vim/tmp
-set directory=$HOME/.vim/tmp
-call s:EnsureDirectory(&directory)
+set backupdir=$HOME/.local/vim/swap
+set directory=$HOME/.local/vim/swap
+call s:EnsureDirectory(&backupdir)
 set backup
 
+" Put undo history in here
+set undodir=$HOME/.local/vim/undo
+call s:EnsureDirectory(&undodir)
+set undolevels=1000
+set undofile
 if has("unix")
   " Copy copy register to OS X general pasteboard
   function! PBCopy()
