@@ -299,6 +299,9 @@ let g:edge_disable_italic_comment = 1
 colo edge
 colo candid
 
+
+let g:fzf_buffers_jump = 1 " Reuse existing buffer
+
 " support suspect in vim-test
 let test#custom_runners = {'c': ['Suspect']}
 
