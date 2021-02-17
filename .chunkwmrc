@@ -23,11 +23,11 @@ chunkc set 4_desktop_mode                monocle
 
 chunkc set 1_desktop_tree                ~/.chunkwm_layouts/dev_1
 
-chunkc set global_desktop_offset_top     80
-chunkc set global_desktop_offset_bottom  80
-chunkc set global_desktop_offset_left    80
-chunkc set global_desktop_offset_right   80
-chunkc set global_desktop_offset_gap     50
+chunkc set global_desktop_offset_top     40
+chunkc set global_desktop_offset_bottom  40
+chunkc set global_desktop_offset_left    40
+chunkc set global_desktop_offset_right   40
+chunkc set global_desktop_offset_gap     30
 
 chunkc set desktop_padding_step_size     10.0
 chunkc set desktop_gap_step_size         5.0
