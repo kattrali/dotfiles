@@ -57,6 +57,28 @@ set undodir=$HOME/.local/vim/undo
 call s:EnsureDirectory(&undodir)
 set undolevels=1000
 set undofile
+
+" Format C-family code
+function! s:ClangFormat()
+    let source = join(getline(1, '$'), "\n")
+    let formatted = system('clang-format', source)
+    if v:shell_error != 0
+      echoerr formatted
+      return
+    endif
+    let current_pos = getpos('.')
+    let winview = winsaveview()
+    let splitted = split(formatted, '\n', 1)
+
+    silent! undojoin
+    if line('$') > len(splitted)
+      execute len(splitted) .',$delete' '_'
+    endif
+    call setline(1, splitted)
+    call winrestview(winview)
+    call setpos('.', current_pos)
+endfunction
+
 if has("unix")
   " Copy copy register to OS X general pasteboard
   function! PBCopy()
@@ -118,6 +140,9 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Strip trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Format C code
+autocmd BufWritePre *.c,*.h :call s:ClangFormat()
 
 " Load plugins with https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/bundle')
