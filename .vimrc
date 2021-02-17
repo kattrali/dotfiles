@@ -175,9 +175,7 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle','NERDTreeFind'] }
 set rtp+=/usr/local/opt/fzf
 Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
-Plug 'drmingdrmer/xptemplate'
 Plug 'tpope/vim-projectionist'
-Plug 'joereynolds/SQHell.vim'
 
 " '<leader>cc' to comment
 " '<leader>c ' to toggle comment
