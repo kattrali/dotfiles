@@ -116,6 +116,7 @@ endif
 "
 " Fix crontab weirdness
 autocmd filetype crontab setlocal nobackup nowritebackup
+autocmd filetype go setlocal noexpandtab
 autocmd filetype typescript,swift,ruby,markdown,journal,yaml,apiblueprint,lua,javascript,c,cpp,cs,objc setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd BufNewFile,BufRead *.html.erb let b:eruby_subtype = 'html'
 autocmd BufNewFile,BufRead *.md.erb let b:eruby_subtype = 'markdown'
