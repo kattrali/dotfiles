@@ -186,17 +186,15 @@ Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Languages
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'kylef/apiblueprint.vim', { 'for': 'apiblueprint' }
-Plug 'keith/swift.vim', { 'for': 'swift' }
-Plug 'wting/rust.vim', { 'for': 'rust' }
-Plug 'junegunn/vim-journal', { 'for': 'journal' }
-Plug 'cespare/vim-toml', { 'for': 'toml' }
-Plug 'dag/vim-fish', { 'for': 'fish' }
-Plug 'ledger/vim-ledger', { 'for': 'ledger' }
+Plug 'kylef/apiblueprint.vim'
+Plug 'dag/vim-fish'
+Plug 'ledger/vim-ledger'
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'leafgarland/typescript-vim'
 Plug 'leafo/moonscript-vim'
+Plug 'udalov/kotlin-vim'
+Plug 'tikhomirov/vim-glsl'
+Plug 'bakpakin/fennel.vim'
 
 " VCS
 Plug 'rhysd/committia.vim'
