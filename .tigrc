@@ -5,6 +5,6 @@ bind main      R    ?git rebase -i %(commit)~1
 bind generic   A    !git commit --amend
 bind main      C    !git commit
 bind main      T    !@git tag "%(prompt Enter tag name: )" %(commit)
-bind main      B    !@git checkout -b "%(prompt Enter branch name: )"
+bind main      B    !@git branch "%(prompt Enter branch name: )" %(commit)
 bind main      c    !@git checkout "%(prompt Enter branch name: )"
 bind generic   I    @sh -c "echo %(commit) | pbcopy"
