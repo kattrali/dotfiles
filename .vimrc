@@ -17,6 +17,9 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set fillchars+=vert:│ " Use long bar as vertical separator
 set laststatus=2   " Always show status line
 set termguicolors  " Nice colors
+if has("nvim")
+  set inccommand=nosplit
+endif
 
 " Mouse settings
 set mouse+=a           " Enable mouse
@@ -253,9 +256,6 @@ endif
 
 cnoremap <C-a> <Home>
 
-if has("nvim")
-  set inccommand=nosplit
-endif
 
 " Status line
 " Format: {color}Filename/List flags =spacer= {color}syntax {color}filetype {color}buffer%
