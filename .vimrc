@@ -182,6 +182,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'honza/vim-snippets'
+Plug 'vim-test/vim-test'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -195,6 +196,7 @@ Plug 'leafo/moonscript-vim'
 Plug 'udalov/kotlin-vim'
 Plug 'tikhomirov/vim-glsl'
 Plug 'bakpakin/fennel.vim'
+Plug 'kattrali/suspect.vim' " vim-test extension for projects using suspect test framework
 
 " VCS
 Plug 'rhysd/committia.vim'
@@ -221,8 +223,13 @@ nnoremap <Leader>mm :make<cr>
 nnoremap <Leader>mc :make clean<cr>
 nnoremap <Leader>mt :make test<cr>
 nnoremap <Leader>mr :make run<cr>
+" Test
+nnoremap <Leader>tn :TestNearest<CR>
+nnoremap <Leader>tf :TestFile<CR>
+nnoremap <Leader>ts :TestSuite<CR>
+nnoremap <Leader>tl :TestLast<CR>
 " Layout
-nnoremap <Leader>t :NERDTreeToggle<cr>
+nnoremap <Leader>tt :NERDTreeToggle<cr>
 nnoremap <Leader>j :NERDTreeFind<cr>
 nnoremap vv :vsplit<cr>
 nnoremap vh :split<cr>
@@ -282,6 +289,9 @@ let g:edge_style = 'neon'
 let g:edge_transparent_background = 1
 let g:edge_disable_italic_comment = 1
 colo edge
+
+" support suspect in vim-test
+let test#custom_runners = {'c': ['Suspect']}
 
 " Disable '@brief' prefix in :Dox code comments
 let g:DoxygenToolkit_briefTag_pre=""
