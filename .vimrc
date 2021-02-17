@@ -252,8 +252,8 @@ nnoremap <Leader>k :call <SID>show_documentation()<cr>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   endif
 endfunction
 nnoremap <Leader>K :CocCommand clangd.symbolInfo<cr>
