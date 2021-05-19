@@ -1,12 +1,3 @@
-;=====================================================
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;=====================================================
-
 [colors]
 background = ${xrdb:background}
 background-alt = #444
@@ -16,47 +7,96 @@ primary = ${xrdb:color9}
 secondary = ${xrdb:color9}
 alert = #bd2c40
 
-[bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
-;radius = 6.0
-fixed-center = false
+[bar/top]
+height = 48
+modules-left = bspwm
+; modules-center = mpd
+modules-right = audio time date eth wlan powermenu
+font-0 = "Lucida Grande:pixelsize=18"
+font-1 = "Font Awesome 5 Free Solid:pixelsize=16"
+
+underline-size = 4
+underline-color = #eee
+
+radius = 6.0
+spacing = 8
+padding-left = 4
+padding-right = 4
+module-margin-left = 4
+module-margin-right = 2
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
-line-color = #f00
+[module/time]
+type = internal/date
+label = %time%
+time = "%H:%M"
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
 
-border-size = 0
-border-color = ${xrdb:color8:#FF000000}
+[module/date]
+type = internal/date
+label = %date%
+date = "%d %B %Y"
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
 
-padding-left = 1
-padding-right = 1
+[module/bspwm]
+type = internal/bspwm
 
-module-margin-left = 1
-module-margin-right = 1
+format = <label-state> <label-mode>
+inline-mode = true
 
-font-0 = LucidaGrande:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = WunconSiji:pixelsize=10;1
+label-focused-underline = ${colors.primary}
+label-urgent-underline = ${colors.alert}
 
-modules-left = bspwm
-modules-center =
-modules-right = alsa pulseaudio cpu battery xkeyboard date powermenu
+label-focused-padding = 1
+label-occupied-padding = 1
+label-urgent-padding = 1
+label-empty-padding = 1
 
-tray-position = right
-tray-padding = 2
+label-focused = %index%
+label-occupied = %index%
+label-empty =
+label-urgent = %index%
 
-cursor-click = pointer
-cursor-scroll = ns-resize
+[module/audio]
+type = internal/pulseaudio
+mapped = true
+label-volume-padding    = 1
+format-muted = <label-muted>
+label-muted = " (muted)"
+label-muted-padding    = 1
+format-volume-padding = 0
+format-muted-padding  = 1
+format-muted-foreground = ${colors.secondary}
+ramp-volume-0 = ""
+ramp-volume-1 = ""
+ramp-volume-2 = ""
+format-volume = <ramp-volume><label-volume>
+click-right = kitty pulsemixer
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
+[module/wlan]
+type = internal/network
+interface = wlp6s0
+interval = 3.0
+
+format-connected-prefix = ""
+format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid%
+
+[module/eth]
+type = internal/network
+interface = enp7s0
+interval = 3.0
+
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -74,28 +114,6 @@ label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
 
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
-
 [module/mpd]
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
@@ -109,23 +127,6 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -133,112 +134,29 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 label = %percentage:2%%
 
-[module/wlan]
-type = internal/network
-interface =
-interval = 3.0
+[module/powermenu]
+type = custom/menu
 
-format-connected = <ramp-signal> <label-connected>
-label-connected = %essid%
+expand-right = true
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+format-spacing = 1
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
 
-[module/eth]
-type = internal/network
-interface =
-interval = 3.0
+menu-0-0 = power off
+menu-0-0-exec = #powermenu.open.1
+menu-0-1 = lock
+menu-0-1-exec = xsecurelock
 
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/date]
-type = internal/date
-interval = 5
-
-date =
-date-alt = " %Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.secondary}
-
-label = %date% %time%
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted = 🔇 muted
-label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = 🔇 muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+menu-1-0 = power off
+menu-1-0-exec = sudo poweroff now
+menu-1-1 = cancel
+menu-1-1-exec = #powermenu.close
 
 [module/battery]
 type = internal/battery
@@ -269,45 +187,5 @@ animation-discharging-1 = 
 animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
 
 ; vim:ft=dosini

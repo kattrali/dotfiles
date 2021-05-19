@@ -32,10 +32,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-~/.fehbg
-bspwm &
-sleep 1
-source ~/.bspwmrc
-sxhkd -c ~/.sxhkdrc &
-polybar example &
-exec urxvt -name login
+echo "power on\n" | bluetoothctl
+
+exec bspwm

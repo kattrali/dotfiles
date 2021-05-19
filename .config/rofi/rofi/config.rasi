@@ -1,0 +1,6 @@
+configuration {
+    font: "Range Mono 14";
+    matching: "fuzzy";
+    terminal: "kitty";
+    theme: "themes/main.rasi";
+}

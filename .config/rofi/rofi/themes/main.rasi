@@ -1,0 +1,46 @@
+* {
+  background-color: #111111;
+  text-color: #dedede;
+  border-color: #D0996E;
+  spacing: 0;
+}
+
+window {
+  width: 1000px;
+  border: 5;
+}
+
+inputbar {
+  children: [prompt,entry];
+}
+
+prompt {
+  padding: 16px;
+}
+
+textbox {
+  background-color: #2e343f;
+  border-color: #282C33;
+  padding: 8px 16px;
+}
+
+entry {
+  padding: 16px;
+}
+
+listview {
+  cycle: false;
+  scrollbar: false;
+}
+
+element {
+  padding: 16px;
+  margin: 0 10 0 10;
+}
+
+element selected {
+  background-color: #993D61;
+  text-color: #fff;
+}
+
+/* vim: ft=css

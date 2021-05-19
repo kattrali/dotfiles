@@ -1,3 +1,5 @@
+Xft.dpi: 144
+
 *.foreground: #d8dee8
 *.background: #262626
 
@@ -32,23 +34,4 @@
 ! white
 *.color7: #e5e9f0
 *.color15: #d1d5dc
-
-URxvt*url-launcher: firefox
-URxvt*scrollBar: false
-URxvt*cursorBlink: true
-URxvt*boldColors: on
-URxvt*font: xft:Monaco for Powerline:size=10:antialias=true:hinting=true:medium,\
-            xft:Wuncon Siji:size=10:style=medium:hinting=true,antialias=true,\
-            -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*-*
-
-URxvt.boldFont: xft:Monaco for Powerline:size=10:antialias=true:hinting=true:bold
-
-rofi.modi: window,run
-rofi.lines: 10
-rofi.separator-style: dash
-rofi.padding: 20
-rofi.font: Lucida Grande 11
-rofi.bw: 6
-rofi.bc: #2a2a2a
-rofi.hide-scrollbar: true
 rofi.hlbg: #bf616a
