@@ -1,0 +1,42 @@
+mpd_host = "::1"
+mpd_port = 6600
+mpd_music_dir = "music"
+mouse_support = "yes"
+
+visualizer_data_source = localhost:5555
+visualizer_autoscale = yes
+visualizer_color = 47, 83, 119, 155, 191, 227, 221, 215, 209, 203, 197, 161
+visualizer_in_stereo = yes
+visualizer_look = ▓▒
+visualizer_output_name = Visualizer feed
+visualizer_type = spectrum
+# visualizer_spectrum_smooth_look = yes
+
+# █▓▒░ Display Settings
+song_list_format = " $0%n $1• $8%t $R$0%A "
+song_columns_list_format = "(3)[]{}(92)[white]{t} (4)[red]{l}"
+song_status_format = " $3%t $0 "
+playlist_display_mode = classic
+statusbar_color = "black"
+main_window_color = "cyan"
+current_item_prefix = "$(magenta)$r"
+current_item_suffix = "$/r$(end)"
+current_item_inactive_column_prefix = "$(black)$r"
+current_item_inactive_column_suffix = "$/r$(end)"
+
+autocenter_mode = yes
+centered_cursor = yes
+colors_enabled = yes
+connected_message_on_startup = yes
+discard_colors_if_item_is_selected = yes
+external_editor = vim
+header_visibility = no
+# now_playing_prefix = *
+now_playing_suffix = "$8$/b"
+progressbar_color = "black"
+progressbar_look = "▣>"
+startup_screen = playlist
+# startup_slave_screen = browser
+statusbar_visibility = yes
+titles_visibility = no
+user_interface = classic
