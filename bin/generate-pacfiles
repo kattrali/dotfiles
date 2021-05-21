@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+pacman -Qqm > init/arch/Pacfile.aur
+pacman -Qqe | grep -v "$(pacman -Qqm)" > init/arch/Pacfile

@@ -1,6 +1,4 @@
-1password
 amd-ucode
-asciiquarium-git
 autoconf
 automake
 base
@@ -18,7 +16,6 @@ flex
 fontforge
 fzf
 git
-git-delta
 graphviz
 groff
 htop
@@ -33,10 +30,7 @@ linux-firmware
 linux-headers
 lldb
 m4
-maim-git
-minecraft-launcher
 mopidy
-mopidy-mpd
 ncmpcpp
 neofetch
 neovim
@@ -44,24 +38,18 @@ ninja
 nodejs
 npm
 openssh
-pipes.sh
 pkgconf
-polybar
 pulseaudio
 pulsemixer
 rofi
 sdl2_mixer
-shc
 smbclient
 sudo
 sxhkd
 tig
 tmux
-trash
 tree
 ttf-font-awesome
-ttf-mac-fonts
-ttf-range-mono
 which
 xclip
 xf86-video-amdgpu
@@ -70,4 +58,3 @@ xorg-xinit
 xsecurelock
 yubikey-manager
 zfs-dkms
-zoom
