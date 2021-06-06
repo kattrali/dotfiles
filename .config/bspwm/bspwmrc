@@ -15,6 +15,7 @@ color8=$(xrdb -query | grep "color8" | cut -f2 | sed -r 's/#//' | head -n 1)
 ~/.config/feh/bg
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x polybar > /dev/null || polybar top &
+pgrep -x hot > /dev/null || hot --bottom-right xsecurelock &
 
 bspc monitor -d I II III IV
 
