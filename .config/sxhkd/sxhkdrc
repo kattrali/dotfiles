@@ -6,6 +6,10 @@ super + Return
 super + b
     firefox
 
+# launch browser in work mode
+super + shift + b
+    firefox -P work
+
 # program launcher
 super + space
     rofi -show run
@@ -125,15 +129,15 @@ super + alt + shift + {h,j,k,l}
 #	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Screenshot (to file)
-super + s
-    maim -s ~/Screenshots/(date +%Y-%m-%d_%H-%M-%S).png
+super + alt + 4
+    maim -s ~/tmp/screenshots/(date +%Y-%m-%d_%H-%M-%S).png
 
 # Screenshot (to url)
-super + shift + s
-    firefox (maim -s | flr)
+# super + shift + s
+#     firefox (maim -s | flr)
 
 # Screenshot (to clipboard)
-super + alt + s
+super + alt + 3
     maim -s | xclip -selection clipboard -t image/png
 
 # Take a screen recording
@@ -148,5 +152,3 @@ ctrl + {_,shift + } tab
     bspc node -f {next,prev}.local
 ctrl + {left,right}
     bspc desktop -f {next,prev}
-ctrl + {1,2,3,4}
-    bspc desktop -f {1,2,3,4}

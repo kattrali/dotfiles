@@ -10,8 +10,8 @@ alert = #bd2c40
 [bar/top]
 height = 48
 modules-left = bspwm
-; modules-center = mpd
-modules-right = audio time date eth wlan powermenu
+modules-center = mpd
+modules-right = audio time date eth wlan lock powermenu
 font-0 = "Lucida Grande:pixelsize=18"
 font-1 = "Font Awesome 5 Free Solid:pixelsize=16"
 
@@ -79,13 +79,16 @@ click-right = kitty pulsemixer
 
 [module/wlan]
 type = internal/network
-interface = wlp6s0
+interface = wlan0
 interval = 3.0
 
 format-connected-prefix = ""
 format-connected-prefix-foreground = ${colors.foreground-alt}
-format-connected = <ramp-signal> <label-connected>
+format-connected = <label-connected>
+format-disconnected =
 label-connected = %essid%
+label-connected-padding = 1
+click-right = kitty iwctl
 
 [module/eth]
 type = internal/network
@@ -116,16 +119,28 @@ label-indicator-underline = ${colors.secondary}
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+format-online = <label-song><icon-prev><toggle><icon-next>
+format-online-prefix = ""
+format-online-prefix-padding = 1
+format-online-prefix-foreground = ${colors.foreground-alt}
+format-offline =
+host = ::1
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+icon-prev = ""
+icon-stop = ""
+icon-play = ""
+icon-pause = ""
+icon-next = ""
 
-label-song-maxlen = 25
+label-song-maxlen = 60
 label-song-ellipsis = true
+
+# <bar-progress>
+bar-progress-width = 45
+bar-progress-indicator = ""
+bar-progress-fill = ""
+bar-progress-empty = "-"
+click-right = kitty ncmpcpp -s playlist -S visualizer
 
 [module/cpu]
 type = internal/cpu
@@ -133,6 +148,11 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 label = %percentage:2%%
+
+[module/lock]
+type = custom/text
+content = 
+click-left = xsecurelock
 
 [module/powermenu]
 type = custom/menu
@@ -150,11 +170,15 @@ label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = power off
 menu-0-0-exec = #powermenu.open.1
-menu-0-1 = lock
-menu-0-1-exec = xsecurelock
+menu-0-1 = log out
+menu-0-1-exec = loginctl kill-session 1
+menu-0-2 = lock
+menu-0-2-exec = xsecurelock
+menu-0-3 = sleep
+menu-0-3-exec = xsecurelock -- systemctl suspend
 
 menu-1-0 = power off
-menu-1-0-exec = sudo poweroff now
+menu-1-0-exec = poweroff
 menu-1-1 = cancel
 menu-1-1-exec = #powermenu.close
 
