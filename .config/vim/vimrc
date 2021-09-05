@@ -34,6 +34,16 @@ endif
 " Hide this junk
 set wildignore+=*/_workspace,*/build/\,*/node_modules,*/target,*/vendor,*/venv*,*/tmp,*/dist/,*.pyc,*.egg-info,*.so
 
+if has("gui_running")
+    set guifont=Range\ Mono:h14
+else
+    :source $VIMRUNTIME/menu.vim
+    :set wildmenu
+    :set cpoptions-=<
+    :set wildcharm=<C-Z>
+    :map <F4> :emenu <C-Z>
+endif
+
 let mapleader=" "  " Map <leader> to space
 
 filetype off
@@ -42,6 +52,14 @@ filetype indent on
 syn on
 
 " Set directory settings
+" Layout:
+" .config/vim
+" ├── before    " stuff to load prior to plugins
+" └── templates " new file templates
+"
+" .local/vim
+" ├── swap      " swap files
+" └── undo      " undo history
 
 " Create a directory if it doesn't exist yet
 function! s:EnsureDirectory(directory)
@@ -62,284 +80,106 @@ call s:EnsureDirectory(&undodir)
 set undolevels=1000
 set undofile
 
-" Format C-family code
-function! s:ClangFormat()
-    let source = join(getline(1, '$'), "\n")
-    let formatted = system('clang-format', source)
-    if v:shell_error != 0
-      echoerr formatted
-      return
-    endif
-    let current_pos = getpos('.')
-    let winview = winsaveview()
-    let splitted = split(formatted, '\n', 1)
+" Put templates here
+let g:templatedir = expand("$HOME/.config/vim/templates")
+call s:EnsureDirectory(templatedir)
+" Use templates for new files
+" from https://twitter.com/petdance/status/1009826710752317440
+execute 'autocmd BufNewFile * silent! 0r' . g:templatedir . '/%:e.tpl'
 
-    silent! undojoin
-    if line('$') > len(splitted)
-      execute len(splitted) .',$delete' '_'
-    endif
-    call setline(1, splitted)
-    call winrestview(winview)
-    call setpos('.', current_pos)
-endfunction
-
-if has("unix")
-  " Copy copy register to OS X general pasteboard
-  function! PBCopy()
-    call system("pbcopy", getreg(""))
-  endfunction
-
-  " Paste from OS X general pasteboard to copy register
-  function! PBPaste()
-    call setreg("", system("pbpaste"))
-  endfunction
-endif
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Allow tab for completion while in insert mode
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+" Put plugin bundle here
+let g:bundledir = expand("$HOME/.config/vim/bundle")
 
 " Language Settings
-"
+
 " Fix crontab weirdness
 autocmd filetype crontab setlocal nobackup nowritebackup
+
 autocmd filetype go setlocal noexpandtab
+autocmd filetype json setlocal nofixendofline
 autocmd filetype typescript,swift,ruby,markdown,journal,yaml,apiblueprint,lua,javascript,c,cpp,cs,objc setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd BufNewFile,BufRead *.html.erb let b:eruby_subtype = 'html'
 autocmd BufNewFile,BufRead *.md.erb let b:eruby_subtype = 'markdown'
 autocmd BufNewFile,BufRead jrnl*.txt set filetype=journal
 autocmd BufNewFile,BufRead *.podspec set filetype=ruby
 autocmd BufEnter,BufNew *.make set filetype=make
-autocmd BufEnter,BufNew *.toml set filetype=dosini
 autocmd BufEnter,BufNew *.lalrpop set filetype=rust
 autocmd BufEnter,BufNew *.m set filetype=objc
 autocmd BufEnter,BufNew *.mm set filetype=objcpp
 autocmd BufEnter,BufNew *.metal set filetype=cpp
 autocmd filetype markdown,journal,apiblueprint set textwidth=80
-" Use templates for new files
-" from https://twitter.com/petdance/status/1009826710752317440
-call s:EnsureDirectory("$HOME/.vim/templates")
-autocmd BufNewFile * silent! 0r ~/.vim/templates/%:e.tpl
 autocmd filetype java set colorcolumn=100
 autocmd filetype cs set colorcolumn=100
-
-function! s:ClosePreviousBuffer()
-  let num = bufnr('%')
-  bprev " Go to previous buffer
-  " Force close as otherwise term buffers refuse as potentially still running
-  execute "bdelete! " . num
-endfunction
-
-if has("nvim")
-  autocmd TermOpen * setlocal nonumber norelativenumber
-  autocmd TermOpen * startinsert
-  autocmd TermLeave * stopinsert
-  " Instead of closing the window on exit, switch to previous buffer and close
-  " the terminal.
-  " Skip for fzf commands, which do something weird with floating windows
-  " This emulates actual vim's behavior on exiting a process
-  autocmd TermClose * if &ft != "fzf" | call s:ClosePreviousBuffer() | endif
-endif
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Strip trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Format C code
-autocmd BufWritePre *.c,*.h :call s:ClangFormat()
+" Load pre-plugin settings
+for fpath in glob('~/.config/vim/before/*.vim', 1, 1)
+  execute 'source' fpath
+endfor
 
-" Load plugins with https://github.com/junegunn/vim-plug
-call plug#begin('~/.vim/bundle')
-
-" Navigation and search
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle','NERDTreeFind'] }
-set rtp+=/usr/local/opt/fzf
-Plug 'junegunn/fzf.vim'
-Plug 'rking/ag.vim'
-Plug 'tpope/vim-projectionist'
-
-" '<leader>cc' to comment
-" '<leader>c ' to toggle comment
-Plug 'scrooloose/nerdcommenter'
-Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'honza/vim-snippets'
-Plug 'vim-test/vim-test'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Languages
-Plug 'kylef/apiblueprint.vim'
-Plug 'dag/vim-fish'
-Plug 'ledger/vim-ledger'
-Plug 'chrisbra/csv.vim', { 'for': 'csv' }
-Plug 'leafgarland/typescript-vim'
-Plug 'leafo/moonscript-vim'
-Plug 'udalov/kotlin-vim'
-Plug 'tikhomirov/vim-glsl'
-Plug 'bakpakin/fennel.vim'
-Plug 'kattrali/suspect.vim' " vim-test extension for projects using suspect test framework
-
-" VCS
-Plug 'rhysd/committia.vim'
-
-" Color and layout
-" Plug 'junegunn/seoul256.vim'
-" Plug 'keith/parsec.vim'
-" Plug 'morhetz/gruvbox'
-" Plug 'sainnhe/edge'
-Plug 'flrnd/candid.vim'
-Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
-Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-call plug#end()
+if has("nvim")
+lua <<EOF
+vim.notify = require("notify")
+EOF
+endif
 
 " Keybindings
-"
-" Git
-" Show staging area
-nnoremap <Leader>gc :terminal tig status<cr>
-" Tree view
-nnoremap <Leader>gs :terminal tig<cr>
-" Log view
-nnoremap <Leader>gl :terminal tig log<cr>
-" Show blame for current file
-nnoremap <Leader>gb :exe "terminal tig blame " . @% . " +" . line(".")<cr>
-nnoremap <Leader>sh :CocCommand git.chunkStage<cr>
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
-" Make
-nnoremap <Leader>mm :make<cr>
-nnoremap <Leader>mc :make clean<cr>
-nnoremap <Leader>mt :make test<cr>
-nnoremap <Leader>mr :make run<cr>
-" Test
-nnoremap <Leader>tn :TestNearest<CR>
-nnoremap <Leader>tf :TestFile<CR>
-nnoremap <Leader>ts :TestSuite<CR>
-nnoremap <Leader>tl :TestLast<CR>
-" Layout
-nnoremap <Leader>tt :NERDTreeToggle<cr>
-nnoremap <Leader>j :NERDTreeFind<cr>
-nnoremap vv :vsplit<cr>
-nnoremap vh :split<cr>
+
 " General
 nnoremap Y y$
-nnoremap <Leader>f :Files<cr>
 nnoremap <Leader>w :w<cr>
-nnoremap <Leader>b :Buffers<cr>
-nnoremap <Leader>a :CocList -I symbols<cr>
-nnoremap <Leader>e :CocList diagnostics<cr>
-nnoremap <Leader>l :CocList outline<cr>
-nnoremap <Leader>, :CocCommand clangd.switchSourceHeader<cr>
-
-nnoremap <Leader>k :call <SID>show_documentation()<cr>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  endif
-endfunction
-
-nmap <Leader>gd <Plug>(coc-definition)
-nmap <Leader>gr <Plug>(coc-references)
-nmap <Leader>gh :call CocActionAsync('highlight')<cr>
-nmap <Leader>gy <Plug>(coc-type-definition)
-nmap <Leader>gi <Plug>(coc-implementation)
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Copy yanked text to system pasteboard
-nnoremap <Leader>y :call PBCopy()<cr>
-" Paste system pasteboard contents into copy register
-nnoremap <Leader>p :call PBPaste()<cr>
-" List operations
-nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
-nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
-" Search
-nnoremap <Leader>ag :Ag <cword><cr>
-" Docs
-nnoremap <Leader>mn :execute '!man ' . expand("<cword>")<cr> " Show man page for current word
-" swap colon and single quote for easier commands
+cnoremap <C-a> <Home>
+nnoremap <Leader>y :call SendCopyRegisterToSystemClipboard()<cr>
+nnoremap <Leader>p :call SendSystemClipboardToCopyRegister()<cr>
+"" swap colon and single quote for easier commands
 nnoremap ' :
 nnoremap : '
 vnoremap ' :
 vnoremap : '
 
-let g:coc_snippet_next = '<tab>'
-let g:coc_status_error_sign = 'E:'
-let g:coc_status_warning_sign = '⚠'
-let g:coc_global_extensions = ['coc-snippets', 'coc-git', 'coc-tsserver', 'coc-rls', 'coc-go', 'coc-clangd']
+" Make
+nnoremap <Leader>mm :make<cr>
+nnoremap <Leader>mc :make clean<cr>
+nnoremap <Leader>mt :make test<cr>
+nnoremap <Leader>mr :make run<cr>
 
-" Use Seoul256 color scheme
-"let g:seoul256_background = 233
-"colo seoul256
-set background=dark
-let g:edge_style = 'neon'
-let g:edge_transparent_background = 1
-let g:edge_disable_italic_comment = 1
-colo edge
-colo candid
+" Git
+"" Show staging area
+nnoremap <Leader>gc :terminal tig status<cr>
+"" Tree view
+nnoremap <Leader>gs :terminal tig<cr>
+"" Log view
+nnoremap <Leader>gl :terminal tig log<cr>
+"" Show blame for current file
+nnoremap <Leader>gb :execute "terminal tig blame " . @% . " +" . line(".")<cr>
 
+" Layout
+nnoremap vv :vsplit<cr>
+nnoremap vh :split<cr>
 
-let g:fzf_buffers_jump = 1 " Reuse existing buffer
+" List operations
+nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
+nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
 
-" support suspect in vim-test
-let test#custom_runners = {'c': ['Suspect']}
-
-" Disable '@brief' prefix in :Dox code comments
-let g:DoxygenToolkit_briefTag_pre=""
-
-" Set snippet options
-let g:UltiSnipsExpandTrigger="<c-e>"
-
-" Set NERDTree hidden files
-let g:NERDTreeIgnore = ['_workspace', 'build', 'node_modules', 'target', 'vendor', 'dist/', 'tmp', '.pyc', 'venv.*', 'egg-info', '.so', '.bundle']
-
-" Configure comment layout
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDDefaultAlign = 'left'
-let g:NERDAltDelims_c = 1
-let g:NERDCommentEmptyLines = 1
-let g:NERDTrimTrailingWhitespace = 1
-let g:NERDToggleCheckAllLines = 1
+" Lookup
+nnoremap <Leader>ag :Ag <cword><cr>
+nnoremap <Leader>mn :execute '!man ' . expand("<cword>")<cr> " Show man page for current word
 
 " Allow fenced code block highlighting in Markdown
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php', 'json', 'ruby', 'c', 'diff']
+let g:markdown_fenced_languages = ['ts=typescript', 'html', 'python', 'bash=sh', 'php', 'json', 'ruby', 'c', 'diff']
 
-if has("gui_running")
-    set guifont=Range\ Mono:h14
-else
-    :source $VIMRUNTIME/menu.vim
-    :set wildmenu
-    :set cpoptions-=<
-    :set wildcharm=<C-Z>
-    :map <F4> :emenu <C-Z>
-endif
-
-cnoremap <C-a> <Home>
-
+let g:python3_host_prog = '/bin/python'
 
 " Status line
 " Format: {color}Filename/List flags =spacer= {color}syntax {color}filetype {color}buffer%
 " Note:   Print available colors with :so $VIMRUNTIME/syntax/hitest.vim
 set statusline=%#LineNr#%f%k%w\ %m%r%=%#SpellBad#%{coc#status()}%{get(b:,'coc_current_function','')}%#CursorLineNr#\ \♛%4P%#LineNr#\ %#Question#%y
+
+" Theme
+set background=dark
+let g:edge_style = 'neon'
+let g:edge_transparent_background = 1
+let g:edge_disable_italic_comment = 1
+colo edge

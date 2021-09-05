@@ -2,19 +2,23 @@ snippet class "metaclass" b
 local ${1:classname} = {}
 
 local function constructor()
-	return setmetatable({}, $1)
+	return setmetatable({
+	-- instance variables
+	}, $1)
 end
 
 function $1:__tostring()
 	return "$1"
 end
 
+-- instance functions
 function $1:$0()
 end
 
 $1.__index = $1
 
 return setmetatable({
+-- static functions
 }, {
 	__call = function(_,  ...) return constructor(...) end
 })
@@ -22,4 +26,8 @@ endsnippet
 
 snippet sfmt "string.format()" w
 string.format("$1", $0)
+endsnippet
+
+snippet psfmt "print(string.format())" b
+print(string.format("$1", $0))
 endsnippet
