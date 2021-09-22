@@ -2,7 +2,7 @@
 background = ${xrdb:background}
 background-alt = #444
 foreground = ${xrdb:foreground}
-foreground-alt = #555
+foreground-alt = #072b3a
 primary = ${xrdb:color9}
 secondary = ${xrdb:color9}
 alert = #bd2c40
@@ -13,7 +13,8 @@ modules-left = bspwm
 modules-center = mpd
 modules-right = audio time date eth wlan lock powermenu
 font-0 = "Lucida Grande:pixelsize=18"
-font-1 = "Font Awesome 5 Free Solid:pixelsize=16"
+# check fc-list if the font goes missing - it may rename for major releases
+font-1 = "Font Awesome 6 Free Solid:pixelsize=16"
 
 underline-size = 4
 underline-color = #eee
@@ -37,7 +38,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
-label = %date%
+label = %{A3:bspc rule -a \* --one-shot state=floating rectangle=400x400+3240+48 && kitty --hold cal:}%date%%{A}
 date = "%d %B %Y"
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
@@ -56,10 +57,15 @@ label-occupied-padding = 1
 label-urgent-padding = 1
 label-empty-padding = 1
 
-label-focused = %index%
-label-occupied = %index%
+label-focused = %icon%
+label-occupied = %icon%
 label-empty =
-label-urgent = %index%
+label-urgent = %icon%
+
+ws-icon-0 = I;
+ws-icon-1 = II;
+ws-icon-2 = III;
+ws-icon-3 = IV;
 
 [module/audio]
 type = internal/pulseaudio
@@ -75,7 +81,7 @@ ramp-volume-0 = ""
 ramp-volume-1 = ""
 ramp-volume-2 = ""
 format-volume = <ramp-volume><label-volume>
-click-right = kitty pulsemixer
+click-right = bspc rule -a \* --one-shot state=floating rectangle=1200x800+2240+48 && kitty pulsemixer
 
 [module/wlan]
 type = internal/network
@@ -86,9 +92,8 @@ format-connected-prefix = ""
 format-connected-prefix-foreground = ${colors.foreground-alt}
 format-connected = <label-connected>
 format-disconnected =
-label-connected = %essid%
+label-connected = %{A1:kitty iwctl:}%essid%%{A}
 label-connected-padding = 1
-click-right = kitty iwctl
 
 [module/eth]
 type = internal/network
@@ -162,9 +167,11 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${colors.primary}
+label-open-background = ${colors.foreground-alt}
+label-open-padding = 4
 label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-close-foreground = ${colors.primary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 

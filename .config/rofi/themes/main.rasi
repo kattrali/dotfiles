@@ -1,13 +1,14 @@
 * {
-  background-color: #111111;
-  text-color: #dedede;
-  border-color: #D0996E;
+  background-color: #02131a;
+  text-color: #acb0d0;
+  border-color: #9ece6a;
   spacing: 0;
 }
 
 window {
   width: 1000px;
   border: 5;
+  border-color: #072b3a;
 }
 
 inputbar {
@@ -19,8 +20,6 @@ prompt {
 }
 
 textbox {
-  background-color: #2e343f;
-  border-color: #282C33;
   padding: 8px 16px;
 }
 
@@ -33,14 +32,19 @@ listview {
   scrollbar: false;
 }
 
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
 element {
   padding: 16px;
   margin: 0 10 0 10;
 }
 
 element selected {
-  background-color: #993D61;
-  text-color: #fff;
+  background-color: #0db9d7;
+  text-color: #02131a;
 }
 
 /* vim: ft=css

@@ -179,7 +179,8 @@ set statusline=%#LineNr#%f%k%w\ %m%r%=%#SpellBad#%{coc#status()}%{get(b:,'coc_cu
 
 " Theme
 set background=dark
-let g:edge_style = 'neon'
+let g:edge_style = 'aura'
 let g:edge_transparent_background = 1
 let g:edge_disable_italic_comment = 1
+let g:edge_diagnostic_line_highlight = 1
 colo edge

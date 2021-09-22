@@ -1,0 +1,77 @@
+:root {
+    --lwt-selected-tab-background-color: #132c3e !important;
+    --button-hover-bgcolor: #072b3a !important;
+    --button-active-bgcolor: #132c3e !important;
+    --arrowpanel-background: #02131a !important;
+    --tab-border-radius: 2px !important;
+    --tab-block-margin: 0 !important;
+    --toolbarbutton-border-radius: 2px !important;
+}
+
+toolbar {
+    padding: 4px !important;
+}
+
+.tabbrowser-tab:not([pinned]) {
+    display: none;
+}
+
+spacer[part="overflow-start-indicator"] {
+    display: none;
+}
+
+#tabbrowser-tabs {
+    margin-top: -6px;
+}
+
+#scrollbutton-up, #scrollbutton-down {
+    display: none;
+}
+
+#tabs-newtab-button {
+    display: none !important;
+}
+
+#navigator-toolbox {
+    display: flex;
+    background-color: #02131a !important;
+    background-image: none !important;
+    background-repeat: unset !important;
+    border-bottom: 1px solid #1138549c !important;
+}
+
+#urlbar-background {
+    background-color: #113854 !important;
+}
+
+#urlbar-container {
+    width: 100%;
+    margin-top: -4px !important;
+}
+
+#titlebar {
+    flex: initial;
+    display: flex;
+}
+
+#nav-bar {
+    flex: auto;
+    background-color: inherit !important;
+}
+
+#toolbar-menubar {
+    display: block;
+}
+
+#toolbar-menubar[autohide="true"][inactive="true"]:not([customizing="true"]) {
+    width: 0 !important;
+}
+
+#toolbar-menubar:not([inactive="true"]) {
+    flex-basis: 100%;
+    width: 100%;
+}
+
+#alltabs-button {
+    display: block !important;
+}
