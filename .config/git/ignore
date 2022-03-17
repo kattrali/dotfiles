@@ -6,6 +6,7 @@
 *.egg-info
 .bundle
 venv*
+nenv/*
 tags
 target
 .DS_Store
