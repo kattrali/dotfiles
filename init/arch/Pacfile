@@ -12,6 +12,7 @@ bspwm
 calc
 cloc
 cmake
+cmatrix
 discord
 dunst
 duplicity
@@ -37,10 +38,13 @@ kitty
 krita
 ledger
 libfido2
+libimobiledevice
 libyaml
 linux
 linux-firmware
 linux-headers
+linux-lts
+linux-lts-headers
 lldb
 love
 lua53
@@ -48,6 +52,7 @@ m4
 man-db
 man-pages
 mopidy
+mosh
 ncmpcpp
 neofetch
 neovim
@@ -60,6 +65,7 @@ pulseaudio
 pulsemixer
 python-nodeenv
 python-pip
+python-poetry
 redshift
 rofi
 rsync
@@ -69,6 +75,9 @@ smbclient
 spirv-tools
 sudo
 sxhkd
+texlive-bin
+texlive-core
+texlive-latexextra
 the_silver_searcher
 tig
 tmux
