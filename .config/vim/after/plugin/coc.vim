@@ -48,7 +48,7 @@ nmap <leader>rn <Plug>(coc-rename)
 let g:coc_snippet_next = '<tab>'
 let g:coc_status_error_sign = 'E:'
 let g:coc_status_warning_sign = '⚠'
-let g:coc_global_extensions = ['coc-snippets', 'coc-git', 'coc-tsserver', 'coc-rls', 'coc-go', 'coc-clangd']
+let g:coc_global_extensions = ['coc-flutter', 'coc-snippets', 'coc-git', 'coc-tsserver', 'coc-rls', 'coc-go', 'coc-clangd']
 
 " Set snippet options
 let g:UltiSnipsExpandTrigger="<c-e>"

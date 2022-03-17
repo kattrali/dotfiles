@@ -3,8 +3,8 @@
 set fish_greeting
 set -x GOPATH $HOME/tmp/go
 set -x MAILDIR $HOME/mail/INBOX
-set -x EDITOR vim
-set -x MANPAGER vimpager
+set -x EDITOR nvim
+set -x MANPAGER nvim +Man\!
 set -x HAXELIB_PATH /usr/local/lib/haxelib
 set -x HAXE_STD_PATH /usr/local/lib/haxe/std
 set -x COCOAPODS_DISABLE_STATS 1
