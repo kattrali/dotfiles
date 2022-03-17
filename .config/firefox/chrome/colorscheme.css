@@ -1,0 +1,18 @@
+:root {
+    --arrowpanel-background: #02131a !important;
+    --button-active-bgcolor: #132c3e !important;
+    --button-hover-bgcolor: #072b3a !important;
+    --chrome-content-separator-color: #1138549c !important;
+    --lwt-accent-color-inactive: #02131a !important;
+    --lwt-accent-color: #02131a !important;
+    --lwt-additional-images: none !important;
+    --lwt-background-tiling: no-repeat !important;
+    --lwt-selected-tab-background-color: #132c3e !important;
+    --toolbar-bgcolor: #02131a !important;
+    --toolbar-field-background-color: #113854 !important;
+
+    /*
+    --tab-border-radius: 2px !important;
+    --toolbarbutton-border-radius: 2px !important;
+    */
+}

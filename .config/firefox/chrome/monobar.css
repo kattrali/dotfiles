@@ -1,0 +1,102 @@
+/* Displays pinned tabs, unpinned selected tab, and the url bar (with buttons) in a
+ * single toolbar */
+
+:root {
+    /* removes uneven margin from before pinned tabs */
+    --tab-block-margin: 0 !important;
+}
+
+toolbar {
+    padding: 4px !important;
+}
+
+/* hide every unpinned tab unless selected */
+.tabbrowser-tab:not([pinned]):not([selected]) {
+    display: none;
+}
+
+/* keep a consistent tab width for unpinned tabs, to avoid jitter during hover
+ * or loading */
+.tabbrowser-tab:not([pinned]) {
+    max-width: 60px !important;
+}
+
+/* remove default extra left margin for first unpinned tab */
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab[first-visible-unpinned-tab] {
+    margin-inline-start: 0 !important;
+}
+
+/* remove default extra right margin for tab icon */
+.tab-icon-image:not([pinned]) {
+    margin-inline-end: 0 !important;
+}
+
+/* hide unpinned tab labels */
+.tab-label-container {
+    display: none;
+}
+
+/* show close button on unpinned tabs in a consistent size */
+.tab-close-button {
+    padding: 8px !important;
+    margin-left: 4px !important;
+    width: 24px !important;
+}
+
+/* remove unneeded separator */
+spacer[part="overflow-start-indicator"] {
+    display: none;
+}
+
+#tabbrowser-tabs {
+    /* make unpinned tabs size consistent */
+    --tab-min-width:  60px !important;
+
+    /* align tab icons with buttons */
+    margin-top: -6px;
+}
+
+/* hide buttons to skip through unpinned tabs */
+#scrollbutton-up, #scrollbutton-down {
+    display: none;
+}
+
+/* show tabs + url bar + toolbar buttons in a single row */
+#navigator-toolbox {
+    display: flex;
+}
+
+#titlebar {
+    /* keep original size */
+    flex: initial;
+
+    /* flex to allow menu bar to expand when visible */
+    display: flex;
+}
+
+#nav-bar {
+    /* expand to fit space remaining from #titlebar */
+    flex: auto;
+}
+
+/* align bar with buttons */
+#urlbar-container {
+    margin-top: -4px !important;
+}
+
+
+/* always fully hide the menu bar until opened with Option key */
+#toolbar-menubar[autohide="true"][inactive="true"]:not([customizing="true"]) {
+    width: 0 !important;
+}
+
+/* once open, show the menu bar at full width */
+#toolbar-menubar:not([inactive="true"]) {
+    flex-basis: 100%;
+    width: 100%;
+}
+
+/* always show all tabs button (since most tabs can be hidden) */
+#alltabs-button {
+    display: block !important;
+}
